@@ -4,14 +4,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.content.Intent;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(LoginActivity.NAME);
+
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(name);
+        setContentView(textView);
+
     }
 
     @Override
@@ -35,4 +43,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
