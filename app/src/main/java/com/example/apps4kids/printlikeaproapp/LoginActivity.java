@@ -61,10 +61,8 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
+     * Go to main welcome page and animate the name
+     * */
     public void attemptLogin(View view) {
 
         Intent intent = new Intent(this, MainActivity.class);

@@ -44,7 +44,6 @@ public class DrawView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        //获取拖动事件的发生位置
         float x = event.getX();
         float y = event.getY();
         switch (event.getAction())
@@ -67,7 +66,7 @@ public class DrawView extends View {
         invalidate();
         return true;	//The event has been dealt
     }
-    //	/*--------------------绘图-------------------------*/
+    //	/*--------------------锟斤拷图-------------------------*/
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
