@@ -4,18 +4,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.widget.TextView;
 
-
-public class MainActivity_Enxin extends ActionBarActivity {
-
-    CustomDrawableView mCustomDrawableView;
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mCustomDrawableView = new CustomDrawableView(this);
-        setContentView(mCustomDrawableView);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(LoginActivity.NAME);
+
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(name);
+        setContentView(textView);
+
     }
 
     @Override
@@ -39,4 +43,6 @@ public class MainActivity_Enxin extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

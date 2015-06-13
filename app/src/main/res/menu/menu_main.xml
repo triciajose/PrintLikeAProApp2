@@ -1,6 +1,43 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
-</menu>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.apps4kids.printlikeaproapp.MainActivity" >
+    <!-- munu-color -->
+    <item android:title="@string/color">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/red"
+                    android:title="@string/color_red"/>
+                <item
+                    android:id="@+id/green"
+                    android:title="@string/color_green"/>
+                <item
+                    android:id="@+id/blue"
+                    android:title="@string/color_blue"/>
+            </group>
+        </menu>
+    </item>
+    <!-- menu-brush size-->
+    <item android:title="@string/width">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/width_1"
+                    android:title="@string/width1"/>
+                <item
+                    android:id="@+id/width_2"
+                    android:title="@string/width2"/>
+                <item
+                    android:id="@+id/width_5"
+                    android:title="@string/width5"/>
+            </group>
+        </menu>
+    </item>
+    <!-- -->
+    <item android:id="@+id/blur"
+        android:title="@string/blur"/>
+    <!-- menu-width -->
+    <item android:id="@+id/emboss"
+        android:title="@string/emboss"/>
+</menu> 

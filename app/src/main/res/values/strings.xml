@@ -1,6 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PrintLikeAProApp</string>
+    <string name="app_name">Simple Paint</string>
+    <string name="color">Choose color</string>
+    <string name="color_red">Red</string>
+    <string name="color_green">Green</string>
+    <string name="color_blue">Blue</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="width">Brush Size</string>
+    <string name="width1">Brush 1</string>
+    <string name="width2">Brush 2</string>
+    <string name="width5">Brush 3</string>
+
+    <string name="blur">Blurring</string>
+    <string name="emboss">embossing</string>
 </resources>
