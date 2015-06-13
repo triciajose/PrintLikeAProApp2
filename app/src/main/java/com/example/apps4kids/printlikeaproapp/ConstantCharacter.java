@@ -8,12 +8,25 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static final
+    public static  ArrayList<PointPath> PATH_E = new ArrayList<>();
 
     public ConstantCharacter(){
+        PATH_E.removeAll(PATH_E);
         PointPath pointPath = new PointPath();
-        pointPath.points.add()
-
+        pointPath.points.add(new Point(300, 300));
+        pointPath.points.add(new Point(600, 300));
+        PATH_E.add(pointPath);
+        PointPath pointPath1 = new PointPath();
+        pointPath1.points.add(new Point(300, 300));
+        pointPath1.points.add(new Point(300, 700));
+        PATH_E.add(pointPath1);
+        PointPath pointPath2 = new PointPath();
+        pointPath2.points.add(new Point(300, 500));
+        pointPath2.points.add(new Point(600, 500));
+        PATH_E.add(pointPath2);
+        PointPath pointPath3 = new PointPath();
+        pointPath3.points.add(new Point(300, 700));
+        pointPath3.points.add(new Point(600, 700));
+        PATH_E.add(pointPath3);
     }
-    public static ArrayList<PointPath> TRAJECTORY_E = {new Point(300, 300), new Point(600, 300), }
 }
