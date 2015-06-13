@@ -6,12 +6,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity_Enxin extends ActionBarActivity {
+
+    CustomDrawableView mCustomDrawableView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mCustomDrawableView = new CustomDrawableView(this);
+        setContentView(mCustomDrawableView);
     }
 
     @Override
