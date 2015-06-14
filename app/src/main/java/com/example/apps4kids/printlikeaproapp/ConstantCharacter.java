@@ -14,14 +14,17 @@ public class ConstantCharacter {
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
     public static final int STROKE_POINT_THRESHOLD = 1;
-    public static  ArrayList<StrokePath> PATH_E = new ArrayList<>();
-    public static  ArrayList<StrokePath> PATH_L = new ArrayList<>();
-    public ConstantCharacter(){
+    public static ArrayList<StrokePath> PATH_E = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_L = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_I = new ArrayList<>();
+
+    public ConstantCharacter() {
         addPathE();
         addPathL();
+        addPathI();
     }
 
-    public void addPathE(){
+    public void addPathE() {
         PATH_E.removeAll(PATH_E);
         StrokePath strokePath = new StrokePath();
         strokePath.points.add(new Point(200, 60));
@@ -66,7 +69,7 @@ public class ConstantCharacter {
         PATH_E.add(strokePath3);
     }
 
-    public void addPathL(){
+    public void addPathL() {
         PATH_L.removeAll(PATH_L);
 
 
@@ -94,6 +97,27 @@ public class ConstantCharacter {
         PATH_L.add(strokePath3);
     }
 
+    public void addPathI() {
+        PATH_I.removeAll(PATH_I);
+
+
+        StrokePath strokePath1 = new StrokePath();
+        strokePath1.points.add(new Point(200, 60));
+        strokePath1.points.add(new Point(200, 140));
+        strokePath1.points.add(new Point(200, 200));
+        strokePath1.points.add(new Point(200, 280));
+        strokePath1.points.add(new Point(200, 360));
+        strokePath1.points.add(new Point(200, 420));
+        strokePath1.points.add(new Point(200, 490));
+        strokePath1.points.add(new Point(200, 560));
+        strokePath1.direction = StrokeDirection.DOWN;
+        strokePath1.soundUri = ""; // can link to our resource file for down.
+        PATH_I.add(strokePath1);
+    }
+
 }
+
+
+
 
 
