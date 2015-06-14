@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     Animation grow;
     Animation shrink;
     DrawView drawView = null;
-    String mChracter = "F";
+    String mChracter = "l";
     GameMode gameMode = GameMode.ALLPOINTS;
 
     @Override

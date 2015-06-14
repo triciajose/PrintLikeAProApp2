@@ -8,11 +8,8 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static float cStartX = 100;
-    public static float cStartY = 600;
-    public static float upSolidY = cStartY + 100;
-    public static float bottomSolidY = cStartY + 700;
-    public static float dotY = (upSolidY+bottomSolidY)/2;
+    public static final float cStartX = 100;
+    public static final float cStartY = 600;
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
@@ -21,6 +18,8 @@ public class ConstantCharacter {
     public static ArrayList<StrokePath> PATH_L = new ArrayList<>();
     public static ArrayList<StrokePath> PATH_I = new ArrayList<>();
     public static  ArrayList<StrokePath> PATH_F = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_T = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_l = new ArrayList<>();
 
 
     public ConstantCharacter() {
@@ -28,6 +27,8 @@ public class ConstantCharacter {
         addPathL();
         addPathI();
         addPathF();
+        addPathT();
+        addPathl();
 
     }
 
@@ -117,7 +118,6 @@ public class ConstantCharacter {
         strokePath3.soundUri = "";
         PATH_F.add(strokePath3);
     }
-
 	   public void addPathL(){
         PATH_L.removeAll(PATH_L);
 
@@ -161,6 +161,53 @@ public class ConstantCharacter {
         strokePath1.direction = StrokeDirection.DOWN;
         strokePath1.soundUri = ""; // can link to our resource file for down.
         PATH_I.add(strokePath1);
+    }
+
+    public void addPathT() {
+        PATH_T.removeAll(PATH_T);
+
+
+        StrokePath strokePath1 = new StrokePath();
+        strokePath1.points.add(new Point(200, 60));
+        strokePath1.points.add(new Point(200, 140));
+        strokePath1.points.add(new Point(200, 200));
+        strokePath1.points.add(new Point(200, 280));
+        strokePath1.points.add(new Point(200, 360));
+        strokePath1.points.add(new Point(200, 420));
+        strokePath1.points.add(new Point(200, 490));
+        strokePath1.points.add(new Point(200, 560));
+        strokePath1.direction = StrokeDirection.DOWN;
+        strokePath1.soundUri = ""; // can link to our resource file for down.
+        PATH_T.add(strokePath1);
+
+        StrokePath strokePath3 = new StrokePath();
+        strokePath3.points.add(new Point(50, 60));
+        strokePath3.points.add(new Point(125, 60));
+        strokePath3.points.add(new Point(200, 60));
+        strokePath3.points.add(new Point(275, 60));
+        strokePath3.points.add(new Point(400, 60));
+        strokePath3.direction = StrokeDirection.RIGHT;
+        strokePath3.soundUri = "";
+        PATH_T.add(strokePath3);
+    }
+    public void addPathl() {
+        PATH_l.removeAll(PATH_l);
+
+
+        StrokePath strokePath1 = new StrokePath();
+        strokePath1.points.add(new Point(200, 60));
+        strokePath1.points.add(new Point(200, 140));
+        strokePath1.points.add(new Point(200, 200));
+        strokePath1.points.add(new Point(200, 280));
+        strokePath1.points.add(new Point(200, 360));
+        strokePath1.points.add(new Point(200, 420));
+        strokePath1.points.add(new Point(200, 490));
+        strokePath1.points.add(new Point(200, 560));
+        strokePath1.direction = StrokeDirection.DOWN;
+        strokePath1.soundUri = ""; // can link to our resource file for down.
+        PATH_l.add(strokePath1);
+
+
     }
 
 }

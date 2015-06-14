@@ -92,6 +92,10 @@ public class DrawView extends View {
             case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
 
             case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
+            case "T": strokes.addAll(ConstantCharacter.PATH_T); break;
+            case "l": strokes.addAll(ConstantCharacter.PATH_T); break;
+
+
             default: break;
         }
         numStroke = strokes.size();
