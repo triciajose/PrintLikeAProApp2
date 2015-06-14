@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
+import android.graphics.Typeface;
 
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,11 +30,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
-
+        Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(),"ufonts.com_century-gothic.ttf");
         textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(name);
+        textView.setTypeface(centuryGothic);
+
         setContentView(textView);
+
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
         shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
 
