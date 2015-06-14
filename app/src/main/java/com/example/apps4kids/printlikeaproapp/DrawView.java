@@ -38,29 +38,30 @@ public class DrawView extends View {
 
         //3.Set up the brush
         paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
-        paint.setColor(Color.GRAY);	 //Color
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);	 //Style
-        paint.setStrokeWidth(30);
-        paint.setAntiAlias(true);	 //
-        paint.setDither(true);
+        paint.setColor(Color.GRAY);
+        paint.setTextSize(800);
+        paint.setStyle(Paint.Style.FILL);
+        cacheCanvas.drawText("B", ConstantCharacter.cStartX, ConstantCharacter.cStartY, paint);
 
         ConstantCharacter initCharacters = new ConstantCharacter();
 
         //4  test draw an E character.
-        for(PointPath pointPath: ConstantCharacter.PATH_E){
-  //          path.reset();
-            Point startPoint = pointPath.points.get(0);
-            Point previousPoint = new Point(startPoint.x, startPoint.y);
-            path.moveTo(startPoint.x, startPoint.y);
-            for(int i=1; i<pointPath.points.size(); i++){
-                Point nextPoint = pointPath.points.get(i);
-                path.quadTo(previousPoint.x, previousPoint.y, nextPoint.x, nextPoint.y);
-                previousPoint = new Point(nextPoint.x, nextPoint.y);
-            }
-            cacheCanvas.drawPath(path, paint);
-            invalidate();
-            path.reset();
-        }
+//        for(PointPath pointPath: ConstantCharacter.PATH_E){
+//  //          path.reset();
+//            Point startPoint = pointPath.points.get(0);
+//            Point previousPoint = new Point(startPoint.x, startPoint.y);
+//            path.moveTo(startPoint.x, startPoint.y);
+//            for(int i=1; i<pointPath.points.size(); i++){
+//                Point nextPoint = pointPath.points.get(i);
+//                path.quadTo(previousPoint.x, previousPoint.y, nextPoint.x, nextPoint.y);
+//                previousPoint = new Point(nextPoint.x, nextPoint.y);
+//            }
+//            cacheCanvas.drawPath(path, paint);
+//            invalidate();
+//            path.reset();
+//        }
+
+
 
         //5.Set up the brush for users
         paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush

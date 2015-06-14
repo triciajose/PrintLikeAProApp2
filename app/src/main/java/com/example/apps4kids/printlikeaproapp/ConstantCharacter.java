@@ -8,13 +8,14 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
+    public static final float cStartX = 100;
+    public static final float cStartY = 600;
     public static  ArrayList<PointPath> PATH_E = new ArrayList<>();
-
     public ConstantCharacter(){
         PATH_E.removeAll(PATH_E);
         PointPath pointPath = new PointPath();
         pointPath.points.add(new Point(300, 300));
-        pointPath.points.add(new Point(600, 300));
+        pointPath.points.add(new Point(300, 600));
         PATH_E.add(pointPath);
         PointPath pointPath1 = new PointPath();
         pointPath1.points.add(new Point(300, 300));
