@@ -41,7 +41,7 @@ import java.util.List;
 public class LoginActivity extends Activity {
 
     public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
-
+    private Button testButton;
     // UI references.
     private EditText mNameView;
     DatabaseHandler dbHandler;
@@ -56,7 +56,8 @@ public class LoginActivity extends Activity {
 
         // Set up the login form.
         mNameView = (EditText) findViewById(R.id.name);
-
+        testButton = (Button) findViewById(R.id.btnPrint);
+        testButton.setVisibility(View.GONE);
         Button mStart = (Button) findViewById(R.id.sign_in_button);
         mStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -85,7 +86,6 @@ public class LoginActivity extends Activity {
      * */
     public void attemptLogin(View view) {
         String a = mNameView.getText().toString();
-        dbHandler.addUser(a, a);
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(NAME, mNameView.getText().toString()); //Optional parameters
 
@@ -93,7 +93,11 @@ public class LoginActivity extends Activity {
             createPopUp("Please click ok and type in your name.");
         }
         else {
+<<<<<<< HEAD
             ourSound.playGoodJob();
+=======
+            dbHandler.addUser(a, a);
+>>>>>>> 98a091b57157afc2332a9279e2818a8d1af8556c
             startActivity(intent);
         }
 
@@ -106,14 +110,11 @@ public class LoginActivity extends Activity {
 
 
     private void createPopUp(String msg){
-
         AlertDialog.Builder buildr = new AlertDialog.Builder(this);
         buildr.setMessage(msg);
         buildr.setNeutralButton("ok",null);
-
         buildr.create();
         buildr.show();
-
     }
 }
 
