@@ -22,6 +22,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -62,18 +63,29 @@ public class LoginActivity extends Activity {
             }
         });
 
-        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
         Context context = getApplicationContext();
         dbHandler = new DatabaseHandler(context);
        // dbHandler.addUser("Alice", "Alice");
        // dbHandler.addUser("Bob", "Bob");
        // dbHandler.addUser("Kathy", "Kathy");
-        ArrayList<String> nameList = new ArrayList<>();
-        nameList.addAll(dbHandler.getAllUserNamesAsString());
-        String[] items = {};
-        items = nameList.toArray(items);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+
+        ArrayList<User> nameList = new ArrayList<>();
+        nameList.addAll(dbHandler.getAllUserNames());
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, android.R.layout.simple_spinner_item, nameList);
         dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
+                int itemPosition = position;
+                User user =  (User) dropdown.getSelectedItem();
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+                
+            }
+        });
 
     }
 
