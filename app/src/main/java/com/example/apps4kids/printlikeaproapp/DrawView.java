@@ -10,6 +10,7 @@ package com.example.apps4kids.printlikeaproapp;
         import android.graphics.Color;
         import android.graphics.Paint;
         import android.graphics.Path;
+        import android.graphics.Point;
         import android.util.AttributeSet;
         import android.view.MotionEvent;
         import android.view.View;
@@ -33,7 +34,36 @@ public class DrawView extends View {
         //2.CacheCanvas will draw into bitmap
         cacheCanvas = new Canvas();
         cacheCanvas.setBitmap(cacheBitmap);
+
+
         //3.Set up the brush
+        paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
+        paint.setColor(Color.GRAY);
+        paint.setTextSize(800);
+        paint.setStyle(Paint.Style.FILL);
+        cacheCanvas.drawText("B", ConstantCharacter.cStartX, ConstantCharacter.cStartY, paint);
+
+        ConstantCharacter initCharacters = new ConstantCharacter();
+
+        //4  test draw an E character.
+//        for(PointPath pointPath: ConstantCharacter.PATH_E){
+//  //          path.reset();
+//            Point startPoint = pointPath.points.get(0);
+//            Point previousPoint = new Point(startPoint.x, startPoint.y);
+//            path.moveTo(startPoint.x, startPoint.y);
+//            for(int i=1; i<pointPath.points.size(); i++){
+//                Point nextPoint = pointPath.points.get(i);
+//                path.quadTo(previousPoint.x, previousPoint.y, nextPoint.x, nextPoint.y);
+//                previousPoint = new Point(nextPoint.x, nextPoint.y);
+//            }
+//            cacheCanvas.drawPath(path, paint);
+//            invalidate();
+//            path.reset();
+//        }
+
+
+
+        //5.Set up the brush for users
         paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
         paint.setColor(Color.RED);	 //Color
         paint.setStyle(Paint.Style.STROKE);	 //Style

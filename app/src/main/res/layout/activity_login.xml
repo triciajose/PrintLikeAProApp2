@@ -30,6 +30,14 @@
                 android:onClick="attemptLogin"
                 android:textStyle="bold" />
 
+            <Button
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "test print page shortcut"
+                android:id = "@+id/btnPrint"
+                android:onClick="startPrint"
+                />
+
         </LinearLayout>
     </ScrollView>
 

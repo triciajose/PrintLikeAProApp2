@@ -15,8 +15,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="Main Activity" >
-
+            android:label="@string/app_name" >
         </activity>
         <activity android:name=".Splashscreen"
             android:label="=@string/title_splash_screen"
@@ -38,7 +37,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        
+        <activity
+            android:name=".PrintCharacterActivity"
+            android:label="@string/title_activity_print_character" >
+        </activity>
     </application>
 
 </manifest>
