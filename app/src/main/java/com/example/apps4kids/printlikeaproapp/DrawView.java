@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -114,9 +115,9 @@ public class DrawView extends View {
 
         Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
 
-     //   Bitmap upLineBitmap = Bitmap.createBitmap();
+        Bitmap upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
 
-     //   cacheCanvas.drawBitmap(MyBitmap, null, , null)
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
 
         //5.Set up the brush for users
         initPaint();
