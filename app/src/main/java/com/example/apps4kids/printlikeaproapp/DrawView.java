@@ -38,6 +38,8 @@ public class DrawView extends View {
     final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
+    Bitmap upLineBitmap;
+    Rect uprect;
     ArrayList<Boolean> strokePointMatch = new ArrayList<Boolean>();
     ArrayList<Point> strokePoints = new ArrayList<>();
     ArrayList<StrokePath> strokes = new ArrayList<>();
@@ -117,9 +119,9 @@ public class DrawView extends View {
         display.getSize(size);
         int width = size.x;
 
-        Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
 
-        Bitmap upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
+        upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
 
         cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
 

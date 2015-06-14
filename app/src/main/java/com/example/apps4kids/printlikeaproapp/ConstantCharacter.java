@@ -10,6 +10,11 @@ import java.util.ArrayList;
 public class ConstantCharacter {
     public static final float cStartX = 100;
     public static final float cStartY = 600;
+    public static float cStartX = 100;
+    public static float cStartY = 1000;
+    public static float upSolidY = cStartY + 100;
+    public static float bottomSolidY = cStartY + 700;
+    public static float dotY = (upSolidY+bottomSolidY)/2;
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
@@ -93,6 +98,14 @@ public class ConstantCharacter {
         strokePath1.points.add(new Point(200, 420));
         strokePath1.points.add(new Point(200, 490));
         strokePath1.points.add(new Point(200, 560));
+        strokePath1.points.add(new Point(210, 60));
+        strokePath1.points.add(new Point(210, 140));
+        strokePath1.points.add(new Point(210, 200));
+        strokePath1.points.add(new Point(210, 280));
+        strokePath1.points.add(new Point(210, 360));
+        strokePath1.points.add(new Point(210, 420));
+        strokePath1.points.add(new Point(210, 490));
+        strokePath1.points.add(new Point(210, 560));
         strokePath1.direction = StrokeDirection.DOWN;
         strokePath1.soundUri = ""; // can link to our resource file for down.
         PATH_F.add(strokePath1);
@@ -103,6 +116,10 @@ public class ConstantCharacter {
         strokePath2.points.add(new Point(340, 60));
         strokePath2.points.add(new Point(410, 60));
         strokePath2.points.add(new Point(480, 60));
+        strokePath2.points.add(new Point(210, 40));
+        strokePath2.points.add(new Point(280, 40));
+        strokePath2.points.add(new Point(350, 40));
+        strokePath2.points.add(new Point(420, 40));
         strokePath2.direction = StrokeDirection.RIGHT; //First stoke of E is from left to right. The arrow should point to right.
         //Add sound effect for each stroke
         strokePath2.soundUri = ""; // can link to our resource file
@@ -114,6 +131,10 @@ public class ConstantCharacter {
         strokePath3.points.add(new Point(340, 300));
         strokePath3.points.add(new Point(410, 300));
         strokePath3.points.add(new Point(480, 300));
+        strokePath3.points.add(new Point(210, 280));
+        strokePath3.points.add(new Point(280, 280));
+        strokePath3.points.add(new Point(350, 280));
+        strokePath3.points.add(new Point(420, 280));
         strokePath3.direction = StrokeDirection.RIGHT;
         strokePath3.soundUri = "";
         PATH_F.add(strokePath3);

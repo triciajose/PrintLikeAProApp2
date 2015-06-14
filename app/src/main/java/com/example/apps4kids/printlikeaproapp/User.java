@@ -74,5 +74,9 @@ public class User {
         this.score = score;
     }
 
+    public String toString() {
+        return this.getName();
+    }
+
 
 }
