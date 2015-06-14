@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
         textView.setTextSize(40);
         textView.setText(name);
         setContentView(textView);
-
         Animation grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
         Animation shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
         textView.startAnimation(grow);
@@ -55,8 +54,6 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 

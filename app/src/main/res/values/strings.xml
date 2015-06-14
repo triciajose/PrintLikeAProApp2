@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Paint</string>
+    <string name="app_name">Print Like A Pro</string>
     <string name="color">Choose color</string>
     <string name="color_red">Red</string>
     <string name="color_green">Green</string>
