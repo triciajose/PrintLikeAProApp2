@@ -31,6 +31,7 @@ public class ConstantCharacter {
         //Add sound effect for each stroke
         strokePath.soundUri = ""; // can link to our resource file
         PATH_E.add(strokePath);
+
         StrokePath strokePath1 = new StrokePath();
         strokePath1.points.add(new Point(200, 60));
         strokePath1.points.add(new Point(200, 140));
