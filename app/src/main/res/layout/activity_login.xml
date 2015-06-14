@@ -6,9 +6,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@mipmap/gradientbackground">
 
     <!-- Login progress -->
+
     <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginBottom="8dp" android:visibility="gone" />
@@ -26,7 +28,7 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="match_parent"
+        android:layout_width="560dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown" />
 

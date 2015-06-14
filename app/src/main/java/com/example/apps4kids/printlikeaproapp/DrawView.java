@@ -7,16 +7,20 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -34,6 +38,8 @@ public class DrawView extends View {
     final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
+    Bitmap upLineBitmap;
+    Rect uprect;
     ArrayList<Boolean> strokePointMatch = new ArrayList<Boolean>();
     ArrayList<Point> strokePoints = new ArrayList<>();
     ArrayList<StrokePath> strokes = new ArrayList<>();
@@ -49,7 +55,7 @@ public class DrawView extends View {
     {
         super(context, set);
         this.context = context;
-        MainActivity activity = (MainActivity) context;
+        PrintCharacterActivity activity = (PrintCharacterActivity) context;
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
 
@@ -103,7 +109,17 @@ public class DrawView extends View {
             }
         }
 
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
 
+        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+
+        upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
+
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
 
         //5.Set up the brush for users
         initPaint();
@@ -154,6 +170,9 @@ public class DrawView extends View {
         super.onDraw(canvas);
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
+
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
         canvas.drawPath(pathUser, paintUser);
