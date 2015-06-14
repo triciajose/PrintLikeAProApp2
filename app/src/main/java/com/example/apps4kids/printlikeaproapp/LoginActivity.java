@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 
@@ -38,13 +39,14 @@ import java.util.List;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements SoundResponse {
 
     public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     private Button testButton;
     // UI references.
     private EditText mNameView;
     DatabaseHandler dbHandler;
+    Context ourContext;
 
     // Sound reference
     private SoundResponse ourSound;
@@ -88,19 +90,20 @@ public class LoginActivity extends Activity {
         String a = mNameView.getText().toString();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(NAME, mNameView.getText().toString()); //Optional parameters
+        // Temporary sound for the lulz.
 
         if (mNameView.getText().toString().equals("")){
+            playSound(R.raw.across);
             createPopUp("Please click ok and type in your name.");
         }
         else {
-<<<<<<< HEAD
-            ourSound.playGoodJob();
-=======
             dbHandler.addUser(a, a);
->>>>>>> 98a091b57157afc2332a9279e2818a8d1af8556c
             startActivity(intent);
         }
-
+    }
+    public void playSound(int rawSound){
+        MediaPlayer player = MediaPlayer.create(this.getApplicationContext(), rawSound);
+        player.start();
     }
 
     public void startPrint(View v){
