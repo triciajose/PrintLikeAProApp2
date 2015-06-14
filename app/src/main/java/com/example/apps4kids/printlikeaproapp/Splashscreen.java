@@ -15,12 +15,13 @@ public class Splashscreen extends Activity {
         Thread timer = new Thread() {
             public void run() {
                 try {
-                    sleep(5000); // in milliseconds
+                    sleep(3000); // in milliseconds
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     Intent openMain = new Intent(Splashscreen.this, LoginActivity.class);
                     startActivity(openMain);
+                    finish();
                 }
             }
         };

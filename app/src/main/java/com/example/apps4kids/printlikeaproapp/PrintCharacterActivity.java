@@ -8,6 +8,9 @@ import android.view.MenuItem;
 
 public class PrintCharacterActivity extends ActionBarActivity {
     DrawView drawView = null;
+    String mChracter = "F";
+    GameMode gameMode = GameMode.ALLPOINTS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,7 +5,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity">
+    tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity"
+    android:weightSum="1">
 
     <!-- Login progress -->
     <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
@@ -13,33 +14,41 @@
         android:layout_marginBottom="8dp" android:visibility="gone" />
 
     <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="false">
+        android:layout_height="138dp"
+        android:fillViewport="false"
+        android:layout_weight="0.26">
 
         <LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="vertical">
 
-            <EditText android:id="@+id/name" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="@string/prompt_email"
-                android:inputType="textPersonName" android:maxLines="1"
-                android:singleLine="true" />
-
-            <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-                android:onClick="attemptLogin"
-                android:textStyle="bold" />
-
-            <Button
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "test print page shortcut"
-                android:id = "@+id/btnPrint"
-                android:onClick="startPrint"
-                />
-
         </LinearLayout>
     </ScrollView>
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <EditText android:id="@+id/name" android:layout_width="560dp"
+        android:layout_height="63dp" android:hint="@string/prompt_email"
+        android:inputType="textPersonName" android:maxLines="1"
+        android:singleLine="true" />
+
+    <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:text="@string/action_sign_in"
+        android:onClick="attemptLogin"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "test print page shortcut"
+        android:id = "@+id/btnPrint"
+        android:onClick="startPrint"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
 

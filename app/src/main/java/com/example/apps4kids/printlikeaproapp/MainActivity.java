@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     TextView textView;
     Animation grow;
     Animation shrink;
-
+    int m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                textView.startAnimation(shrink);
+//                this.startAnimation(shrink);
 
             }
         });
@@ -98,23 +98,25 @@ public class MainActivity extends Activity {
         });
         Handler handler = new Handler();
         for (int j= 0; j < name.length(); j++) {
+
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    chartextView.startAnimation(grow);                }
-            }, 2000 * (j + 1));
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    chartextView.startAnimation(shrink);
-//                }
-//            }, 2000 * (j + 1));
+                    chartextView.startAnimation(grow);
+                }
+            }, 1000 * (j + 1));
         }
-//        Intent intent2 = new Intent(textView.getContext(), PrintCharacterActivity.class);
-//        intent2.putExtra(NAME, name); //Optional parameters
-//        startActivity(intent);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent2 = new Intent(textView.getContext(), PrintCharacterActivity.class);
+                intent2.putExtra(NAME, name); //Optional parameters
+                startActivity(intent2);
+            }
+        }, 1000 * ( name.length() ));
+
     }
 
     @Override

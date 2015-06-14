@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,8 +26,10 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Intent;
+import android.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +44,7 @@ public class LoginActivity extends Activity {
 
     // UI references.
     private EditText mNameView;
-
+    DatabaseHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +62,38 @@ public class LoginActivity extends Activity {
             }
         });
 
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        Context context = getApplicationContext();
+        dbHandler = new DatabaseHandler(context);
+       // dbHandler.addUser("Alice", "Alice");
+       // dbHandler.addUser("Bob", "Bob");
+       // dbHandler.addUser("Kathy", "Kathy");
+        ArrayList<String> nameList = new ArrayList<>();
+        nameList.addAll(dbHandler.getAllUserNamesAsString());
+        String[] items = {};
+        items = nameList.toArray(items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        dropdown.setAdapter(adapter);
+
     }
 
     /**
      * Go to main welcome page and animate the name
      * */
     public void attemptLogin(View view) {
-
+        String a = mNameView.getText().toString();
+        dbHandler.addUser(a, a);
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(NAME, mNameView.getText().toString()); //Optional parameters
-        startActivity(intent);
+
+        if (mNameView.getText().toString().equals("")){
+            createPopUp("Please click ok and type in your name.");
+        }
+        else {
+            startActivity(intent);
+
+        }
+
     }
 
     public void startPrint(View v){
@@ -76,8 +102,15 @@ public class LoginActivity extends Activity {
     }
 
 
+    private void createPopUp(String msg){
 
+        AlertDialog.Builder buildr = new AlertDialog.Builder(this);
+        buildr.setMessage(msg);
+        buildr.setNeutralButton("ok",null);
 
+        buildr.create();
+        buildr.show();
 
+    }
 }
 
