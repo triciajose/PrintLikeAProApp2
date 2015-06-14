@@ -97,6 +97,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Getting All Contacts
+    public List<String> getAllUserNamesAsString() {
+        List<String> userListAsString = new ArrayList<>();
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(PROGRESS_TABLE, new String[]{
+                        PROGRESS_COLUMN_NAME
+                }, null,
+                null, null, null, PROGRESS_COLUMN_NAME + " ASC");
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                try {
+                    String username = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_NAME));
+
+
+                    // Adding contact to list
+                    userListAsString.add(username);
+                } catch (Exception e)
+                {
+
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        // return contact list
+        return userListAsString;
+
+    }
+
+    // Getting All Contacts
     public List<User> getAllUserNames() {
         List<User> userList = new ArrayList<>();
 
