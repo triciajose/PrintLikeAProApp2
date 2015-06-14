@@ -8,23 +8,30 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static final float cStartX = 100;
-    public static final float cStartY = 600;
+    public static float cStartX = 100;
+    public static float cStartY = 600;
+    public static float upSolidY = cStartY + 100;
+    public static float bottomSolidY = cStartY + 700;
+    public static float dotY = (upSolidY+bottomSolidY)/2;
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
     public static final int STROKE_POINT_THRESHOLD = 1;
-    public static  ArrayList<StrokePath> PATH_E = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_E = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_L = new ArrayList<>();
+    public static ArrayList<StrokePath> PATH_I = new ArrayList<>();
     public static  ArrayList<StrokePath> PATH_F = new ArrayList<>();
-    public static  ArrayList<StrokePath> PATH_L = new ArrayList<>();
 
-    public ConstantCharacter(){
+
+    public ConstantCharacter() {
         addPathE();
+        addPathL();
+        addPathI();
         addPathF();
-		addPathL();
+
     }
 
-    public void addPathE(){
+    public void addPathE() {
         PATH_E.removeAll(PATH_E);
 
         StrokePath strokePath1 = new StrokePath();
@@ -71,6 +78,7 @@ public class ConstantCharacter {
         strokePath4.soundUri = "";
         PATH_E.add(strokePath4);
     }
+
 
     public void addPathF(){
         PATH_F.removeAll(PATH_F);
@@ -137,7 +145,27 @@ public class ConstantCharacter {
         PATH_L.add(strokePath3);
     }
 
+    public void addPathI() {
+        PATH_I.removeAll(PATH_I);
+
+
+        StrokePath strokePath1 = new StrokePath();
+        strokePath1.points.add(new Point(200, 60));
+        strokePath1.points.add(new Point(200, 140));
+        strokePath1.points.add(new Point(200, 200));
+        strokePath1.points.add(new Point(200, 280));
+        strokePath1.points.add(new Point(200, 360));
+        strokePath1.points.add(new Point(200, 420));
+        strokePath1.points.add(new Point(200, 490));
+        strokePath1.points.add(new Point(200, 560));
+        strokePath1.direction = StrokeDirection.DOWN;
+        strokePath1.soundUri = ""; // can link to our resource file for down.
+        PATH_I.add(strokePath1);
+    }
 
 }
+
+
+
 
 

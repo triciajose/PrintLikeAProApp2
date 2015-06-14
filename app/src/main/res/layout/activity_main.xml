@@ -14,24 +14,26 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/imageView2"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--/>-->
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:text="PrintingLikeAPro"
-        android:visibility="visible"
-        android:layout_alignParentTop="true" />
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="textEmailAddress"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/editText"-->
+        <!--android:text="PrintingLikeAPro"-->
+        <!--android:visibility="visible"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toRightOf="@+id/textView"-->
+        <!--android:layout_toEndOf="@+id/textView" />-->
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -41,15 +43,20 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/editText"
-        android:layout_toStartOf="@+id/editText"
-        android:layout_marginTop="398dp" />
+    <!--<ProgressBar-->
+        <!--style="?android:attr/progressBarStyleHorizontal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/progressBar"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toLeftOf="@+id/editText"-->
+        <!--android:layout_toStartOf="@+id/editText"-->
+        <!--android:layout_marginTop="398dp" />-->
 
+    <com.example.apps4kids.printlikeaproapp.DrawView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/drawView"
+        />
 
 </RelativeLayout>

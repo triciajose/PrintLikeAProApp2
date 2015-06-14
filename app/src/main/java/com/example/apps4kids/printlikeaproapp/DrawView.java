@@ -3,22 +3,26 @@ package com.example.apps4kids.printlikeaproapp;
 /**
  * Created by Boya on 2015-06-13.
  */
-        import android.content.Context;
-        import android.content.res.AssetManager;
-        import android.graphics.Bitmap;
-        import android.graphics.Bitmap.Config;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.Paint;
-        import android.graphics.Path;
-        import android.graphics.Point;
-        import android.graphics.Typeface;
-        import android.util.AttributeSet;
-        import android.util.Log;
-        import android.view.MotionEvent;
-        import android.view.View;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 /*double caching*/
 public class DrawView extends View {
@@ -49,8 +53,8 @@ public class DrawView extends View {
     {
         super(context, set);
         this.context = context;
-        PrintCharacterActivity activity = (PrintCharacterActivity) context;
-        this.mCharacter = activity.mChracter;
+        MainActivity activity = (MainActivity) context;
+        this.mCharacter = activity.mCharacter;
         this.gameMode = activity.gameMode;
 
         pathUser = new Path();
@@ -86,6 +90,8 @@ public class DrawView extends View {
             case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
             case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
             case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
+
+            case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
             default: break;
         }
         numStroke = strokes.size();
@@ -101,7 +107,17 @@ public class DrawView extends View {
             }
         }
 
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
 
+        Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+
+        Bitmap upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
+
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
 
         //5.Set up the brush for users
         initPaint();
@@ -227,7 +243,7 @@ public class DrawView extends View {
         Log.i("indexStroke", "" + indexStroke);
     }
 
-    public void characterSucess(){
+    public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
         // where cellebration animations should be added.
     }

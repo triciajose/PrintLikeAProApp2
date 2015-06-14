@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         setContentView(R.layout.activity_main);
         name = intent.getStringExtra(LoginActivity.NAME);
