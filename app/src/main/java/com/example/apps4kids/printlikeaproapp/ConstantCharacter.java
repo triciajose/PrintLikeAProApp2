@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class ConstantCharacter {
     public static float cStartX = 100;
-    public static float cStartY = 600;
+    public static float cStartY = 1000;
     public static float upSolidY = cStartY + 100;
     public static float bottomSolidY = cStartY + 700;
     public static float dotY = (upSolidY+bottomSolidY)/2;
