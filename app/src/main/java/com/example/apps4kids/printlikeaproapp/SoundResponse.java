@@ -1,4 +1,5 @@
 package com.example.apps4kids.printlikeaproapp;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Environment;
 
@@ -10,102 +11,110 @@ import java.io.InputStream;
  * Created by alekh_000 on 2015-06-13.
  Class will provide all the method and file implementations of voices.
  Call this file wherever you need a sound.
+
+
+ A number of commands have been highlighted out until they've been recorded.
  */
 
 
 public class SoundResponse {
 
+    private MediaPlayer our_player;
+    private Context a_context;
+
     // Play a sound file.
     // If un-successful, throw an IOException.
-    public void playSoundFile(String file_name) {
-        // First we're creating the pathway that the file will reside in.
+    public void stopPlayer(){
+        if (our_player != null){
+            our_player.release();;
+            our_player = null;
+        }
+    }
 
+    public void playSoundFile(int resourceid) {
+        // First we're creating the pathway that the file will reside in]
+        this.stopPlayer();
+        MediaPlayer ours = new MediaPlayer();
+        ours = MediaPlayer.create(a_context.getApplicationContext(), resourceid);
         try {
-            String filePath = Environment.getExternalStorageDirectory().getPath() + "/Music/" +
-                    file_name;
-            MediaPlayer our_player = new MediaPlayer();
-            our_player.setDataSource(filePath);
-            our_player.prepare();
-            our_player.start();
+            ours.prepare();
+            ours.start();
         } catch (IOException b) {
             b.getMessage();
         }
 
     }
 
-    // Slideback voice file.
+    /*  // Slideback voice file.
     public void playSlideBack() {
         String slide_back = "slideback.mp3";
-        playSoundFile(slide_back);
+        playSoundFile(this, R.raw.);
     }
+    */
 
     public void playLift() {
-        String play_lift = "lift.mp3";
+        int play_lift = R.raw.lift;
         playSoundFile(play_lift);
     }
-
+    /*
     public void playSlide() {
-        String slide = "slide.mp3";
+        int slide =
         playSoundFile(slide);
     }
-
+     */
     public void playDown() {
-        String down = "down.mp3";
+        int down = R.raw.down;
         playSoundFile(down);
     }
 
     public void playAcrossTheMiddle() {
-        String atm = "acrossthemiddle.mp3";
+        int atm = R.raw.aroundthemiddle;
         playSoundFile(atm);
     }
 
     public void playForward() {
-        String pf = "forward.mp3";
+        int pf = R.raw.forward;
         playSoundFile(pf);
     }
 
     public void playClose() {
-        String close = "close.mp3";
+        int close = R.raw.close;
         playSoundFile(close);
     }
 
     public void playCurve() {
-        String curve = "curve.mp3";
+        int curve = R.raw.curve;
         playSoundFile(curve);
     }
 
     public void playAcross() {
-        String across = "across.mp3";
+        int across = R.raw.across;
         playSoundFile(across);
     }
 
     public void playAcrossTheTop() {
-        String patt = "acrossthetop.mp3";
+        int patt = R.raw.acrossthetop;
         playSoundFile(patt);
     }
 
     public void playAcrossTheBottom() {
-        String patb = "acrossthebottom.mp3";
+        int patb = R.raw.acrossthebottom;
         playSoundFile(patb);
     }
 
-    public void playMiddle() {
-        String mid = "middle.mp3";
-        playSoundFile(mid);
-    }
-
     public void playBottom() {
-        String bot = "bottom.mp3";
+        int bot = R.raw.bottom;
         playSoundFile(bot);
     }
-
+  /*
     public void playStraight() {
-        String straight = "straight.mp3";
+       int straight = R.raw.
         playSoundFile(straight);
     }
 
+
     public void playStraightBack() {
-        String sb = "straightback.mp3";
+        String sb = R.raw.
         playSoundFile(sb);
     }
 
@@ -115,45 +124,46 @@ public class SoundResponse {
     }
 
     public void playSlideDown() {
-        String sd = "slidedown.mp3";
+        String sd = R.raw.
         playSoundFile(sd);
     }
+    */
 
     public void playAround() {
-        String around = "around.mp3";
+        int around = R.raw.around;
         playSoundFile(around);
     }
 
     public void playCurveBack() {
-        String curveback = "curveback.mp3";
+        int curveback = R.raw.curveback;
         playSoundFile(curveback);
     }
 
     public void playCurveForward() {
-        String curveforward = "curveforward.mp3";
+        int curveforward = R.raw.curveforward;
         playSoundFile(curveforward);
     }
-
+    /*
     public void playShortSlideDown() {
-        String ssd = "shortslidedown.mp3";
+        int ssd = R.raw.
         playSoundFile(ssd);
     }
-
+    */
     public void playDot() {
-        String dot = "dot.mp3";
+        int dot = R.raw.dot;
         playSoundFile(dot);
     }
 
     public void playDig() {
-        String dig = "dig.mp3";
+        int dig = R.raw.dig;
         playSoundFile(dig);
     }
 
     public void playGoodJob() {
-        String gj = "goodjob.mp3";
+        int gj = R.raw.goodjob;
         playSoundFile(gj);
     }
-
+/*
     public void playLetterA() {
         String a = "letterA.mp3";
         playSoundFile(a);
@@ -266,6 +276,7 @@ public class SoundResponse {
         String z = "letterZ.mp3";
         playSoundFile(z);
     }
+    */
     // Create a method that outputs some sound file.
     // Create a billion methods that read various wav files or mp3s.
 

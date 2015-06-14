@@ -46,6 +46,9 @@ public class LoginActivity extends Activity {
     private EditText mNameView;
     DatabaseHandler dbHandler;
 
+    // Sound reference
+    private SoundResponse ourSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +93,8 @@ public class LoginActivity extends Activity {
             createPopUp("Please click ok and type in your name.");
         }
         else {
+            ourSound.playGoodJob();
             startActivity(intent);
-
         }
 
     }
