@@ -84,6 +84,7 @@ public class DrawView extends View {
         strokes.removeAll(strokes);
         switch(mCharacter){
             case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
+            case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
             default: break;
         }
         numStroke = strokes.size();
