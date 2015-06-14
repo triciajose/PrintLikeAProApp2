@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+    public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     String name;
     TextView textView;
     Animation grow;
@@ -77,9 +78,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-//                Intent intent = new Intent(textView.getContext(), DrawView.class);
-//                intent.putExtra(NAME, name); //Optional parameters
-//                startActivity(intent);
+                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
+                intent.putExtra(NAME, name); //Optional parameters
+                startActivity(intent);
             }
         });
 
