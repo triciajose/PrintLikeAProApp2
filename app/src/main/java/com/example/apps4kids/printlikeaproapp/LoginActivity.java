@@ -70,6 +70,11 @@ public class LoginActivity extends Activity {
         startActivity(intent);
     }
 
+    public void startPrint(View v){
+        Intent intent = new Intent(this, PrintCharacterActivity.class);
+        startActivity(intent);
+    }
+
 
 
 

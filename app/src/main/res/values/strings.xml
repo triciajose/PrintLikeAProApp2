@@ -12,4 +12,8 @@
 
     <string name="blur">Blurring</string>
     <string name="emboss">embossing</string>
+    <string name="title_activity_print_character">PrintCharacterActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -18,12 +18,10 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     String name;
+    TextView textView;
     Animation grow;
     Animation shrink;
-    TextView textView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +30,13 @@ public class MainActivity extends Activity {
         name = intent.getStringExtra(LoginActivity.NAME);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(),"ufonts.com_century-gothic.ttf");
         textView = new TextView(this);
+
         textView.setTextSize(40);
         textView.setText(name);
         textView.setTypeface(centuryGothic);
 
         setContentView(textView);
+
 
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
         shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
@@ -82,8 +82,8 @@ public class MainActivity extends Activity {
 //                startActivity(intent);
             }
         });
-        textView.startAnimation(grow);
 
+        textView.startAnimation(grow);
 
     }
 
