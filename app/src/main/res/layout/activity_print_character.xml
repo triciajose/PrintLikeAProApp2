@@ -6,10 +6,29 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.apps4kids.printlikeaproapp.PrintCharacterActivity">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        >
+        <TextView android:text="Hello World" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="100dp"
+            android:id="@+id/textView"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width = "wrap_content"
+            android:layout_height = "60dp"
+            ></Button>
+    </RelativeLayout>
+
+
     <com.example.apps4kids.printlikeaproapp.DrawView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/drawView"
         />
+
+
 
 </RelativeLayout>
