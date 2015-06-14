@@ -53,7 +53,7 @@ public class DrawView extends View {
     {
         super(context, set);
         this.context = context;
-        MainActivity activity = (MainActivity) context;
+        PrintCharacterActivity activity = (PrintCharacterActivity) context;
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
 
@@ -112,12 +112,13 @@ public class DrawView extends View {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
-
-        Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+        Log.i("Screen width: ", ""+width);
+        Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 50);
 
         Bitmap upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
-
-        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+        Log.i("Bitmap width: ", ""+upLineBitmap.getWidth());
+        Log.i("Bitmpa height: ", "" + upLineBitmap.getHeight());
+//        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
 
         //5.Set up the brush for users
         initPaint();
@@ -168,6 +169,9 @@ public class DrawView extends View {
         super.onDraw(canvas);
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
+
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
         canvas.drawPath(pathUser, paintUser);
