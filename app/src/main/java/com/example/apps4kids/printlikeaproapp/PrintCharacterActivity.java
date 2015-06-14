@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 public class PrintCharacterActivity extends ActionBarActivity {
     DrawView drawView = null;
-    String mChracter = "I";
+    String mChracter = "T";
     GameMode gameMode = GameMode.ALLPOINTS;
 
     @Override

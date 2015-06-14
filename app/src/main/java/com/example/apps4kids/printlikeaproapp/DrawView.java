@@ -53,7 +53,7 @@ public class DrawView extends View {
     {
         super(context, set);
         this.context = context;
-        MainActivity activity = (MainActivity) context;
+        PrintCharacterActivity activity = (PrintCharacterActivity) context;
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
 
@@ -172,6 +172,9 @@ public class DrawView extends View {
         super.onDraw(canvas);
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
+
+        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
         canvas.drawPath(pathUser, paintUser);
