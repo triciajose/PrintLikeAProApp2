@@ -23,10 +23,13 @@ package com.example.apps4kids.printlikeaproapp;
 /*double caching*/
 public class DrawView extends View {
     int showPoints=0;
+    int animationIndex = 0;
     float preX;
     float preY;
-    private Path path;
-    public Paint paint=null;
+    private Path pathUser;
+    private Path pathAnimation;
+    private Paint paintUser =null;
+    private Paint paintAnimation = null;
     final int VIEW_WIDTH = 960;
     final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
