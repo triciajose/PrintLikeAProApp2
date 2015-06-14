@@ -23,21 +23,22 @@ public class MainActivity extends Activity {
     TextView textView;
     Animation grow;
     Animation shrink;
+    DrawView drawView = null;
+    String mChracter = "E";
+    GameMode gameMode = GameMode.ALLPOINTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(),"ufonts.com_century-gothic.ttf");
-        textView = new TextView(this);
-
-        textView.setTextSize(40);
+        textView = (TextView) findViewById(R.id.textView);
+        textView.setTextSize(20);
         textView.setText(name);
         textView.setTypeface(centuryGothic);
-
-        setContentView(textView);
-
+        drawView = (DrawView) findViewById(R.id.drawView);
 
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
         shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
@@ -78,9 +79,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
-                intent.putExtra(NAME, name); //Optional parameters
-                startActivity(intent);
+//                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
+//                intent.putExtra(NAME, name); //Optional parameters
+//                startActivity(intent);
             }
         });
 
