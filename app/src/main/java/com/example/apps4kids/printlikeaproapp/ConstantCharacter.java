@@ -8,13 +8,14 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static float cStartX = 100;
+    public static float cStartX = 300;
     public static float cStartY = 1000;
-    public static float upSolidY = cStartY + 100;
-    public static float bottomSolidY = cStartY + 700;
+    public static float upSolidY = cStartY - 600;
+    public static float bottomSolidY = cStartY + 300;
+    public static float solidLineWidth = 20;
     public static float dotY = (upSolidY+bottomSolidY)/2;
-    public static final float POINT_OFFSET_X = 0;
-    public static final float POINT_OFFSET_Y = 0;
+    public static final float POINT_OFFSET_X = 200;
+    public static final float POINT_OFFSET_Y = 400;
     public static final double THRESHOLD = 10000;
     public static final int STROKE_POINT_THRESHOLD = 1;
     public static ArrayList<StrokePath> PATH_E = new ArrayList<>();
@@ -84,35 +85,33 @@ public class ConstantCharacter {
         PATH_F.removeAll(PATH_F);
 
         StrokePath strokePath1 = new StrokePath();
-        strokePath1.points.add(new Point(200, 60));
-        strokePath1.points.add(new Point(200, 140));
-        strokePath1.points.add(new Point(200, 200));
-        strokePath1.points.add(new Point(200, 280));
-        strokePath1.points.add(new Point(200, 360));
-        strokePath1.points.add(new Point(200, 420));
-        strokePath1.points.add(new Point(200, 490));
-        strokePath1.points.add(new Point(200, 560));
+        strokePath1.points.add(new Point(210, 60));
+        strokePath1.points.add(new Point(210, 140));
+        strokePath1.points.add(new Point(210, 200));
+        strokePath1.points.add(new Point(210, 280));
+        strokePath1.points.add(new Point(210, 360));
+        strokePath1.points.add(new Point(210, 420));
+        strokePath1.points.add(new Point(210, 490));
+        strokePath1.points.add(new Point(210, 560));
         strokePath1.direction = StrokeDirection.DOWN;
         strokePath1.soundUri = ""; // can link to our resource file for down.
         PATH_F.add(strokePath1);
 
         StrokePath strokePath2 = new StrokePath();
-        strokePath2.points.add(new Point(200, 60));
-        strokePath2.points.add(new Point(270, 60));
-        strokePath2.points.add(new Point(340, 60));
-        strokePath2.points.add(new Point(410, 60));
-        strokePath2.points.add(new Point(480, 60));
+        strokePath2.points.add(new Point(210, 40));
+        strokePath2.points.add(new Point(280, 40));
+        strokePath2.points.add(new Point(350, 40));
+        strokePath2.points.add(new Point(420, 40));
         strokePath2.direction = StrokeDirection.RIGHT; //First stoke of E is from left to right. The arrow should point to right.
         //Add sound effect for each stroke
         strokePath2.soundUri = ""; // can link to our resource file
         PATH_F.add(strokePath2);
 
         StrokePath strokePath3 = new StrokePath();
-        strokePath3.points.add(new Point(200, 300));
-        strokePath3.points.add(new Point(270, 300));
-        strokePath3.points.add(new Point(340, 300));
-        strokePath3.points.add(new Point(410, 300));
-        strokePath3.points.add(new Point(480, 300));
+        strokePath3.points.add(new Point(210, 280));
+        strokePath3.points.add(new Point(280, 280));
+        strokePath3.points.add(new Point(350, 280));
+        strokePath3.points.add(new Point(420, 280));
         strokePath3.direction = StrokeDirection.RIGHT;
         strokePath3.soundUri = "";
         PATH_F.add(strokePath3);

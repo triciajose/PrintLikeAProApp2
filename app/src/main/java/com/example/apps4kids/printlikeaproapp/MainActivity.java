@@ -2,7 +2,6 @@ package com.example.apps4kids.printlikeaproapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -15,9 +14,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.graphics.Typeface;
 import android.os.Handler;
 
-import android.widget.ImageView;
-import android.widget.Toast;
-
 
 public class MainActivity extends Activity {
 
@@ -25,7 +21,7 @@ public class MainActivity extends Activity {
     String name;
     TextView textView;
     Animation grow;
-    Animation shrink;
+    Animation jiggle;
     int m;
 
     @Override
@@ -53,7 +49,7 @@ public class MainActivity extends Activity {
         }
 
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
-        shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
+        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
 
         grow.setAnimationListener(new AnimationListener() {
 
@@ -71,11 +67,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-//                this.startAnimation(shrink);
+//                this.startAnimation(jiggle);
 
             }
         });
-        shrink.setAnimationListener(new AnimationListener() {
+        jiggle.setAnimationListener(new AnimationListener() {
 
             @Override
             public void onAnimationStart(Animation animation) {
@@ -98,7 +94,6 @@ public class MainActivity extends Activity {
         });
         Handler handler = new Handler();
         for (int j= 0; j < name.length(); j++) {
-
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
@@ -106,7 +101,7 @@ public class MainActivity extends Activity {
                 public void run() {
                     chartextView.startAnimation(grow);
                 }
-            }, 1000 * (j + 1));
+            }, 1600 * (j + 1));
         }
         handler.postDelayed(new Runnable() {
             @Override
@@ -115,10 +110,11 @@ public class MainActivity extends Activity {
 
                     final TextView chartextView = (TextView) findViewById(k);
                     chartextView.setText(Character.toString(name.charAt(k)));
-                    chartextView.startAnimation(shrink);
+                    chartextView.startAnimation(jiggle);
                 }
             }
-        }, 2500 );
+        }, (1600 * (name.length() + 1)) );
+
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -127,7 +123,7 @@ public class MainActivity extends Activity {
                 intent2.putExtra(NAME, name); //Optional parameters
                 startActivity(intent2);
             }
-        }, (1000 * ( name.length() ) + 2500) );
+        }, (1600 * ( name.length()) + 2000 ));
 
     }
 
