@@ -38,8 +38,11 @@ public class DrawView extends View {
     final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
-    Bitmap upLineBitmap;
+    Bitmap solidLineBitmap;
+    Bitmap dotLineBitmap;
     Rect uprect;
+    Rect bottomrect;
+    Rect middlerect;
     ArrayList<Boolean> strokePointMatch = new ArrayList<Boolean>();
     ArrayList<Point> strokePoints = new ArrayList<>();
     ArrayList<StrokePath> strokes = new ArrayList<>();
@@ -115,11 +118,12 @@ public class DrawView extends View {
         display.getSize(size);
         int width = size.x;
 
-        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, (int) (ConstantCharacter.upSolidY+ConstantCharacter.solidLineWidth));
+        middlerect = new Rect(0, (int)  ConstantCharacter.dotY, width, (int) (ConstantCharacter.dotY+ConstantCharacter.solidLineWidth));
+        bottomrect = new Rect(0, (int)  ConstantCharacter.bottomSolidY, width, (int) (ConstantCharacter.bottomSolidY+ConstantCharacter.solidLineWidth));
 
-        upLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
-
-        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+        solidLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
+        dotLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.dotline);
 
         //5.Set up the brush for users
         initPaint();
@@ -171,7 +175,9 @@ public class DrawView extends View {
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
 
-        cacheCanvas.drawBitmap(upLineBitmap, new Rect(0, 0, upLineBitmap.getWidth(), upLineBitmap.getHeight()), uprect, null);
+        canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
+        canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
+        canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
 
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser

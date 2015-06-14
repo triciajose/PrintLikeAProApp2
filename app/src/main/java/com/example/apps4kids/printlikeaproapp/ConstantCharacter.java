@@ -8,13 +8,14 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static float cStartX = 100;
+    public static float cStartX = 300;
     public static float cStartY = 1000;
-    public static float upSolidY = cStartY + 100;
-    public static float bottomSolidY = cStartY + 700;
+    public static float upSolidY = cStartY - 600;
+    public static float bottomSolidY = cStartY + 300;
+    public static float solidLineWidth = 20;
     public static float dotY = (upSolidY+bottomSolidY)/2;
-    public static final float POINT_OFFSET_X = 0;
-    public static final float POINT_OFFSET_Y = 0;
+    public static final float POINT_OFFSET_X = 200;
+    public static final float POINT_OFFSET_Y = 400;
     public static final double THRESHOLD = 10000;
     public static final int STROKE_POINT_THRESHOLD = 1;
     public static ArrayList<StrokePath> PATH_E = new ArrayList<>();
