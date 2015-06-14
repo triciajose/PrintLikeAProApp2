@@ -2,15 +2,18 @@ package com.example.apps4kids.printlikeaproapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.graphics.Typeface;
+import android.os.Handler;
 
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,21 +26,32 @@ public class MainActivity extends Activity {
     TextView textView;
     Animation grow;
     Animation shrink;
+    int m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Intent intent = getIntent();
+        setContentView(R.layout.activity_main);
         name = intent.getStringExtra(LoginActivity.NAME);
-        Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(),"ufonts.com_century-gothic.ttf");
-        textView = new TextView(this);
+        Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
 
-        textView.setTextSize(40);
-        textView.setText(name);
-        textView.setTypeface(centuryGothic);
+        // Create a LinearLayout element
+        View linearLayout = findViewById(R.id.name);
 
-        setContentView(textView);
+        for (int i = 0; i < name.length(); i++) {
+            textView = new TextView(this);
 
+            textView.setTextSize(40);
+            String character = Character.toString(name.charAt(i));
+            textView.setText(character);
+            textView.setTypeface(centuryGothic);
+            textView.setId(i);
+
+            // Add text
+            ((LinearLayout) linearLayout).addView(textView);
+        }
 
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
         shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
@@ -58,7 +72,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                textView.startAnimation(shrink);
+//                this.startAnimation(shrink);
 
             }
         });
@@ -78,13 +92,31 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
-                intent.putExtra(NAME, name); //Optional parameters
-                startActivity(intent);
+//                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
+//                intent.putExtra(NAME, name); //Optional parameters
+//                startActivity(intent);
             }
         });
+        Handler handler = new Handler();
+        for (int j= 0; j < name.length(); j++) {
 
-        textView.startAnimation(grow);
+            final TextView chartextView = (TextView) findViewById(j);
+            chartextView.setText(Character.toString(name.charAt(j)));
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    chartextView.startAnimation(grow);
+                }
+            }, 1000 * (j + 1));
+        }
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent2 = new Intent(textView.getContext(), PrintCharacterActivity.class);
+                intent2.putExtra(NAME, name); //Optional parameters
+                startActivity(intent2);
+            }
+        }, 1000 * ( name.length() ));
 
     }
 
@@ -109,7 +141,6 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 
