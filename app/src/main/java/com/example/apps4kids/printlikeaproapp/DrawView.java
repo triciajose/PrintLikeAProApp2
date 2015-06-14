@@ -12,11 +12,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -103,7 +106,17 @@ public class DrawView extends View {
             }
         }
 
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
 
+        Rect uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, 20);
+
+     //   Bitmap upLineBitmap = Bitmap.createBitmap();
+
+     //   cacheCanvas.drawBitmap(MyBitmap, null, , null)
 
         //5.Set up the brush for users
         initPaint();

@@ -8,8 +8,11 @@ import java.util.ArrayList;
  * Created by peter on 15-06-13.
  */
 public class ConstantCharacter {
-    public static final float cStartX = 100;
-    public static final float cStartY = 600;
+    public static float cStartX = 100;
+    public static float cStartY = 600;
+    public static float upSolidY = cStartY + 100;
+    public static float bottomSolidY = cStartY + 700;
+    public static float dotY = (upSolidY+bottomSolidY)/2;
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
