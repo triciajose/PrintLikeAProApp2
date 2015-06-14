@@ -216,6 +216,18 @@ public class DrawView extends View {
         }
         Log.i("indexStroke", "" + indexStroke);
         animateStroke();
+        switch (indexStroke){
+            case 1:
+                new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x-50,strokePoints.get(0).y+10,strokePoints.get(0).x-50,strokePoints.get(0).y+110);
+                break;
+            default:
+                new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x+50,strokePoints.get(0).y+30,strokePoints.get(0).x+150,strokePoints.get(0).y+30);
+                break;
+        }
+
+
+
+        Log.i("indexStroke", ""+indexStroke);
     }
 
     void characterSucess(){
@@ -225,38 +237,5 @@ public class DrawView extends View {
 
     void failStroke(){
         Log.i("doing wrong", "");
-    }
-
-
-    void animateStroke(){
-        animationIndex = 1;
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            synchronized public void run() {
-                animationIndex++;
-                paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
-                //By default, the Textsize is in pixel for canvas.
-                paint.setStyle(Paint.Style.FILL);
-                paint.setColor(Color.BLUE);
-                paint.setStrokeWidth(50);
-                Point start = strokePoints.get(0);
-                Path path = new Path();
-                path.moveTo((float) start.x, (float) start.y);
-                Point prePoint = start;
-                for(int i =0; i<animationIndex; i++){
-                    if(i >= strokePoints.size()){
-                        path.reset();
-                        animationIndex = 1;
-                        break;
-                    }
-                    Point curPoint = strokePoints.get(i);
-                    path.quadTo(prePoint.x, prePoint.y, curPoint.x, curPoint.y);
-                    prePoint = curPoint;
-                }
-                //invalidate();
-            }
-        };
-        timer.scheduleAtFixedRate(task, 0, 1000);
-
     }
 }
