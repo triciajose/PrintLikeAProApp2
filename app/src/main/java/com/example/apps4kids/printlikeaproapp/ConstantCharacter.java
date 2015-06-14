@@ -13,58 +13,54 @@ public class ConstantCharacter {
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 10000;
-    public static final int STROKE_POINT_THRESHOLD = 2;
-    public static  ArrayList<PointPath> PATH_E = new ArrayList<>();
-    public static ArrayList<Point> pointsToDetect=new ArrayList<Point>();
+    public static final int STROKE_POINT_THRESHOLD = 1;
+    public static  ArrayList<StrokePath> PATH_E = new ArrayList<>();
     public ConstantCharacter(){
-        PATH_E.removeAll(PATH_E);
-        PointPath pointPath = new PointPath();
-        pointPath.points.add(new Point(200, 60));
-        pointPath.points.add(new Point(270, 60));
-        pointPath.points.add(new Point(340, 60));
-        pointPath.points.add(new Point(410, 60));
-        pointPath.points.add(new Point(480, 60));
-        PATH_E.add(pointPath);
-        PointPath pointPath1 = new PointPath();
-        pointPath1.points.add(new Point(200, 60));
-        pointPath1.points.add(new Point(200, 140));
-        pointPath1.points.add(new Point(200, 200));
-        pointPath1.points.add(new Point(200, 280));
-        pointPath1.points.add(new Point(200, 360));
-        pointPath1.points.add(new Point(200, 420));
-        pointPath1.points.add(new Point(200, 490));
-        pointPath1.points.add(new Point(200, 560));
-        PATH_E.add(pointPath1);
-        PointPath pointPath2 = new PointPath();
-        pointPath2.points.add(new Point(200, 300));
-        pointPath2.points.add(new Point(270, 300));
-        pointPath2.points.add(new Point(340, 300));
-        pointPath2.points.add(new Point(410, 300));
-        pointPath2.points.add(new Point(480, 300));
-        PATH_E.add(pointPath2);
-        PointPath pointPath3 = new PointPath();
-        pointPath3.points.add(new Point(200, 560));
-        pointPath3.points.add(new Point(270, 560));
-        pointPath3.points.add(new Point(340, 560));
-        pointPath3.points.add(new Point(410, 560));
-        pointPath3.points.add(new Point(480, 560));
-        PATH_E.add(pointPath3);
+        addPathE();
+    }
 
-//        pointPath2.points.add(new Point(300, 500));
-//        pointPath2.points.add(new Point(600, 500));
-//        pointsToDetect.add(new Point(300,500));
-//        pointsToDetect.add(new Point(400,500));
-//        pointsToDetect.add(new Point(500,500));
-//        pointsToDetect.add(new Point(600,500));
-//        PATH_E.add(pointPath2);
-//        PointPath pointPath3 = new PointPath();
-//        pointPath3.points.add(new Point(300, 700));
-//        pointPath3.points.add(new Point(600, 700));
-//        pointsToDetect.add(new Point(300,700));
-//        pointsToDetect.add(new Point(400,700));
-//        pointsToDetect.add(new Point(500,700));
-//        pointsToDetect.add(new Point(600,700));
-//        PATH_E.add(pointPath3);
+    public void addPathE(){
+        PATH_E.removeAll(PATH_E);
+        StrokePath strokePath = new StrokePath();
+        strokePath.points.add(new Point(200, 60));
+        strokePath.points.add(new Point(270, 60));
+        strokePath.points.add(new Point(340, 60));
+        strokePath.points.add(new Point(410, 60));
+        strokePath.points.add(new Point(480, 60));
+        strokePath.direction = StrokeDirection.RIGHT; //First stoke of E is from left to right. The arrow should point to right.
+        //Add sound effect for each stroke
+        strokePath.soundUri = ""; // can link to our resource file
+        //        PATH_E.add(strokePath);
+        StrokePath strokePath1 = new StrokePath();
+        strokePath1.points.add(new Point(200, 60));
+        strokePath1.points.add(new Point(200, 140));
+        strokePath1.points.add(new Point(200, 200));
+        strokePath1.points.add(new Point(200, 280));
+        strokePath1.points.add(new Point(200, 360));
+        strokePath1.points.add(new Point(200, 420));
+        strokePath1.points.add(new Point(200, 490));
+        strokePath1.points.add(new Point(200, 560));
+        strokePath1.direction = StrokeDirection.DOWN;
+        strokePath1.soundUri = ""; // can link to our resource file for down.
+        PATH_E.add(strokePath1);
+        StrokePath strokePath2 = new StrokePath();
+        strokePath2.points.add(new Point(200, 300));
+        strokePath2.points.add(new Point(270, 300));
+        strokePath2.points.add(new Point(340, 300));
+        strokePath2.points.add(new Point(410, 300));
+        strokePath2.points.add(new Point(480, 300));
+        strokePath2.direction = StrokeDirection.RIGHT;
+        strokePath2.soundUri = "";
+        PATH_E.add(strokePath2);
+        StrokePath strokePath3 = new StrokePath();
+        strokePath3.points.add(new Point(200, 560));
+        strokePath3.points.add(new Point(270, 560));
+        strokePath3.points.add(new Point(340, 560));
+        strokePath3.points.add(new Point(410, 560));
+        strokePath3.points.add(new Point(480, 560));
+        strokePath3.direction = StrokeDirection.RIGHT;
+        strokePath3.soundUri = "";
+        PATH_E.add(strokePath3);
     }
 
 

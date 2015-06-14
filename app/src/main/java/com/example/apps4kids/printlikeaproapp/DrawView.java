@@ -4,6 +4,7 @@ package com.example.apps4kids.printlikeaproapp;
  * Created by Boya on 2015-06-13.
  */
         import android.content.Context;
+        import android.content.res.AssetManager;
         import android.graphics.Bitmap;
         import android.graphics.Bitmap.Config;
         import android.graphics.Canvas;
@@ -11,6 +12,7 @@ package com.example.apps4kids.printlikeaproapp;
         import android.graphics.Paint;
         import android.graphics.Path;
         import android.graphics.Point;
+        import android.graphics.Typeface;
         import android.util.AttributeSet;
         import android.util.Log;
         import android.view.MotionEvent;
@@ -31,7 +33,7 @@ public class DrawView extends View {
     int numStroke = 0;
     ArrayList<Boolean> strokePointMatch = new ArrayList<Boolean>();
     ArrayList<Point> strokePoints = new ArrayList<>();
-    ArrayList<PointPath> strokes = new ArrayList<>();
+    ArrayList<StrokePath> strokes = new ArrayList<>();
     boolean moveResult = true;
     ArrayList<Point> detectPoints = new ArrayList<>();
     Bitmap cacheBitmap = null;	 //Define a bitmap as a cache
@@ -58,10 +60,14 @@ public class DrawView extends View {
 
         //3.Set up the brush
         paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
-        paint.setColor(Color.GRAY);
-        paint.setTextSize(800);
         //By default, the Textsize is in pixel for canvas.
         paint.setStyle(Paint.Style.FILL);
+        AssetManager assetManager = this.context.getAssets();
+        Typeface plain = Typeface.createFromAsset(assetManager, "ufonts.com_century-gothic.ttf");
+        Typeface bold = Typeface.create(plain, Typeface.BOLD);
+        paint.setTypeface(bold);
+        paint.setColor(Color.GRAY);
+        paint.setTextSize(800);
         cacheCanvas.drawText(mCharacter, ConstantCharacter.cStartX, ConstantCharacter.cStartY, paint);
 
         ConstantCharacter initCharacters = new ConstantCharacter();
@@ -77,8 +83,8 @@ public class DrawView extends View {
             default: break;
         }
         numStroke = strokes.size();
-        for(PointPath pointPath : strokes) {
-            for (Point point : pointPath.points) {
+        for(StrokePath strokePath : strokes) {
+            for (Point point : strokePath.points) {
                 if(gameMode == GameMode.ALLPOINTS) {
                     cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paint);
                 }
@@ -165,7 +171,7 @@ public class DrawView extends View {
             i++;
         }
         if(!tmp){
-            Log.i("doing wrong", "");
+            failStroke();
         }
         return tmp;
     }
@@ -194,6 +200,7 @@ public class DrawView extends View {
                 return true;
             }
         }
+        failStroke();
         return false;
     }
 
@@ -210,5 +217,9 @@ public class DrawView extends View {
     void characterSucess(){
         Log.i("characterSucess", "Sucessfully draw a character");
         // where cellebration animations should be added.
+    }
+
+    void failStroke(){
+        Log.i("doing wrong", "");
     }
 }
