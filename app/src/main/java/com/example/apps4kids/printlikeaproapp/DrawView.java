@@ -19,10 +19,13 @@ package com.example.apps4kids.printlikeaproapp;
         import android.view.View;
 
         import java.util.ArrayList;
+        import java.util.Timer;
+        import java.util.TimerTask;
 
 /*double caching*/
 public class DrawView extends View {
     int showPoints=0;
+    int animationIndex = 0;
     float preX;
     float preY;
     private Path path;
@@ -211,7 +214,8 @@ public class DrawView extends View {
         for(Point point: strokePoints){
             strokePointMatch.add(false);
         }
-        Log.i("indexStroke", ""+indexStroke);
+        Log.i("indexStroke", "" + indexStroke);
+        animateStroke();
     }
 
     void characterSucess(){
@@ -221,5 +225,38 @@ public class DrawView extends View {
 
     void failStroke(){
         Log.i("doing wrong", "");
+    }
+
+
+    void animateStroke(){
+        animationIndex = 1;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            synchronized public void run() {
+                animationIndex++;
+                paint = new Paint(Paint.DITHER_FLAG);	 //Create a brush
+                //By default, the Textsize is in pixel for canvas.
+                paint.setStyle(Paint.Style.FILL);
+                paint.setColor(Color.BLUE);
+                paint.setStrokeWidth(50);
+                Point start = strokePoints.get(0);
+                Path path = new Path();
+                path.moveTo((float) start.x, (float) start.y);
+                Point prePoint = start;
+                for(int i =0; i<animationIndex; i++){
+                    if(i >= strokePoints.size()){
+                        path.reset();
+                        animationIndex = 1;
+                        break;
+                    }
+                    Point curPoint = strokePoints.get(i);
+                    path.quadTo(prePoint.x, prePoint.y, curPoint.x, curPoint.y);
+                    prePoint = curPoint;
+                }
+                //invalidate();
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
+
     }
 }
