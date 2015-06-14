@@ -9,26 +9,81 @@ import android.widget.TextView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.Animation.AnimationListener;
+import android.graphics.Typeface;
+
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
+    public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     String name;
+    TextView textView;
+    Animation grow;
+    Animation shrink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
+        Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(),"ufonts.com_century-gothic.ttf");
+        textView = new TextView(this);
 
-        TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(name);
+        textView.setTypeface(centuryGothic);
+
         setContentView(textView);
-        Animation grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
-        Animation shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
+
+
+        grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
+        shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
+
+        grow.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                textView.startAnimation(shrink);
+
+            }
+        });
+        shrink.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Intent intent = new Intent(textView.getContext(), PrintCharacterActivity.class);
+                intent.putExtra(NAME, name); //Optional parameters
+                startActivity(intent);
+            }
+        });
+
         textView.startAnimation(grow);
 
     }
