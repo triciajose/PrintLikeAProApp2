@@ -8,5 +8,5 @@
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/Loadpage2" />
+        android:src="@mipmap/loadpage2" />
 </RelativeLayout>
