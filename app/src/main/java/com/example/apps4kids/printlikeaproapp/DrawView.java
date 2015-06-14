@@ -3,22 +3,22 @@ package com.example.apps4kids.printlikeaproapp;
 /**
  * Created by Boya on 2015-06-13.
  */
-        import android.content.Context;
-        import android.content.res.AssetManager;
-        import android.graphics.Bitmap;
-        import android.graphics.Bitmap.Config;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.Paint;
-        import android.graphics.Path;
-        import android.graphics.Point;
-        import android.graphics.Typeface;
-        import android.util.AttributeSet;
-        import android.util.Log;
-        import android.view.MotionEvent;
-        import android.view.View;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Point;
+import android.graphics.Typeface;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 /*double caching*/
 public class DrawView extends View {
@@ -49,7 +49,7 @@ public class DrawView extends View {
     {
         super(context, set);
         this.context = context;
-        PrintCharacterActivity activity = (PrintCharacterActivity) context;
+        MainActivity activity = (MainActivity) context;
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
 
@@ -84,7 +84,7 @@ public class DrawView extends View {
         strokes.removeAll(strokes);
         switch(mCharacter){
             case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
-
+            case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
             case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
 
             case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
@@ -229,7 +229,7 @@ public class DrawView extends View {
         Log.i("indexStroke", "" + indexStroke);
     }
 
-    public void characterSucess(){
+    public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
         // where cellebration animations should be added.
     }
