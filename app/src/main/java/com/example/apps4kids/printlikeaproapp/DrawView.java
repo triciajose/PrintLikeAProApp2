@@ -211,13 +211,14 @@ public class DrawView extends View {
         for(Point point: strokePoints){
             strokePointMatch.add(false);
         }
-        switch (indexStroke){
-            case 1:
+        switch (strokes.get(indexStroke).direction){
+            case DOWN:
                 new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x-50,strokePoints.get(0).y+10,strokePoints.get(0).x-50,strokePoints.get(0).y+110);
                 break;
-            default:
+            case RIGHT:
                 new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x+50,strokePoints.get(0).y+30,strokePoints.get(0).x+150,strokePoints.get(0).y+30);
                 break;
+            default:break;
         }
 
 
