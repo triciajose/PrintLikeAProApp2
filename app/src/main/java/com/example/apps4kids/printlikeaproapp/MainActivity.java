@@ -112,11 +112,23 @@ public class MainActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                for (int k= 0; k < name.length(); k++) {
+
+                    final TextView chartextView = (TextView) findViewById(k);
+                    chartextView.setText(Character.toString(name.charAt(k)));
+                    chartextView.startAnimation(shrink);
+                }
+            }
+        }, 2500 );
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 Intent intent2 = new Intent(textView.getContext(), PrintCharacterActivity.class);
                 intent2.putExtra(NAME, name); //Optional parameters
                 startActivity(intent2);
             }
-        }, 1000 * ( name.length() ));
+        }, (1000 * ( name.length() ) + 2500) );
 
     }
 
