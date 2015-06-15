@@ -2,10 +2,11 @@ package com.example.apps4kids.printlikeaproapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.animation.AnimationSet;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.view.View;
@@ -15,9 +16,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.graphics.Typeface;
 import android.os.Handler;
 
-import android.widget.ImageView;
-import android.widget.Toast;
-
 
 public class MainActivity extends Activity {
 
@@ -25,10 +23,7 @@ public class MainActivity extends Activity {
     String name;
     TextView textView;
     Animation grow;
-    Animation shrink;
-    DrawView drawView = null;
-    String mChracter = "l";
-    GameMode gameMode = GameMode.ALLPOINTS;
+    Animation jiggle;
     int m;
 
     @Override
@@ -56,7 +51,7 @@ public class MainActivity extends Activity {
         }
 
         grow = AnimationUtils.loadAnimation(this, R.anim.highlight);
-        shrink = AnimationUtils.loadAnimation(this, R.anim.shrink);
+        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
 
         grow.setAnimationListener(new AnimationListener() {
 
@@ -74,11 +69,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-//                this.startAnimation(shrink);
+//                this.startAnimation(jiggle);
 
             }
         });
-        shrink.setAnimationListener(new AnimationListener() {
+        jiggle.setAnimationListener(new AnimationListener() {
 
             @Override
             public void onAnimationStart(Animation animation) {
@@ -101,7 +96,6 @@ public class MainActivity extends Activity {
         });
         Handler handler = new Handler();
         for (int j= 0; j < name.length(); j++) {
-
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
@@ -109,8 +103,21 @@ public class MainActivity extends Activity {
                 public void run() {
                     chartextView.startAnimation(grow);
                 }
-            }, 1000 * (j + 1));
+            }, 1600 * (j + 1));
         }
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int k= 0; k < name.length(); k++) {
+
+                    final TextView chartextView = (TextView) findViewById(k);
+                    chartextView.setText(Character.toString(name.charAt(k)));
+                    chartextView.startAnimation(jiggle);
+                }
+            }
+        }, (1600 * (name.length() + 1)) );
+
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -118,7 +125,7 @@ public class MainActivity extends Activity {
                 intent2.putExtra(NAME, name); //Optional parameters
                 startActivity(intent2);
             }
-        }, 1000 * ( name.length() ));
+        }, (1600 * ( name.length() + 1) + 2000 ));
 
     }
 
@@ -144,6 +151,21 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void goodjobAnimation() {
+        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+        imageView.clearAnimation();
 
+        Animation appear = AnimationUtils.loadAnimation(
+                this, R.anim.abc_slide_in_bottom);
+
+        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
+
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(appear);
+        animationSet.addAnimation(jiggle);
+        animationSet.setDuration(3000);
+
+        imageView.startAnimation(animationSet);
+    }
 
 }
