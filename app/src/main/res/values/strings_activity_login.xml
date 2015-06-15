@@ -1,5 +1,5 @@
 <resources>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Create New:</string>
     <string name="title_activity_splashscreen">PLaP</string>
 
     <!-- Strings related to login -->

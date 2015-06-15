@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Intent;
@@ -44,7 +45,7 @@ public class LoginActivity extends Activity {
     public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     private Button testButton;
     // UI references.
-    private EditText mNameView;
+    public EditText mNameView;
     DatabaseHandler dbHandler;
 
     @Override
@@ -54,8 +55,8 @@ public class LoginActivity extends Activity {
 
         // Set up the login form.
         mNameView = (EditText) findViewById(R.id.name);
-        testButton = (Button) findViewById(R.id.btnPrint);
-        testButton.setVisibility(View.GONE);
+//        testButton = (Button) findViewById(R.id.btnPrint);
+//        testButton.setVisibility(View.GONE);
         Button mStart = (Button) findViewById(R.id.sign_in_button);
         mStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -64,7 +65,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        final ListView dropdown = (ListView)findViewById(R.id.listview1);
         Context context = getApplicationContext();
         dbHandler = new DatabaseHandler(context);
        // dbHandler.addUser("Alice", "Alice");
@@ -75,34 +76,35 @@ public class LoginActivity extends Activity {
         nameList.addAll(dbHandler.getAllUserNames());
         ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, android.R.layout.simple_spinner_item, nameList);
         dropdown.setAdapter(adapter);
-
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
                 int itemPosition = position;
-                User user =  (User) dropdown.getSelectedItem();
+                String username =  ((User) dropdown.getSelectedItem()).getName();
+                mNameView = (EditText) findViewById(R.id.name);
+                mNameView.setText(username,  TextView.BufferType.EDITABLE);
+
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
-                
+//
             }
         });
-
     }
 
     /**
      * Go to main welcome page and animate the name
      * */
     public void attemptLogin(View view) {
-        String a = mNameView.getText().toString();
+        String name = mNameView.getText().toString();
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(NAME, mNameView.getText().toString()); //Optional parameters
+        intent.putExtra(NAME, name); //Optional parameters
 
         if (mNameView.getText().toString().equals("")){
             createPopUp("Please click ok and type in your name.");
         }
         else {
-            dbHandler.addUser(a, a);
+            dbHandler.addUser(name, name);
             startActivity(intent);
         }
 
