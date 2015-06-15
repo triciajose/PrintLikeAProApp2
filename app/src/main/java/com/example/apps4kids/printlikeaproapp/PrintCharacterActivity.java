@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class PrintCharacterActivity extends ActionBarActivity {
     DrawView drawView = null;
-    String mChracter = "I";
+    String mChracter = "T";
     GameMode gameMode = GameMode.ALLPOINTS;
     String name = "";
     private TextView nameTextView;
