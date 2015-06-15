@@ -62,74 +62,8 @@ public class DrawView extends View {
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
 
-        pathUser = new Path();
-        pathAnimation = new Path();
-        //1.Create a bitmap cache, whose size is the same as View
-        cacheBitmap = Bitmap.createBitmap(VIEW_WIDTH, VIEW_HEIGHT, Config.ARGB_8888);
-        //2.CacheCanvas will draw into bitmap
-        cacheCanvas = new Canvas();
-        cacheCanvas.setBitmap(cacheBitmap);
+        init();
 
-
-        //3.Set up the brush
-        paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush
-        //By default, the Textsize is in pixel for canvas.
-        paintUser.setStyle(Paint.Style.FILL);
-        AssetManager assetManager = this.context.getAssets();
-        Typeface plain = Typeface.createFromAsset(assetManager, "ufonts.com_century-gothic.ttf");
-        Typeface bold = Typeface.create(plain, Typeface.BOLD);
-        paintUser.setTypeface(bold);
-        paintUser.setColor(Color.GRAY);
-        paintUser.setTextSize(800);
-        cacheCanvas.drawText(mCharacter, ConstantCharacter.cStartX, ConstantCharacter.cStartY, paintUser);
-
-        ConstantCharacter initCharacters = new ConstantCharacter();
-
-        //  4   draw points.
-        paintUser.setColor(Color.GREEN);
-        paintUser.setStyle(Paint.Style.FILL);
-        paintUser.setStrokeWidth(50);
-        detectPoints.removeAll(detectPoints);
-        strokes.removeAll(strokes);
-        switch(mCharacter){
-            case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
-            case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
-            case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
-
-            case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
-            default: break;
-        }
-        numStroke = strokes.size();
-        for(StrokePath strokePath : strokes) {
-            for (Point point : strokePath.points) {
-                if(gameMode == GameMode.ALLPOINTS) {
-                    cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
-                }
-                if(gameMode == GameMode.CURRENTSTROKE) {
-
-                }
-                detectPoints.add(point);
-            }
-        }
-
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-
-        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, (int) (ConstantCharacter.upSolidY+ConstantCharacter.solidLineWidth));
-        middlerect = new Rect(0, (int)  ConstantCharacter.dotY, width, (int) (ConstantCharacter.dotY+ConstantCharacter.solidLineWidth));
-        bottomrect = new Rect(0, (int)  ConstantCharacter.bottomSolidY, width, (int) (ConstantCharacter.bottomSolidY+ConstantCharacter.solidLineWidth));
-
-        solidLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
-        dotLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.dotline);
-
-        //5.Set up the brush for users
-        initPaint();
-
-        //6. initCharacterStroke
-        initCharacterStroke();
     }
     /*---------------------Touch Event Listener----------------------------*/
     @Override
@@ -286,7 +220,41 @@ public class DrawView extends View {
             e.printStackTrace();
         }
     }
+    public void initDrawView(){
+        //draw character
+        if(PrintCharacterActivity.stage==Stage.BUBBLE)
+            cacheCanvas.drawText(mCharacter, ConstantCharacter.cStartX, ConstantCharacter.cStartY, paintUser);
 
+        ConstantCharacter initCharacters = new ConstantCharacter();
+        //draw points
+        paintUser.setColor(Color.GREEN);
+        paintUser.setStyle(Paint.Style.FILL);
+        paintUser.setStrokeWidth(50);
+        detectPoints.removeAll(detectPoints);
+        strokes.removeAll(strokes);
+        switch(mCharacter){
+            case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
+            case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
+            case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
+
+            case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
+            default: break;
+        }
+        numStroke = strokes.size();
+        for(StrokePath strokePath : strokes) {
+            for (Point point : strokePath.points) {
+                if(PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
+                    cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
+                }
+                if(gameMode == GameMode.CURRENTSTROKE) {
+
+                }
+                detectPoints.add(point);
+            }
+        }
+
+
+    }
     public void initPaint(){
         paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush
         paintUser.setColor(Color.RED);	 //Color
@@ -301,4 +269,52 @@ public class DrawView extends View {
         paintAnimation.setDither(true);
         paintAnimation.setStrokeWidth(50);
     }
+    public void init(){
+
+        indexStroke=0;
+        pathUser = new Path();
+        pathAnimation = new Path();
+        //1.Create a bitmap cache, whose size is the same as View
+        cacheBitmap = Bitmap.createBitmap(VIEW_WIDTH, VIEW_HEIGHT, Config.ARGB_8888);
+        //2.CacheCanvas will draw into bitmap
+        cacheCanvas = new Canvas();
+        cacheCanvas.setBitmap(cacheBitmap);
+
+
+        //3.Set up the brush
+        paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush
+        //By default, the Textsize is in pixel for canvas.
+        paintUser.setStyle(Paint.Style.FILL);
+        AssetManager assetManager = this.context.getAssets();
+        Typeface plain = Typeface.createFromAsset(assetManager, "ufonts.com_century-gothic.ttf");
+        Typeface bold = Typeface.create(plain, Typeface.BOLD);
+        paintUser.setTypeface(bold);
+        paintUser.setColor(Color.GRAY);
+        paintUser.setTextSize(800);
+
+        //4.Draw the initial Character;
+        initDrawView();
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, (int) (ConstantCharacter.upSolidY+ConstantCharacter.solidLineWidth));
+        middlerect = new Rect(0, (int)  ConstantCharacter.dotY, width, (int) (ConstantCharacter.dotY+ConstantCharacter.solidLineWidth));
+        bottomrect = new Rect(0, (int)  ConstantCharacter.bottomSolidY, width, (int) (ConstantCharacter.bottomSolidY+ConstantCharacter.solidLineWidth));
+
+        solidLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.solidline);
+        dotLineBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.dotline);
+
+        //5.Set up the brush for users
+        initPaint();
+
+        //6. initCharacterStroke
+        initCharacterStroke();
+
+        invalidate();
+    }
+
 }
