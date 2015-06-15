@@ -1,19 +1,29 @@
 package com.example.apps4kids.printlikeaproapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class PrintCharacterActivity extends ActionBarActivity {
     DrawView drawView = null;
-    String mChracter = "I";
+    String mChracter = "T";
     GameMode gameMode = GameMode.ALLPOINTS;
     String name = "";
     private TextView nameTextView;
+    Button button;
+    static State state=State.fail;
+    static Stage stage=Stage.BUBBLE;
+    static Stage nextStage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +33,35 @@ public class PrintCharacterActivity extends ActionBarActivity {
         drawView = (DrawView) findViewById(R.id.drawView);
         nameTextView = (TextView) findViewById(R.id.textView);
         nameTextView.setText(name);
+        button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("Click the button", "");
+                switch(stage){
+                    case BUBBLE:
+                        nextStage=Stage.DOTS;
+                        break;
+                    case DOTS:
+                        nextStage=Stage.BOX;
+                        break;
+                    case BOX:
+                        nextStage=Stage.STARTING_POINT;
+                        break;
+                    case STARTING_POINT:
+                        nextStage=Stage.EMPTY;
+                        break;
+                    case EMPTY:
+                        nextStage=Stage.BUBBLE;
+                        break;
+                    default:break;
+                }
+                if(state==State.success){
+                    stage=nextStage;
+                }
+                drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                drawView.init();
+            }
+        });
     }
 
     @Override

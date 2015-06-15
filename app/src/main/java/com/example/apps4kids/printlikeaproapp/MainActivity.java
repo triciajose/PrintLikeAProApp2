@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.animation.AnimationSet;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.view.View;
@@ -149,6 +151,21 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void goodjobAnimation() {
+        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+        imageView.clearAnimation();
 
+        Animation appear = AnimationUtils.loadAnimation(
+                this, R.anim.abc_slide_in_bottom);
+
+        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
+
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(appear);
+        animationSet.addAnimation(jiggle);
+        animationSet.setDuration(3000);
+
+        imageView.startAnimation(animationSet);
+    }
 
 }
