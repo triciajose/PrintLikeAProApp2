@@ -11,46 +11,64 @@
 
     <!-- Login progress -->
 
-    <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" android:visibility="gone" />
+    <!--<ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"-->
+        <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp" android:visibility="gone" />-->
 
-    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="138dp"
-        android:fillViewport="false"
-        android:layout_weight="0.26">
+    <!--<ScrollView android:id="@+id/login_form" android:layout_width="match_parent"-->
+        <!--android:layout_height="138dp"-->
+        <!--android:fillViewport="false"-->
+        <!--android:layout_weight="0.26">-->
 
-        <LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
+        <!--<LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" android:orientation="vertical">-->
 
-        </LinearLayout>
-    </ScrollView>
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="560dp"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="177dp">
+        <ListView
+            android:id="@+id/listview1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/white"/>
 
-    <EditText android:id="@+id/name" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:hint="@string/prompt_email"
-        android:inputType="textPersonName" android:maxLines="1"
-        android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:orientation="vertical">
 
-    <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-        android:onClick="attemptLogin"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal" />
+        <TextView android:id="@+id/help_text" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/title_activity_login"
+            android:layout_gravity="center_vertical" android:gravity="center">
 
-    <Button
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "test print page shortcut"
-        android:id = "@+id/btnPrint"
-        android:onClick="startPrint"
-        android:layout_gravity="center_horizontal" />
+        </TextView>
+        <EditText android:id="@+id/name" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="@string/prompt_email"
+            android:inputType="textPersonName" android:maxLines="1"
+            android:singleLine="true"
+            android:layout_gravity="center_vertical" android:background="@color/white" />
+
+        <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="@string/action_sign_in"
+            android:onClick="attemptLogin"
+            android:textStyle="bold"
+            android:layout_gravity="right" />
+    </LinearLayout>
+    <!--<Button-->
+
+
+
+        <!--android:layout_width = "wrap_content"-->
+        <!--android:layout_height = "wrap_content"-->
+        <!--android:text = "test print page shortcut"-->
+        <!--android:id = "@+id/btnPrint"-->
+        <!--android:onClick="startPrint"-->
+        <!--android:layout_gravity="center_horizontal" />-->
 
 </LinearLayout>
 

@@ -123,7 +123,7 @@ public class MainActivity extends Activity {
                 intent2.putExtra(NAME, name); //Optional parameters
                 startActivity(intent2);
             }
-        }, (1600 * ( name.length()) + 2000 ));
+        }, (1600 * ( name.length() + 1) + 2000 ));
 
     }
 
