@@ -239,6 +239,8 @@ public class DrawView extends View {
             case "l": strokes.addAll(ConstantCharacter.PATH_l); break;
             case "T": strokes.addAll(ConstantCharacter.PATH_T); break;
             case "P": strokes.addAll(ConstantCharacter.PATH_P); break;
+            case "R": strokes.addAll(ConstantCharacter.PATH_R); break;
+
 
             case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
             case "i": strokes.addAll(ConstantCharacter.PATH_i); break;
