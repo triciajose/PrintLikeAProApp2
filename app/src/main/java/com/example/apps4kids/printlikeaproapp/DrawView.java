@@ -241,15 +241,17 @@ public class DrawView extends View {
             case "P": strokes.addAll(ConstantCharacter.PATH_P); break;
 
             case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
+            case "i": strokes.addAll(ConstantCharacter.PATH_i); break;
+            case "t": strokes.addAll(ConstantCharacter.PATH_t); break;
             default: break;
         }
         numStroke = strokes.size();
         for(StrokePath strokePath : strokes) {
             for (Point point : strokePath.points) {
-                if(PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
+                if( PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
                     cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
                 }
-                if(gameMode == GameMode.CURRENTSTROKE) {
+                    if(gameMode == GameMode.CURRENTSTROKE) {
 
                 }
                 detectPoints.add(point);
