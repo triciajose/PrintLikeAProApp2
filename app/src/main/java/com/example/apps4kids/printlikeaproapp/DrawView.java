@@ -233,6 +233,7 @@ public class DrawView extends View {
         detectPoints.removeAll(detectPoints);
         strokes.removeAll(strokes);
         switch(mCharacter){
+            case "A": strokes.addAll(ConstantCharacter.PATH_A); break;
             case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
             case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
             case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
@@ -240,8 +241,6 @@ public class DrawView extends View {
             case "T": strokes.addAll(ConstantCharacter.PATH_T); break;
             case "P": strokes.addAll(ConstantCharacter.PATH_P); break;
             case "R": strokes.addAll(ConstantCharacter.PATH_R); break;
-
-
             case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
             case "i": strokes.addAll(ConstantCharacter.PATH_i); break;
             case "t": strokes.addAll(ConstantCharacter.PATH_t); break;
@@ -250,7 +249,7 @@ public class DrawView extends View {
         numStroke = strokes.size();
         for(StrokePath strokePath : strokes) {
             for (Point point : strokePath.points) {
-                if( PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
+                if(/*PrintCharacterActivity.stage==Stage.DOTS && */ gameMode == GameMode.ALLPOINTS) {
                     cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
                 }
                     if(gameMode == GameMode.CURRENTSTROKE) {
