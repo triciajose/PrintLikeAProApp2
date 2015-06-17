@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
         <TextView android:id="@+id/select_text" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/select_text"
+            android:layout_height="wrap_content" android:text="@string/title"
             android:gravity="center" android:textSize="30dp"
             android:layout_gravity="center_horizontal">
 

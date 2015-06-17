@@ -32,7 +32,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Intent;
 import android.app.AlertDialog;
-
+import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +66,7 @@ public class LoginActivity extends Activity {
         });
 
         final Spinner dropdown = (Spinner)findViewById(R.id.spinner);
+        int spinnerDefault = 0;
         Context context = getApplicationContext();
         dbHandler = new DatabaseHandler(context);
        // dbHandler.addUser("Alice", "Alice");
@@ -76,6 +77,7 @@ public class LoginActivity extends Activity {
         nameList.addAll(dbHandler.getAllUserNames());
         ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, android.R.layout.simple_spinner_item, nameList);
         dropdown.setAdapter(adapter);
+        dropdown.setPrompt("Select a name");
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 //
@@ -88,7 +90,6 @@ public class LoginActivity extends Activity {
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
-//
             }
         });
     }
