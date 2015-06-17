@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity"
     android:weightSum="1"
-    android:background="@mipmap/gradientbackground">
+    android:background="@mipmap/mainpage">
 
     <!-- Login progress -->
 
@@ -29,36 +29,42 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="177dp">
-        <ListView
-            android:id="@+id/listview1"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/white"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:orientation="vertical">
-
-        <TextView android:id="@+id/help_text" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="@string/title_activity_login"
-            android:layout_gravity="center_vertical" android:gravity="center">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView android:id="@+id/select_text" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="@string/select_text"
+            android:gravity="center" android:textSize="30dp"
+            android:layout_gravity="center_horizontal">
 
         </TextView>
-        <EditText android:id="@+id/name" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:hint="@string/prompt_email"
-            android:inputType="textPersonName" android:maxLines="1"
-            android:singleLine="true"
-            android:layout_gravity="center_vertical" android:background="@color/white" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="442dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
 
-        <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-            android:onClick="attemptLogin"
-            android:textStyle="bold"
-            android:layout_gravity="right" />
     </LinearLayout>
+
+    <TextView android:id="@+id/help_text" android:layout_width="442dp"
+        android:layout_height="wrap_content" android:text="@string/title_activity_login"
+        android:gravity="center" android:textSize="30dp"
+        android:layout_gravity="center_horizontal">
+
+    </TextView>
+
+    <EditText android:id="@+id/name" android:layout_width="442dp"
+        android:layout_height="wrap_content" android:hint="@string/prompt_email"
+        android:inputType="textPersonName" android:maxLines="1"
+        android:singleLine="true"
+        android:background="@color/white"
+        android:textSize="30dp" />
+
+    <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:text="@string/action_sign_in"
+        android:onClick="attemptLogin"
+        android:textStyle="bold" android:textColor="@color/white"
+        android:layout_gravity="center_horizontal" android:background="#EF9C16" android:textSize="40dp" />
     <!--<Button-->
 
 

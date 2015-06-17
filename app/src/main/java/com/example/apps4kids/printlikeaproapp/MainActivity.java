@@ -40,11 +40,13 @@ public class MainActivity extends Activity {
         for (int i = 0; i < name.length(); i++) {
             textView = new TextView(this);
 
-            textView.setTextSize(40);
+            textView.setTextSize(100);
             String character = Character.toString(name.charAt(i));
             textView.setText(character);
             textView.setTypeface(centuryGothic);
             textView.setId(i);
+//            textView.setTextColor(0xEF9C16);
+            textView.setAlpha(255);
 
             // Add text
             ((LinearLayout) linearLayout).addView(textView);
@@ -152,20 +154,20 @@ public class MainActivity extends Activity {
     }
 
     public void goodjobAnimation() {
-        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
-        imageView.clearAnimation();
-
-        Animation appear = AnimationUtils.loadAnimation(
-                this, R.anim.abc_slide_in_bottom);
-
-        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
-
-        AnimationSet animationSet = new AnimationSet(true);
-        animationSet.addAnimation(appear);
-        animationSet.addAnimation(jiggle);
-        animationSet.setDuration(3000);
-
-        imageView.startAnimation(animationSet);
+//        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+//        imageView.clearAnimation();
+//
+//        Animation appear = AnimationUtils.loadAnimation(
+//                this, R.anim.abc_slide_in_bottom);
+//
+//        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
+//
+//        AnimationSet animationSet = new AnimationSet(true);
+//        animationSet.addAnimation(appear);
+//        animationSet.addAnimation(jiggle);
+//        animationSet.setDuration(3000);
+//
+//        imageView.startAnimation(animationSet);
     }
 
 }

@@ -65,7 +65,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        final ListView dropdown = (ListView)findViewById(R.id.listview1);
+        final Spinner dropdown = (Spinner)findViewById(R.id.spinner);
         Context context = getApplicationContext();
         dbHandler = new DatabaseHandler(context);
        // dbHandler.addUser("Alice", "Alice");
@@ -78,6 +78,7 @@ public class LoginActivity extends Activity {
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+//
             public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
                 int itemPosition = position;
                 String username =  ((User) dropdown.getSelectedItem()).getName();
@@ -97,14 +98,15 @@ public class LoginActivity extends Activity {
      * */
     public void attemptLogin(View view) {
         String name = mNameView.getText().toString();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(NAME, name); //Optional parameters
 
         if (mNameView.getText().toString().equals("")){
             createPopUp("Please click ok and type in your name.");
         }
         else {
             dbHandler.addUser(name, name);
+            Intent intent = new Intent(this, MainActivity.class);
+            //TO DO: need to check if name already exists
+            intent.putExtra(NAME, name); //Optional parameters
             startActivity(intent);
         }
 
