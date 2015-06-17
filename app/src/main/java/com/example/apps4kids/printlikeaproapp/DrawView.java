@@ -21,6 +21,8 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AnimationSet;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -34,8 +36,8 @@ public class DrawView extends View {
     private Path pathAnimation;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
-    final int VIEW_WIDTH = 960;
-    final int VIEW_HEIGHT = 1440;
+    int VIEW_WIDTH;
+    int VIEW_HEIGHT;
     int indexStroke = 0;
     int numStroke = 0;
     Bitmap solidLineBitmap;
@@ -191,7 +193,20 @@ public class DrawView extends View {
 
     public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
-        // where cellebration animations should be added.
+//        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+//        imageView.clearAnimation();
+//
+//        Animation appear = AnimationUtils.loadAnimation(
+//                this, R.anim.abc_slide_in_bottom);
+//
+//        jiggle = AnimationUtils.loadAnimation(this, R.anim.jiggle);
+//
+//        AnimationSet animationSet = new AnimationSet(true);
+//        animationSet.addAnimation(appear);
+//        animationSet.addAnimation(jiggle);
+//        animationSet.setDuration(3000);
+//
+//        imageView.startAnimation(animationSet);
     }
 
     public void failStroke(){
@@ -280,6 +295,13 @@ public class DrawView extends View {
         indexStroke=0;
         pathUser = new Path();
         pathAnimation = new Path();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        VIEW_WIDTH = size.x;
+        VIEW_HEIGHT = ( size.y);
+
         //1.Create a bitmap cache, whose size is the same as View
         cacheBitmap = Bitmap.createBitmap(VIEW_WIDTH, VIEW_HEIGHT, Config.ARGB_8888);
         //2.CacheCanvas will draw into bitmap
@@ -301,10 +323,10 @@ public class DrawView extends View {
         //4.Draw the initial Character;
         initDrawView();
 
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
+//        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+//        Display display = wm.getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
         int width = size.x;
 
         uprect = new Rect(0, (int)  ConstantCharacter.upSolidY, width, (int) (ConstantCharacter.upSolidY+ConstantCharacter.solidLineWidth));
