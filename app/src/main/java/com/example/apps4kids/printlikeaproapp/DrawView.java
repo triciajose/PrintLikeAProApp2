@@ -34,8 +34,8 @@ public class DrawView extends View {
     private Path pathAnimation;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
-    final int VIEW_WIDTH = 960;
-    final int VIEW_HEIGHT = 1440;
+//    final int VIEW_WIDTH = 960;
+//    final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
     Bitmap solidLineBitmap;
@@ -110,9 +110,9 @@ public class DrawView extends View {
         //a.draw cacheBitmap to Canvas
 
 
-        canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
-        canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
-        canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
+  //      canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
+  //      canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
+  //      canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
 
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
@@ -172,17 +172,22 @@ public class DrawView extends View {
 
     public void initCharacterStroke(){
         strokePoints.removeAll(strokePoints);
-        strokePoints.addAll(strokes.get(indexStroke).points);
         strokePointMatch.removeAll(strokePointMatch);
-        for(Point point: strokePoints){
+
+        for(Point point: strokes.get(indexStroke).points){
+            Point sPoint = new Point((int) (point.x + ConstantCharacter.POINT_OFFSET_X), (int) (point.y+ ConstantCharacter.POINT_OFFSET_Y));
+            strokePoints.add(sPoint);
             strokePointMatch.add(false);
         }
+        Point point = strokePoints.get(0);
+        int x = (int) (point.x);
+        int y = (int) (point.y);
         switch (strokes.get(indexStroke).direction){
             case DOWN:
-                new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x-50,strokePoints.get(0).y+10,strokePoints.get(0).x-50,strokePoints.get(0).y+110);
+                new Arrow(cacheCanvas).drawAL(x-60, y-10, x-50, y+110);
                 break;
             case RIGHT:
-                new Arrow(cacheCanvas).drawAL(strokePoints.get(0).x+50,strokePoints.get(0).y+30,strokePoints.get(0).x+150,strokePoints.get(0).y+30);
+                new Arrow(cacheCanvas).drawAL(x+60, y+50, x+200, y+50);
                 break;
             default:break;
         }
@@ -222,8 +227,11 @@ public class DrawView extends View {
     }
     public void initDrawView(){
         //draw character
-        if(PrintCharacterActivity.stage==Stage.BUBBLE)
-            cacheCanvas.drawText(mCharacter, ConstantCharacter.cStartX, ConstantCharacter.cStartY, paintUser);
+   //     if(PrintCharacterActivity.stage==Stage.BUBBLE)
+        Log.i("cStartX", ""+ConstantCharacter.cStartX);
+        Log.i("cStartY", ""+ConstantCharacter.cStartY);
+        cacheCanvas.drawText(mCharacter, 0, ConstantCharacter.cStartY, paintUser);
+   //     cacheCanvas.drawText(mCharacter, 0, 0, paintUser);
 
         ConstantCharacter initCharacters = new ConstantCharacter();
         //draw points
@@ -250,6 +258,8 @@ public class DrawView extends View {
         for(StrokePath strokePath : strokes) {
             for (Point point : strokePath.points) {
                 if(/*PrintCharacterActivity.stage==Stage.DOTS && */ gameMode == GameMode.ALLPOINTS) {
+                //if(PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
+                //if(true){
                     cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
                 }
                     if(gameMode == GameMode.CURRENTSTROKE) {
@@ -263,10 +273,13 @@ public class DrawView extends View {
     }
     public void initPaint(){
         paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush
-        paintUser.setColor(Color.RED);	 //Color
+        paintUser.setColor(Color.YELLOW);	 //Color
         paintUser.setStyle(Paint.Style.STROKE);	 //Style
         paintUser.setAntiAlias(true);	 //
         paintUser.setDither(true);
+        paintUser.setStrokeWidth(50);
+        paintUser.setStrokeJoin(Paint.Join.ROUND);
+        paintUser.setStrokeCap(Paint.Cap.ROUND);
 
         paintAnimation = new Paint(Paint.DITHER_FLAG);	 //Create a brush
         paintAnimation.setColor(Color.BLUE);	 //Color
@@ -281,11 +294,11 @@ public class DrawView extends View {
         pathUser = new Path();
         pathAnimation = new Path();
         //1.Create a bitmap cache, whose size is the same as View
-        cacheBitmap = Bitmap.createBitmap(VIEW_WIDTH, VIEW_HEIGHT, Config.ARGB_8888);
+        cacheBitmap = Bitmap.createBitmap(ConstantCharacter.cSizeX, ConstantCharacter.cSizeY, Config.ARGB_8888);
         //2.CacheCanvas will draw into bitmap
         cacheCanvas = new Canvas();
         cacheCanvas.setBitmap(cacheBitmap);
-
+        cacheCanvas.drawColor(Color.BLUE);
 
         //3.Set up the brush
         paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush

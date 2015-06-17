@@ -15,6 +15,7 @@ public class Arrow {
     public Arrow(Canvas canvas){
         myCanvas=canvas;
         myPaint=new Paint();
+        setPaintDefaultStyle();
     }
     /**
      * Set BrmyPaint=new Paint()ush
@@ -23,7 +24,7 @@ public class Arrow {
         myPaint.setAntiAlias(true);
         myPaint.setColor(Color.RED);
         myPaint.setStyle(Paint.Style.STROKE);
-        myPaint.setStrokeWidth(3);
+        myPaint.setStrokeWidth(10);
     }
 
     /**

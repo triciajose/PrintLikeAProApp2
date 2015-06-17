@@ -2,14 +2,18 @@ package com.example.apps4kids.printlikeaproapp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -20,48 +24,68 @@ public class PrintCharacterActivity extends ActionBarActivity {
     String name = "";
     private TextView nameTextView;
     Button button;
-    static State state=State.fail;
-    static Stage stage=Stage.BUBBLE;
+    static State state = State.fail;
+    static Stage stage = Stage.DOTS;
     static Stage nextStage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print_character);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
-        drawView = (DrawView) findViewById(R.id.drawView);
+//        drawView = (DrawView) findViewById(R.id.drawView);
+        drawView = new DrawView(this, null);
         nameTextView = (TextView) findViewById(R.id.textView);
         nameTextView.setText(name);
-        button = (Button)findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.i("Click the button", "");
-                switch(stage){
+                switch (stage) {
                     case BUBBLE:
-                        nextStage=Stage.DOTS;
+                        nextStage = Stage.DOTS;
                         break;
                     case DOTS:
-                        nextStage=Stage.BOX;
+                        nextStage = Stage.BOX;
                         break;
                     case BOX:
-                        nextStage=Stage.STARTING_POINT;
+                        nextStage = Stage.STARTING_POINT;
                         break;
                     case STARTING_POINT:
-                        nextStage=Stage.EMPTY;
+                        nextStage = Stage.EMPTY;
                         break;
                     case EMPTY:
-                        nextStage=Stage.BUBBLE;
+                        nextStage = Stage.BUBBLE;
                         break;
-                    default:break;
+                    default:
+                        break;
                 }
-                if(state==State.success){
-                    stage=nextStage;
+                if (state == State.success) {
+                    stage = nextStage;
                 }
                 drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 drawView.init();
             }
         });
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.drawViewGroupLayout);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
+        params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+//        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+        //params.topMargin = (height - ConstantCharacter.cSizeY - 100) / 2 + 100;
+
+ //       params.topMargin = 0;
+        Log.i("leftMargin", ""+params.leftMargin);
+        Log.i("topMargin", ""+params.topMargin);
+        rl.addView(drawView, params);
+        rl.invalidate();
     }
 
     @Override
