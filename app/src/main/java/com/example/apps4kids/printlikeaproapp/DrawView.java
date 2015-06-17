@@ -22,6 +22,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationSet;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -36,10 +39,10 @@ public class DrawView extends View {
     private Path pathAnimation;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
-    int VIEW_WIDTH;
-    int VIEW_HEIGHT;
-//    final int VIEW_WIDTH = 960;
-//    final int VIEW_HEIGHT = 1440;
+//    int VIEW_WIDTH;
+//    int VIEW_HEIGHT;
+    final int VIEW_WIDTH = 960;
+    final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
     Bitmap solidLineBitmap;
@@ -57,6 +60,8 @@ public class DrawView extends View {
     Context context;
     String mCharacter = "";
     GameMode gameMode = GameMode.ALLPOINTS;
+    Animation jiggle;
+
     /*----------------------Constructor---------------------------*/
     public DrawView(Context context, AttributeSet set)
     {
@@ -200,7 +205,7 @@ public class DrawView extends View {
 
     public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
-//        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+//        ImageView imageView = new ImageView();
 //        imageView.clearAnimation();
 //
 //        Animation appear = AnimationUtils.loadAnimation(
@@ -314,8 +319,8 @@ public class DrawView extends View {
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        VIEW_WIDTH = size.x;
-        VIEW_HEIGHT = ( size.y);
+//        VIEW_WIDTH = (size.x );
+//        VIEW_HEIGHT = ( size.y);
 
         //1.Create a bitmap cache, whose size is the same as View
         cacheBitmap = Bitmap.createBitmap(ConstantCharacter.cSizeX, ConstantCharacter.cSizeY, Config.ARGB_8888);

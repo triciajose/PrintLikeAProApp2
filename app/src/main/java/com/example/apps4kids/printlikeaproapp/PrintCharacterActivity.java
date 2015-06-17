@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,8 @@ public class PrintCharacterActivity extends ActionBarActivity {
 //        drawView = (DrawView) findViewById(R.id.drawView);
         drawView = new DrawView(this, null);
         nameTextView = (TextView) findViewById(R.id.textView);
+        Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
+        nameTextView.setTypeface(centuryGothic);
         nameTextView.setText(name);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
