@@ -35,6 +35,8 @@
         android:layout_height="wrap_content"
         android:text="Next" android:gravity="right"
         android:id="@+id/button"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
