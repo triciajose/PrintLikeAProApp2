@@ -1,4 +1,3 @@
-
 package com.example.apps4kids.printlikeaproapp;
 
 import android.graphics.*;
@@ -8,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by peter on 15-06-13.
  */
-public class ConstantCharacter extends PrintCharacterActivity{
+public class ConstantCharacter {
     public static final int cSizeX = 800;
     public static final int cSizeY = 600;
     public static final float cStartX = cSizeX/2;
@@ -17,8 +16,6 @@ public class ConstantCharacter extends PrintCharacterActivity{
     public static float bottomSolidY = cStartY + 300;
     public static float dotY = (upSolidY+bottomSolidY)/2;
     public static float solidLineWidth = 20;
-
-
 
     public static final float POINT_OFFSET_X = -100;
     public static final float POINT_OFFSET_Y = 0;
@@ -154,7 +151,7 @@ public class ConstantCharacter extends PrintCharacterActivity{
         strokePath3.soundUri = "";
         PATH_F.add(strokePath3);
     }
-    public void addPathL(){
+	   public void addPathL(){
         PATH_L.removeAll(PATH_L);
 
         StrokePath strokePath1 = new StrokePath();
@@ -413,3 +410,8 @@ public class ConstantCharacter extends PrintCharacterActivity{
 
 
 }
+
+
+
+
+

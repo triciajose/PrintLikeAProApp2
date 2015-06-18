@@ -21,11 +21,8 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.AnimationSet;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
-import android.widget.ImageView;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -39,12 +36,16 @@ public class DrawView extends View {
     private Path pathAnimation;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
+    int strokeCount =1;
+    String pointString ="";
+    public static String newline = System.getProperty("line.separator");
 //    int VIEW_WIDTH;
 //    int VIEW_HEIGHT;
     final int VIEW_WIDTH = 960;
     final int VIEW_HEIGHT = 1440;
     int indexStroke = 0;
     int numStroke = 0;
+    int countPoint = 0;
     Bitmap solidLineBitmap;
     Bitmap dotLineBitmap;
     Rect uprect;
@@ -86,20 +87,40 @@ public class DrawView extends View {
                 pathUser.moveTo(x, y);
                 preX = x;
                 preY = y;
+                pointString ="";
+                pointString+=newline;
+                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
                 moveResult = true;
                 break;
             case MotionEvent.ACTION_MOVE:
                 pathUser.quadTo(preX, preY, x, y);
                 preX = x;
                 preY = y;
-                moveResult = checkMove((int) x, (int) y);
-                if(!moveResult){
+                pointString+=newline;
+                if(countPoint==12) {
+                    countPoint = 0;
+                    pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
+                }
+                else{
+                    countPoint++;
+                }
+                    moveResult = checkMove((int) x, (int) y);
+                cacheCanvas.drawPath(pathUser, paintUser);
+
+                //              if(!moveResult){
+                if(false){
                     pathUser.reset();
+                }
+                else{
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                pointString+=newline;
+                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "}";
+                Log.i("pointString", pointString);
                 boolean strokeResult = checkStroke();
-                if(!strokeResult){
+     //           if(!strokeResult){
+                if(false){
                     pathUser.reset();
                 }
                 else {
@@ -134,7 +155,7 @@ public class DrawView extends View {
             return false;
         }
         Point point = new Point(x, y);
-        Log.i("x: " + x, "y: " + y);
+//        Log.i("x: " + x, "y: " + y);
         boolean tmp = false;
         int i =0;
         for(Point dp: strokePoints){
@@ -182,30 +203,32 @@ public class DrawView extends View {
     public void initCharacterStroke(){
         strokePoints.removeAll(strokePoints);
         strokePointMatch.removeAll(strokePointMatch);
-
-        for(Point point: strokes.get(indexStroke).points){
-            Point sPoint = new Point((int) (point.x + ConstantCharacter.POINT_OFFSET_X), (int) (point.y+ ConstantCharacter.POINT_OFFSET_Y));
-            strokePoints.add(sPoint);
-            strokePointMatch.add(false);
+        if(indexStroke<strokes.size()) {
+            for (Point point : strokes.get(indexStroke).points) {
+                Point sPoint = new Point((int) (point.x + ConstantCharacter.POINT_OFFSET_X), (int) (point.y + ConstantCharacter.POINT_OFFSET_Y));
+                strokePoints.add(sPoint);
+                strokePointMatch.add(false);
+            }
+            Point point = strokePoints.get(0);
+            int x = (int) (point.x);
+            int y = (int) (point.y);
+            switch (strokes.get(indexStroke).direction) {
+                case DOWN:
+                    new Arrow(cacheCanvas).drawAL(x - 30, y - 10, x - 30, y + 110);
+                    break;
+                case RIGHT:
+                    new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 150, y + 10);
+                    break;
+                default:
+                    break;
+            }
+            Log.i("indexStroke", "" + indexStroke);
         }
-        Point point = strokePoints.get(0);
-        int x = (int) (point.x);
-        int y = (int) (point.y);
-        switch (strokes.get(indexStroke).direction){
-            case DOWN:
-                new Arrow(cacheCanvas).drawAL(x-60, y-10, x-50, y+110);
-                break;
-            case RIGHT:
-                new Arrow(cacheCanvas).drawAL(x+60, y+50, x+200, y+50);
-                break;
-            default:break;
-        }
-        Log.i("indexStroke", "" + indexStroke);
     }
 
     public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
-//        ImageView imageView = new ImageView();
+//        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
 //        imageView.clearAnimation();
 //
 //        Animation appear = AnimationUtils.loadAnimation(
@@ -259,23 +282,10 @@ public class DrawView extends View {
         //draw points
         paintUser.setColor(Color.GREEN);
         paintUser.setStyle(Paint.Style.FILL);
-        paintUser.setStrokeWidth(50);
+        paintUser.setStrokeWidth(20);
         detectPoints.removeAll(detectPoints);
         strokes.removeAll(strokes);
-        switch(mCharacter){
-            case "A": strokes.addAll(ConstantCharacter.PATH_A); break;
-            case "E": strokes.addAll(ConstantCharacter.PATH_E); break;
-            case "F": strokes.addAll(ConstantCharacter.PATH_F); break;
-            case "L": strokes.addAll(ConstantCharacter.PATH_L); break;
-            case "l": strokes.addAll(ConstantCharacter.PATH_l); break;
-            case "T": strokes.addAll(ConstantCharacter.PATH_T); break;
-            case "P": strokes.addAll(ConstantCharacter.PATH_P); break;
-            case "R": strokes.addAll(ConstantCharacter.PATH_R); break;
-            case "I": strokes.addAll(ConstantCharacter.PATH_I); break;
-            case "i": strokes.addAll(ConstantCharacter.PATH_i); break;
-            case "t": strokes.addAll(ConstantCharacter.PATH_t); break;
-            default: break;
-        }
+        strokes.addAll(ConstantCharacter.map.get(mCharacter));
         numStroke = strokes.size();
         for(StrokePath strokePath : strokes) {
             for (Point point : strokePath.points) {
@@ -286,7 +296,7 @@ public class DrawView extends View {
                 }
                     if(gameMode == GameMode.CURRENTSTROKE) {
 
-                }
+                    }
                 detectPoints.add(point);
             }
         }
@@ -299,7 +309,7 @@ public class DrawView extends View {
         paintUser.setStyle(Paint.Style.STROKE);	 //Style
         paintUser.setAntiAlias(true);	 //
         paintUser.setDither(true);
-        paintUser.setStrokeWidth(50);
+        paintUser.setStrokeWidth(20);
         paintUser.setStrokeJoin(Paint.Join.ROUND);
         paintUser.setStrokeCap(Paint.Cap.ROUND);
 
@@ -308,7 +318,7 @@ public class DrawView extends View {
         paintAnimation.setStyle(Paint.Style.STROKE);	 //Style
         paintAnimation.setAntiAlias(true);	 //
         paintAnimation.setDither(true);
-        paintAnimation.setStrokeWidth(50);
+        paintAnimation.setStrokeWidth(20);
     }
     public void init(){
 
@@ -338,7 +348,7 @@ public class DrawView extends View {
         Typeface bold = Typeface.create(plain, Typeface.BOLD);
         paintUser.setTypeface(bold);
         paintUser.setColor(Color.GRAY);
-        paintUser.setTextSize(800);
+        paintUser.setTextSize(400);
 
         //4.Draw the initial Character;
         initDrawView();
