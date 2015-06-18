@@ -39,7 +39,7 @@ public class DrawView extends View {
     int strokeCount =1;
     String pointString ="";
     public static String newline = System.getProperty("line.separator");
-//    int VIEW_WIDTH;
+    //    int VIEW_WIDTH;
 //    int VIEW_HEIGHT;
     final int VIEW_WIDTH = 960;
     final int VIEW_HEIGHT = 1440;
@@ -104,7 +104,7 @@ public class DrawView extends View {
                 else{
                     countPoint++;
                 }
-                    moveResult = checkMove((int) x, (int) y);
+                moveResult = checkMove((int) x, (int) y);
                 cacheCanvas.drawPath(pathUser, paintUser);
 
                 //              if(!moveResult){
@@ -119,7 +119,7 @@ public class DrawView extends View {
                 pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "}";
                 Log.i("pointString", pointString);
                 boolean strokeResult = checkStroke();
-     //           if(!strokeResult){
+                //           if(!strokeResult){
                 if(false){
                     pathUser.reset();
                 }
@@ -140,9 +140,9 @@ public class DrawView extends View {
         //a.draw cacheBitmap to Canvas
 
 
-  //      canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
-  //      canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
-  //      canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
+        //      canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
+        //      canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
+        //      canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
 
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
@@ -272,11 +272,11 @@ public class DrawView extends View {
     }
     public void initDrawView(){
         //draw character
-   //     if(PrintCharacterActivity.stage==Stage.BUBBLE)
+        //     if(PrintCharacterActivity.stage==Stage.BUBBLE)
         Log.i("cStartX", ""+ConstantCharacter.cStartX);
         Log.i("cStartY", ""+ConstantCharacter.cStartY);
         cacheCanvas.drawText(mCharacter, 0, ConstantCharacter.cStartY, paintUser);
-   //     cacheCanvas.drawText(mCharacter, 0, 0, paintUser);
+        //     cacheCanvas.drawText(mCharacter, 0, 0, paintUser);
 
         ConstantCharacter initCharacters = new ConstantCharacter();
         //draw points
@@ -291,12 +291,12 @@ public class DrawView extends View {
             for (Point point : strokePath.points) {
 //                if(/*PrintCharacterActivity.stage==Stage.DOTS && */ gameMode == GameMode.ALLPOINTS) {
                 if(PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
-                //if(true){
+                    //if(true){
                     cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
                 }
-                    if(gameMode == GameMode.CURRENTSTROKE) {
+                if(gameMode == GameMode.CURRENTSTROKE) {
 
-                    }
+                }
                 detectPoints.add(point);
             }
         }

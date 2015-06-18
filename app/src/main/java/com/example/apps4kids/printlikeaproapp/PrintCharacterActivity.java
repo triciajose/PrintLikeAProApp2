@@ -1,12 +1,10 @@
 package com.example.apps4kids.printlikeaproapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.media.AudioManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +32,6 @@ public class PrintCharacterActivity extends ActionBarActivity {
     Button nextCharButton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -49,14 +46,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
         nameTextView.setTypeface(centuryGothic);
         nameTextView.setText(name);
-
-
-
-
-
         button = (Button) findViewById(R.id.button);
-
-
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.i("Click the button", "");
@@ -92,12 +82,12 @@ public class PrintCharacterActivity extends ActionBarActivity {
         int width = size.x;
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.drawViewGroupLayout);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.leftMargin = (int) ((width - ConstantCharacter.cStartX) / 2);
+        params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         //params.topMargin = (height - ConstantCharacter.cSizeY - 100) / 2 + 100;
 
- //       params.topMargin = 0;
+        //       params.topMargin = 0;
         Log.i("leftMargin", ""+params.leftMargin);
         Log.i("topMargin", ""+params.topMargin);
         rl.addView(drawView, params);

@@ -48,13 +48,13 @@
         android:layout_below="@id/relativeLayout">
         <!--android:layout_centerHorizontal="true"-->
 
-        </RelativeLayout>
+    </RelativeLayout>
 
     <!--<com.example.apps4kids.printlikeaproapp.DrawView-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:id="@+id/drawView"-->
-        <!--/>-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/drawView"-->
+    <!--/>-->
 
 
 </RelativeLayout>
