@@ -1,10 +1,12 @@
 package com.example.apps4kids.printlikeaproapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.media.AudioManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
     static Stage stage = Stage.DOTS;
     static Stage nextStage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -42,7 +45,14 @@ public class PrintCharacterActivity extends ActionBarActivity {
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
         nameTextView.setTypeface(centuryGothic);
         nameTextView.setText(name);
+
+
+
+
+
         button = (Button) findViewById(R.id.button);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.i("Click the button", "");
@@ -79,7 +89,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         int height = size.y;
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.drawViewGroupLayout);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
+        params.leftMargin = (int) ((width - ConstantCharacter.cStartX) / 2);
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         //params.topMargin = (height - ConstantCharacter.cSizeY - 100) / 2 + 100;
