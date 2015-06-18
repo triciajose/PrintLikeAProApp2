@@ -23,11 +23,14 @@ public class PrintCharacterActivity extends ActionBarActivity {
     String mChracter = "A";
     GameMode gameMode = GameMode.ALLPOINTS;
     String name = "";
+    int cIndex = 0;
     private TextView nameTextView;
     Button button;
     static State state = State.fail;
     static Stage stage = Stage.DOTS;
     static Stage nextStage;
+    Button nextCharButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         setContentView(R.layout.activity_print_character);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
+        mChracter = name.charAt(cIndex)+"";
 //        drawView = (DrawView) findViewById(R.id.drawView);
         drawView = new DrawView(this, null);
         nameTextView = (TextView) findViewById(R.id.textView);
@@ -76,7 +80,6 @@ public class PrintCharacterActivity extends ActionBarActivity {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
-        int height = size.y;
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.drawViewGroupLayout);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
@@ -111,5 +114,16 @@ public class PrintCharacterActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void nextChar(View v){
+        cIndex++;
+        if(cIndex<name.length()) {
+            mChracter = name.charAt(cIndex)+"";
+            drawView.mCharacter = this.mChracter;
+            drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+            drawView.init();
+
+        }
     }
 }
