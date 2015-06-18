@@ -205,7 +205,7 @@ public class DrawView extends View {
 
     public void characterSucess() {
         Log.i("characterSucess", "Sucessfully draw a character");
-//        ImageView imageView = new ImageView();
+//        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
 //        imageView.clearAnimation();
 //
 //        Animation appear = AnimationUtils.loadAnimation(
@@ -286,7 +286,7 @@ public class DrawView extends View {
                 }
                     if(gameMode == GameMode.CURRENTSTROKE) {
 
-                }
+                    }
                 detectPoints.add(point);
             }
         }
