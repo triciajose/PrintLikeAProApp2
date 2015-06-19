@@ -138,8 +138,10 @@ public class SoundManager {
             letterY = load(R.raw.y);
             play(letterY);
         } else { // do we account for only A-Z?
-            letterZ = load(R.raw.z);
-            play(letterZ);
+            if(Character.toUpperCase(letter) == 'Z') {
+                letterZ = load(R.raw.z);
+                play(letterZ);
+            }
         }
     }
 

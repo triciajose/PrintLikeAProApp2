@@ -34,6 +34,9 @@ public class MainActivity extends Activity {
     Animation grow;
     Animation jiggle;
     int m;
+    int j;
+    int soundIndex =0;
+    SoundManager sM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,20 +110,26 @@ public class MainActivity extends Activity {
             }
         });
         Handler handler = new Handler();
-        SoundManager sM = new SoundManager(this);
+        sM = new SoundManager(this);
 
-        for (int j= 0; j < name.length(); j++) {
+        for (j= 0; j < name.length(); j++) {
             long start = new Date().getTime();
-            while (new Date().getTime() - start < 1000L){
-                // do nothing
-            }
-            sM.announceLetter(name.charAt(j));
+//            while (new Date().getTime() - start < 1000L){
+//                // do nothing
+//            }
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     chartextView.startAnimation(grow);
+                    if(soundIndex<name.length()) {
+                        sM.announceLetter(name.charAt(soundIndex));
+                    }
+                    else{
+                        soundIndex = 0;
+                    }
+                    soundIndex++;
                 }
             }, 1600 * (j + 1));
         }
