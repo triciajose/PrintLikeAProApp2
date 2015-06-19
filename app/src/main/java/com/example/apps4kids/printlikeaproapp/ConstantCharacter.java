@@ -451,19 +451,25 @@ public class ConstantCharacter {
             {79, 163},
             {67, 176},
             {63, 185},
+
+    };
+    int[][] k3=new int[][]{
+            {63, 185},
             {100, 233},
             {140, 268},
             {166, 285},
             {172, 288}
     };
 
+
     StrokeDirection[] kDirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_BACK, StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.DOWN, StrokeDirection.SLIDE_BACK, StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> kPoints = new ArrayList<int[][]>(){{
         add(k1);
         add(k2);
+        add(k3);
     }};
 
 
