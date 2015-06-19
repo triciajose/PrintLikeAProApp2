@@ -40,8 +40,6 @@
             android:background="@drawable/back"
             android:textColor="@drawable/button_text_selector"/>
 
-
-
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dp"
