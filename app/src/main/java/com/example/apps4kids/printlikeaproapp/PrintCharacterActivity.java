@@ -51,7 +51,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
  //       nameTextView.setText(name);
         updateTitleText();
 
-        button = (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.neststatebutton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.i("Click the button", "");
@@ -160,6 +160,21 @@ public class PrintCharacterActivity extends ActionBarActivity {
         updateTitleText();
 
 
+    }
+
+    public void backChar(View v){
+        cIndex--;
+        while (cIndex >0 && name.charAt(cIndex) == ' ') {
+            cIndex--;
+        }
+        if (cIndex >= 0) {
+            mChracter = name.charAt(cIndex) + "";
+            drawView.mCharacter = this.mChracter;
+            stage = Stage.BUBBLE;
+            drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+            drawView.init();
+            updateTitleText();
+        }
     }
 
     public void Modelling(View v) {
