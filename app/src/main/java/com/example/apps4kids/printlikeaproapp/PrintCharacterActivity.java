@@ -31,7 +31,9 @@ public class PrintCharacterActivity extends ActionBarActivity {
     static State state = State.fail;
     static Stage stage = Stage.BUBBLE;
     static Stage nextStage;
+    static Stage previousStage;
     Button nextCharButton;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +164,31 @@ public class PrintCharacterActivity extends ActionBarActivity {
 
     public void Modelling(View v) {
         drawView.animateStroke();
+    }
+    public void goPrevious(View v){
+        switch (stage) {
+            case BUBBLE:
+                previousStage = Stage.EMPTY;
+                break;
+            case DOTS:
+                previousStage = Stage.BUBBLE;
+                break;
+            case BOX:
+                previousStage = Stage.DOTS;
+                break;
+            case STARTING_POINT:
+                previousStage = Stage.BOX;
+                break;
+            case EMPTY:
+                previousStage = Stage.STARTING_POINT;
+                break;
+            default:
+                break;
+
+        }
+        stage=previousStage;
+        drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        drawView.init();
     }
 }
 
