@@ -519,6 +519,10 @@ public class ConstantCharacter {
             {187, 232},
             {186, 270},
             {186, 280},
+    };
+
+    int[][] m3=new int[][]{
+            {186, 280},
             {201, 228},
             {215, 179},
             {231, 137},
@@ -533,12 +537,13 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] mDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> mPoints = new ArrayList<int[][]>(){{
         add(m1);
         add(m2);
+        add(m3);
     }};
 
 
@@ -619,8 +624,19 @@ public class ConstantCharacter {
             {44, 373},
             {44, 377}
     };
-
     int[][] p2 = new int[][]{
+            {44, 377},
+            {44, 373},
+            {42, 355},
+            {41, 321},
+            {39, 264},
+            {41, 210},
+            {43, 160},
+            {46, 109},
+            {44, 93},
+    };
+
+    int[][] p3 = new int[][]{
             {69, 152},
             {68, 143},
             {94, 128},
@@ -642,12 +658,13 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] pDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
+            StrokeDirection.DOWN, StrokeDirection.UP, StrokeDirection.CURVE_FORWARD,
     };
 
     ArrayList<int[][]> pPoints = new ArrayList<int[][]>(){{
         add(p1);
         add(p2);
+        add(p3);
     }};
 
 
@@ -671,6 +688,7 @@ public class ConstantCharacter {
             {172, 270},
             {205, 245},
             {215, 238}
+
     };
 
     int[][] q2 = new int[][]{
@@ -685,7 +703,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] qDirections = new StrokeDirection[]{
-            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN,
     };
 
     ArrayList<int[][]> qPoints = new ArrayList<int[][]>(){{
@@ -761,6 +779,17 @@ public class ConstantCharacter {
    Data of char t;
     */
     int[][] t1 = new int[][]{
+            {67, 19},
+            {65, 20},
+            {65, 114},
+            {66, 205},
+            {66, 261},
+            {66, 276},
+            {66, 277}
+
+    };
+
+    int[][] t2 = new int[][]{
             {32, 103},
             {25, 102},
             {76, 105},
@@ -769,17 +798,8 @@ public class ConstantCharacter {
             {130, 103}
     };
 
-    int[][] t2 = new int[][]{
-            {67, 19},
-            {65, 20},
-            {65, 114},
-            {66, 205},
-            {66, 261},
-            {66, 276},
-            {66, 277}
-    };
     StrokeDirection[] tDirections = new StrokeDirection[]{
-            StrokeDirection.RIGHT, StrokeDirection.DOWN
+            StrokeDirection.DOWN, StrokeDirection.RIGHT
     };
 
     ArrayList<int[][]> tPoints = new ArrayList<int[][]>(){{
@@ -833,6 +853,11 @@ public class ConstantCharacter {
             {73, 207},
             {107, 261},
             {116, 269},
+
+    };
+    int[][] v2 = new int [][]{
+            {116, 269},
+            {160,207},
             {181, 162},
             {209, 96},
             {213, 89}
@@ -841,11 +866,12 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] vDirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP
     };
 
     ArrayList<int[][]> vPoints = new ArrayList<int[][]>(){{
         add(v1);
+        add(v2);
     }};
 
 
@@ -857,15 +883,25 @@ public class ConstantCharacter {
             {29, 100},
             {52, 152},
             {76, 209},
+            {96, 253}
+    };
+    int[][] w2 = new int[][]{
             {96, 253},
             {111, 245},
+            {140, 200},
             {154, 152},
             {174, 100},
+            {175, 95}
+    };
+    int[][] w3 = new int[][]{
             {175, 95},
             {190, 164},
             {214, 222},
-            {230, 254},
+            {230, 254}
+    };
+    int[][]w4 = new int[][]{
             {238, 257},
+            {255, 200},
             {287, 160},
             {319, 108},
             {324, 97}
@@ -876,11 +912,15 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] wDirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP, StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP
+
     };
 
     ArrayList<int[][]> wPoints = new ArrayList<int[][]>(){{
         add(w1);
+        add(w2);
+        add(w3);
+        add(w4);
     }};
 
     /*
@@ -959,9 +999,18 @@ public class ConstantCharacter {
             {105, 112},
             {141, 108},
             {147, 118},
+
+    };
+    int [][]z2 = new int [][]{
+            {147, 118},
+            {100, 170},
             {72, 212},
+            {55,240},
             {42, 263},
             {28, 284},
+            {20, 294},
+    };
+    int[][] z3 = new int[][]{
             {61, 294},
             {110, 293},
             {144, 292},
@@ -969,11 +1018,13 @@ public class ConstantCharacter {
             {166, 292}
     };
     StrokeDirection[] zDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT
+            StrokeDirection.RIGHT, StrokeDirection.SLIDE_BACK, StrokeDirection.RIGHT
     };
 
     ArrayList<int[][]> zPoints = new ArrayList<int[][]>(){{
         add(z1);
+        add(z2);
+        add(z3);
     }};
 
        /*

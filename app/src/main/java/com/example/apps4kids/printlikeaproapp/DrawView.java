@@ -273,6 +273,7 @@ public class DrawView extends View {
         Log.i("characterSucess", "Sucessfully draw a character");
         soundManager.annouceResult(true);
 //        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
+
 //        imageView.clearAnimation();
 //
 //        Animation appear = AnimationUtils.loadAnimation(
