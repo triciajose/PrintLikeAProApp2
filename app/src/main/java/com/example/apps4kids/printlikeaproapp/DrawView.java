@@ -139,8 +139,6 @@ public class DrawView extends View {
         super.onDraw(canvas);
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
-
-
         //      canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
         //      canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
         //      canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
