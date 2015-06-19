@@ -58,7 +58,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] aDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> aPoints = new ArrayList<int[][]>(){{
@@ -104,7 +104,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] bDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> bPoints = new ArrayList<int[][]>(){{
@@ -145,7 +145,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] cDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT,
+            StrokeDirection.CURVE_BACK,
     };
 
     ArrayList<int[][]> cPoints = new ArrayList<int[][]>(){{
@@ -191,7 +191,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] dDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> dPoints = new ArrayList<int[][]>(){{
@@ -273,7 +273,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] fDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT, StrokeDirection.RIGHT
+            StrokeDirection.CURVE_BACK, StrokeDirection.RIGHT
     };
 
     ArrayList<int[][]> fPoints = new ArrayList<int[][]>(){{
@@ -324,7 +324,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] gDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> gPoints = new ArrayList<int[][]>(){{
@@ -360,7 +360,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] hDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> hPoints = new ArrayList<int[][]>(){{
@@ -457,7 +457,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] kDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.SLIDE_BACK, StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> kPoints = new ArrayList<int[][]>(){{
@@ -522,7 +522,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] mDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> mPoints = new ArrayList<int[][]>(){{
@@ -558,7 +558,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] nDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> nPoints = new ArrayList<int[][]>(){{
@@ -586,7 +586,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] oDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT
+            StrokeDirection.CURVE_BACK
     };
 
     ArrayList<int[][]> oPoints = new ArrayList<int[][]>(){{
@@ -631,7 +631,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] pDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> pPoints = new ArrayList<int[][]>(){{
@@ -674,7 +674,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] qDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> qPoints = new ArrayList<int[][]>(){{
@@ -706,7 +706,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] rDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
     };
 
     ArrayList<int[][]> rPoints = new ArrayList<int[][]>(){{
@@ -739,7 +739,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] sDirections = new StrokeDirection[]{
-            StrokeDirection.LEFT
+            StrokeDirection.CURVE_BACK
     };
 
     ArrayList<int[][]> sPoints = new ArrayList<int[][]>(){{
@@ -830,7 +830,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] vDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN
+            StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> vPoints = new ArrayList<int[][]>(){{
@@ -863,7 +863,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] wDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN
+            StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> wPoints = new ArrayList<int[][]>(){{
@@ -896,7 +896,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] xDirections = new StrokeDirection[]{
-            StrokeDirection.RIGHT, StrokeDirection.LEFT
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_BACK
     };
 
     ArrayList<int[][]> xPoints = new ArrayList<int[][]>(){{
@@ -931,7 +931,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] yDirections = new StrokeDirection[]{
-            StrokeDirection.RIGHT, StrokeDirection.DOWN
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_BACK
     };
 
     ArrayList<int[][]> yPoints = new ArrayList<int[][]>(){{

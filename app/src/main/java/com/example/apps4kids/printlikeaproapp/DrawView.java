@@ -223,6 +223,21 @@ public class DrawView extends View {
                 case RIGHT:
                     new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 150, y + 10);
                     break;
+                case SLIDE_BACK:
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 90, y + 110);
+                    break;
+                case SLIDE_FORWARD:
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y + 110);
+                    break;
+                case SLIDE_UP:
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y - 130);
+                    break;
+                case CURVE_BACK:
+                    new Arrow(cacheCanvas).drawArcAL(x - 30, y - 30, x - 150,y - 150, 270 , 90);
+                    break;
+                case CURVE_FORWARD:
+                    new Arrow(cacheCanvas).drawArcAL(x + 30, y - 30, x + 150, y - 150, 180, 90);
+                    break;
                 default:
                     break;
             }

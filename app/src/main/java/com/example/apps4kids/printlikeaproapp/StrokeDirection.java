@@ -9,4 +9,9 @@ public enum StrokeDirection {
     UP,
     DOWN,
     NOWHERE,
+    SLIDE_BACK,
+    SLIDE_FORWARD,
+    SLIDE_UP,
+    CURVE_BACK,
+    CURVE_FORWARD,
 }
