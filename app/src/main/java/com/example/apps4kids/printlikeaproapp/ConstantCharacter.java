@@ -965,6 +965,518 @@ public class ConstantCharacter {
         add(z1);
     }};
 
+       /*
+    Data of char A;
+    */
+
+    int [][] A1 = new int[][] {
+            {21, 272},
+            {51, 229},
+            {87, 151},
+            {123, 88},
+            {140, 51},
+            {147, 24},
+            {153, 7},
+            {164, -1}
+    };
+
+    int [][] A2 = new int[][] {
+            {174, 21},
+            {195, 54},
+            {220, 112},
+            {237, 166},
+            {249, 213},
+            {262, 247},
+            {271, 269},
+            {283, 276}
+    };
+
+    int [][] A3 = new int[][] {
+            {103, 176},
+            {118, 180},
+            {152, 180},
+            {187, 180},
+            {224, 181},
+            {246, 183}
+    };
+
+    StrokeDirection[] ADirections = new StrokeDirection[]{
+            StrokeDirection.SLIDE_UP, StrokeDirection.DOWN, StrokeDirection.RIGHT
+    };
+
+    ArrayList<int[][]> APoints = new ArrayList<int[][]>(){{
+        add(A1);
+        add(A2);
+        add(A3);
+    }};
+
+    /*
+    Data of char B;
+    */
+
+    int [][] B1 = new int[][] {
+            {56, 23},
+            {60, 69},
+            {57, 119},
+            {53, 169},
+            {54, 220},
+            {56, 267},
+            {55, 281}
+    };
+
+    int [][] B2 = new int [][] {
+            {56, 21},
+            {112, 24},
+            {158, 51},
+            {166, 97},
+            {119, 133},
+            {77, 147}
+    };
+
+    int [][] B3 = new int [][] {
+            {88, 148},
+            {136, 151},
+            {185, 169},
+            {196, 223},
+            {153, 269},
+            {98, 281},
+            {83, 282}
+    };
+
+    StrokeDirection[] BDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD, StrokeDirection.CURVE_FORWARD
+    };
+
+    ArrayList<int[][]> BPoints = new ArrayList<int[][]>(){{
+        add(B1);
+        add(B2);
+        add(B3);
+    }};
+
+    /*
+    Data of char C;
+    */
+    int [][] C1 = new int [][] {
+            {302, 67},
+            {251, 32},
+            {203, 17},
+            {150, 16},
+            {97, 44},
+            {60, 93},
+            {50, 153},
+            {62, 215},
+            {92, 263},
+            {151, 287},
+            {207, 285},
+            {271, 258},
+            {282, 251}
+    };
+
+    StrokeDirection[] CDirections = new StrokeDirection[]{
+            StrokeDirection.CURVE_BACK
+    };
+
+    ArrayList<int[][]> CPoints = new ArrayList<int[][]>(){{
+        add(C1);
+    }};
+
+    /*
+    Data of char D;
+    */
+    int [][] D1 = new int [][] {
+            {65, 22},
+            {61, 105},
+            {55, 202},
+            {56, 264},
+            {56, 273}
+    };
+
+    int [][] D2 = new int [][] {
+            {48, 21},
+            {106, 17},
+            {165, 29},
+            {223, 58},
+            {262, 103},
+            {271, 162},
+            {246, 223},
+            {181, 272},
+            {110, 284},
+            {58, 284}
+    };
+
+    StrokeDirection[] DDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.CURVE_FORWARD
+    };
+
+    ArrayList<int[][]> DPoints = new ArrayList<int[][]>(){{
+        add(D1);
+        add(D2);
+    }};
+
+    /*
+    Data of char E;
+    */
+    int [][] E1 = new int [][] {
+            {64, 16},
+            {62, 70},
+            {62, 121},
+            {62, 185},
+            {62, 253},
+            {64, 289}
+    };
+
+    int [][] E2 = new int [][] {
+            {60, 18},
+            {70, 19},
+            {122, 21},
+            {166, 20},
+            {202, 20}
+    };
+
+    int [][] E3 = new int [][] {
+            {57, 140},
+            {64, 143},
+            {121, 142},
+            {178, 142},
+            {216, 142}
+    };
+
+    int [][] E4 = new int [][] {
+            {55, 276},
+            {81, 279},
+            {128, 278},
+            {178, 278},
+            {188, 280}
+    };
+
+    StrokeDirection[] EDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.RIGHT, StrokeDirection.RIGHT, StrokeDirection.RIGHT
+    };
+
+    ArrayList<int[][]> EPoints = new ArrayList<int[][]>(){{
+        add(E1);
+        add(E2);
+        add(E3);
+        add(E4);
+    }};
+
+
+    /*
+    Data of char F;
+    */
+    int [][] F1 = new int [][] {
+            {59, 19},
+            {60, 27},
+            {61, 77},
+            {58, 144},
+            {58, 205},
+            {60, 254},
+            {61, 289}
+    };
+
+    int [][] F2 = new int [][] {
+            {56, 17},
+            {103, 17},
+            {156, 18},
+            {169, 18}
+    };
+
+    int [][] F3 = new int [][] {
+            {89, 139},
+            {101, 140},
+            {154, 140},
+            {176, 140}
+    };
+
+    StrokeDirection[] FDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.RIGHT, StrokeDirection.RIGHT
+    };
+
+    ArrayList<int[][]> FPoints = new ArrayList<int[][]>(){{
+        add(F1);
+        add(F2);
+        add(F3);
+    }};
+
+
+    /*
+    Data of char G;
+    */
+    int [][] G1 = new int [][] {
+            {314, 68},
+            {311, 62},
+            {249, 24},
+            {178, 14},
+            {113, 38},
+            {61, 85},
+            {50, 145},
+            {61, 211},
+            {93, 262},
+            {139, 286},
+            {191, 290},
+            {241, 278},
+            {291, 243},
+            {318, 196},
+            {323, 174}
+    };
+
+    int [] [] G2 = new int [][] {
+            {328, 171},
+            {281, 168},
+            {229, 172},
+            {229, 172}
+    };
+
+    StrokeDirection[] GDirections = new StrokeDirection[]{
+            StrokeDirection.CURVE_BACK, StrokeDirection.LEFT
+    };
+
+    ArrayList<int[][]> GPoints = new ArrayList<int[][]>(){{
+        add(G1);
+        add(G2);
+    }};
+
+
+    /*
+    Data of char H;
+    */
+    int [][] H1 = new int [][] {
+            {55, 17},
+            {60, 66},
+            {60, 125},
+            {62, 177},
+            {60, 233},
+            {58, 280},
+            {59, 283}
+    };
+
+    int [][] H2 = new int [][] {
+            {223, 11},
+            {226, 13},
+            {233, 62},
+            {232, 109},
+            {231, 176},
+            {231, 227},
+            {234, 273},
+            {234, 282}
+    };
+
+    int [][] H3 = new int [][] {
+            {59, 137},
+            {100, 141},
+            {173, 143},
+            {224, 143},
+            {228, 142}
+    };
+
+    StrokeDirection[] HDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.RIGHT, StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> HPoints = new ArrayList<int[][]>(){{
+        add(H1);
+        add(H2);
+        add(H3);
+    }};
+
+
+    /*
+    Data of char I;
+    */
+    int [][] I1 = new int [][] {
+            {50, 19},
+            {51, 78},
+            {49, 189},
+            {47, 265},
+            {48, 279}
+    };
+
+    StrokeDirection[] IDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> IPoints = new ArrayList<int[][]>(){{
+        add(I1);
+    }};
+
+
+    /*
+    Data of char J;
+    */
+    int [][] J1 = new int [][] {
+            {144, 19},
+            {151, 77},
+            {149, 148},
+            {146, 215},
+            {133, 275},
+            {83, 289},
+            {42, 269}
+    };
+
+    StrokeDirection[] JDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> JPoints = new ArrayList<int[][]>(){{
+        add(J1);
+    }};
+
+
+    /*
+    Data of char K;
+    */
+    int [][] K1 = new int [][] {
+            {48, 18},
+            {54, 55},
+            {54, 107},
+            {53, 175},
+            {52, 234},
+            {50, 284},
+            {51, 301}
+    };
+
+    int [][] K2 = new int [][] {
+            {178, 30},
+            {124, 82},
+            {81, 117},
+            {62, 135}
+    };
+
+    int [][] K3 = new int [][] {
+            {71, 138},
+            {106, 183},
+            {149, 225},
+            {191, 267},
+            {204, 278}
+    };
+
+    StrokeDirection[] KDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_FORWARD
+    };
+
+    ArrayList<int[][]> KPoints = new ArrayList<int[][]>(){{
+        add(K1);
+    }};
+
+    /*
+    Data of char L;
+    */
+    int [][] L1 = new int [][] {
+            {57, 20},
+            {58, 49},
+            {53, 119},
+            {52, 194},
+            {53, 262},
+            {51, 291}
+
+    };
+
+    int [][] L2 = new int [][] {
+            {60, 276},
+            {66, 277},
+            {135, 280},
+            {177, 281}
+    };
+
+    StrokeDirection[] LDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.RIGHT
+    };
+
+    ArrayList<int[][]> LPoints = new ArrayList<int[][]>(){{
+        add(L1);
+        add(L2);
+    }};
+
+    /*
+    Data of char M;
+    */
+    int [][] M1 = new int [][] {
+            {85, 47},
+            {75, 95},
+            {60, 146},
+            {48, 207},
+            {43, 264},
+            {41, 288}
+    };
+
+    int [][] M2 = new int [][] {
+            {92, 64},
+            {120, 122},
+            {147, 179},
+            {171, 226},
+            {190, 271},
+            {190, 271}
+    };
+
+    int [][] M3 = new int [][] {
+            {196, 264},
+            {224, 216},
+            {249, 161},
+            {277, 106},
+            {307, 56},
+            {307, 56}
+    };
+
+    int [][] M4 = new int [][] {
+            {303, 45},
+            {312, 95},
+            {317, 145},
+            {325, 209},
+            {328, 257},
+            {331, 277}
+    };
+
+    StrokeDirection[] MDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP, StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> MPoints = new ArrayList<int[][]>(){{
+        add(M1);
+        add(M2);
+        add(M3);
+        add(M4);
+    }};
+
+    /*
+    Data of char N;
+    */
+    int [][] N1 = new int [][] {
+            {61, 32},
+            {59, 95},
+            {61, 170},
+            {62, 249},
+            {62, 284}
+    };
+
+    int [][] N2 = new int [][] {
+            {55, 26},
+            {65, 43},
+            {100, 93},
+            {142, 140},
+            {184, 185},
+            {224, 228},
+            {255, 259}
+
+    };
+
+    int [][] N3 = new int [][] {
+            {257, 251},
+            {259, 230},
+            {257, 173},
+            {257, 121},
+            {258, 66},
+            {258, 33}
+    };
+
+    StrokeDirection[] NDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN, StrokeDirection.SLIDE_FORWARD, StrokeDirection.UP
+    };
+
+    ArrayList<int[][]> NPoints = new ArrayList<int[][]>(){{
+        add(N1);
+        add(N2);
+        add(N3);
+    }};
 
     /*
     Data of char O;
