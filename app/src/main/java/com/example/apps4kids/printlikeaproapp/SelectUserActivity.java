@@ -81,7 +81,8 @@ public class SelectUserActivity extends ActionBarActivity {
         else {
 //            dbHandler.addUser(name, name);
             Intent intent = new Intent(this, MainActivity.class);
-            //TO DO: need to check if name already exists
+            //TODO: need to check if name already exists
+            //TODO: pass in everything about the user (id, letterIndex, etc.) to the next activity so the app can load the correct letter and also beging updating his or her progress via database
             intent.putExtra(NAME, name); //Optional parameters
             startActivity(intent);
         }
