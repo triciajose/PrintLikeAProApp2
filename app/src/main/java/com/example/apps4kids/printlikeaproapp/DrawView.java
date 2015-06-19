@@ -139,8 +139,6 @@ public class DrawView extends View {
         super.onDraw(canvas);
         Paint bmpPaint = new Paint();
         //a.draw cacheBitmap to Canvas
-
-
         //      canvas.drawBitmap(solidLineBitmap, null, uprect, bmpPaint);
         //      canvas.drawBitmap(solidLineBitmap, null, bottomrect, bmpPaint);
         //      canvas.drawBitmap(dotLineBitmap, null, middlerect, bmpPaint);
@@ -256,16 +254,17 @@ public class DrawView extends View {
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y - 70);
                     break;
                 case CURVE_BACK:
-                    new Arrow(cacheCanvas).drawArcAL(x - 130, y, 270 , 90, x-130+50, y, -1,0);
+                    new Arrow(cacheCanvas).drawArcAL(x - 120, y-110, 270 , 90, x-120+50, y-110, -1,0);
                     break;
                 case CURVE_FORWARD:
-                    new Arrow(cacheCanvas).drawArcAL(x + 30, y - 30, 180, 90, x+30+50,y-30,1,0);
+                    new Arrow(cacheCanvas).drawArcAL(x + 20, y - 110, 180, 90, x+20+50,y-110,1,0);
                     break;
                 default:
                     break;
             }
             Log.i("indexStroke", "" + indexStroke);
         }
+        if(PrintCharacterActivity.stage==Stage.BUBBLE)
         animateStroke();
     }
 
@@ -303,7 +302,9 @@ public class DrawView extends View {
             Point start = strokePoints.get(0);
             pathAnimation.reset();
             pathAnimation.moveTo((float) start.x, (float) start.y);
+            invalidate();
             soundManager.announceDirection(strokeDirection);
+
         }
 //        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
 //            //By default, the Textsize is in pixel for canvas.
@@ -338,7 +339,7 @@ public class DrawView extends View {
         //draw points
         paintUser.setColor(Color.GREEN);
         paintUser.setStyle(Paint.Style.FILL);
-        paintUser.setStrokeWidth(20);
+        paintUser.setStrokeWidth(5);
         detectPoints.removeAll(detectPoints);
         strokes.removeAll(strokes);
         strokes.addAll(ConstantCharacter.map.get(mCharacter));
@@ -348,7 +349,12 @@ public class DrawView extends View {
 //                if(/*PrintCharacterActivity.stage==Stage.DOTS && */ gameMode == GameMode.ALLPOINTS) {
                 if(PrintCharacterActivity.stage==Stage.DOTS && gameMode == GameMode.ALLPOINTS) {
                     //if(true){
-                    cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
+                    cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, 10, paintUser);
+                    paintUser.setColor(Color.BLACK);
+                    paintUser.setStyle(Paint.Style.STROKE);
+                    cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, 10, paintUser);
+                    paintUser.setColor(Color.GREEN);
+                    paintUser.setStyle(Paint.Style.FILL);
                 }
                 if(gameMode == GameMode.CURRENTSTROKE) {
 
@@ -357,11 +363,25 @@ public class DrawView extends View {
             }
         }
         //Draw the starting point
-        if(PrintCharacterActivity.stage==Stage.STARTING_POINT){
+        if(PrintCharacterActivity.stage!=Stage.EMPTY){
             Point point=strokes.get(0).points.get(0);
-            cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
+            paintUser.setColor(Color.YELLOW);
+            paintUser.setStyle(Paint.Style.FILL);
+            cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y,10, paintUser);
+            paintUser.setColor(Color.BLACK);
+            paintUser.setStyle(Paint.Style.STROKE);
+            cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, 10, paintUser);
         }
-
+        //Draw the ending point
+        if(PrintCharacterActivity.stage==Stage.BUBBLE || PrintCharacterActivity.stage==Stage.DOTS){
+            Point point=strokes.get(strokes.size()-1).points.get(strokes.get(strokes.size()-1).points.size()-1);
+            paintUser.setColor(Color.RED);
+            paintUser.setStyle(Paint.Style.FILL);
+            cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y,10, paintUser);
+            paintUser.setColor(Color.BLACK);
+            paintUser.setStyle(Paint.Style.STROKE);
+            cacheCanvas.drawCircle(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, 10, paintUser);
+        }
 
     }
     public void initPaint(){

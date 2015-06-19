@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -26,10 +27,13 @@ public class PrintCharacterActivity extends ActionBarActivity {
     int cIndex = 0;
     private TextView nameTextView;
     Button button;
+    Button showMe;
     static State state = State.fail;
     static Stage stage = Stage.BUBBLE;
     static Stage nextStage;
+    static Stage previousStage;
     Button nextCharButton;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +42,14 @@ public class PrintCharacterActivity extends ActionBarActivity {
         setContentView(R.layout.activity_print_character);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
-        mChracter = name.charAt(cIndex)+"";
+        mChracter = name.charAt(cIndex) + "";
 //        drawView = (DrawView) findViewById(R.id.drawView);
         drawView = new DrawView(this, null);
         nameTextView = (TextView) findViewById(R.id.textView);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
         nameTextView.setTypeface(centuryGothic);
-        nameTextView.setText(name);
+ //       nameTextView.setText(name);
+        updateTitleText();
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +74,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
                         break;
                     case EMPTY:
                         nextStage = Stage.BUBBLE;
+                        nextChar(null);
                         break;
                     default:
                         break;
@@ -91,13 +97,30 @@ public class PrintCharacterActivity extends ActionBarActivity {
         params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        params.topMargin = (height - ConstantCharacter.cSizeY - 50)/2+50; // the constant is the height of the title.
+        params.topMargin = (height - ConstantCharacter.cSizeY - 50) / 2 + 50; // the constant is the height of the title.
 //        params.bottomMargin = (height - ConstantCharacter.cSizeY - 40) / 2; // the constant is the height of the title.
         //       params.topMargin = 0;
-        Log.i("leftMargin", ""+params.leftMargin);
-        Log.i("topMargin", ""+params.topMargin);
+        Log.i("leftMargin", "" + params.leftMargin);
+        Log.i("topMargin", "" + params.topMargin);
         rl.addView(drawView, params);
         rl.invalidate();
+    }
+
+    public void updateTitleText(){
+        String htmlString = "";
+        if(cIndex<=name.length()) {
+            htmlString += "<font color=\"#64DD17\">" + name.substring(0, cIndex) + "</font>";
+        }
+        else{
+            return;
+        }
+        if(cIndex<name.length()) {
+            htmlString += "<font color=\"#E91E63\">" + name.substring(cIndex, cIndex + 1) + "</font>";
+        }
+        if(cIndex+1<name.length()) {
+            htmlString += "" + name.substring(cIndex + 1) + "";
+        }
+        nameTextView.setText(Html.fromHtml(htmlString));
     }
 
     @Override
@@ -122,17 +145,50 @@ public class PrintCharacterActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void nextChar(View v){
+    public void nextChar(View v) {
         cIndex++;
-        while(cIndex<name.length() && name.charAt(cIndex)==' ') {
+        while (cIndex < name.length() && name.charAt(cIndex) == ' ') {
             cIndex++;
         }
-        if(cIndex<name.length()) {
-            mChracter = name.charAt(cIndex)+"";
+        if (cIndex < name.length()) {
+            mChracter = name.charAt(cIndex) + "";
             drawView.mCharacter = this.mChracter;
-            stage=Stage.BUBBLE;
+            stage = Stage.BUBBLE;
             drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             drawView.init();
         }
+        updateTitleText();
+
+
+    }
+
+    public void Modelling(View v) {
+        drawView.animateStroke();
+    }
+    public void goPrevious(View v){
+        switch (stage) {
+            case BUBBLE:
+                previousStage = Stage.EMPTY;
+                break;
+            case DOTS:
+                previousStage = Stage.BUBBLE;
+                break;
+            case BOX:
+                previousStage = Stage.DOTS;
+                break;
+            case STARTING_POINT:
+                previousStage = Stage.BOX;
+                break;
+            case EMPTY:
+                previousStage = Stage.STARTING_POINT;
+                break;
+            default:
+                break;
+
+        }
+        stage=previousStage;
+        drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        drawView.init();
     }
 }
+
