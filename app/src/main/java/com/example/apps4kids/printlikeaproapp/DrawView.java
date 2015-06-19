@@ -191,6 +191,7 @@ public class DrawView extends View {
                     animateStroke();
                 }
                 else{
+                    PrintCharacterActivity.state=State.success;
                     characterSucess();
                 }
                 return true;
@@ -213,6 +214,9 @@ public class DrawView extends View {
             int x = (int) (point.x);
             int y = (int) (point.y);
             switch (strokes.get(indexStroke).direction) {
+                case LEFT:
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 120, y - 10);
+                    break;
                 case DOWN:
                     new Arrow(cacheCanvas).drawAL(x - 30, y - 10, x - 30, y + 110);
                     break;
@@ -227,6 +231,7 @@ public class DrawView extends View {
     }
 
     public void characterSucess() {
+
         Log.i("characterSucess", "Sucessfully draw a character");
 //        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
 //        imageView.clearAnimation();
@@ -272,10 +277,11 @@ public class DrawView extends View {
     }
     public void initDrawView(){
         //draw character
-        //     if(PrintCharacterActivity.stage==Stage.BUBBLE)
-        Log.i("cStartX", ""+ConstantCharacter.cStartX);
-        Log.i("cStartY", ""+ConstantCharacter.cStartY);
-        cacheCanvas.drawText(mCharacter, 0, ConstantCharacter.cStartY, paintUser);
+             if(PrintCharacterActivity.stage==Stage.BUBBLE) {
+                 Log.i("cStartX", "" + ConstantCharacter.cStartX);
+                 Log.i("cStartY", "" + ConstantCharacter.cStartY);
+                 cacheCanvas.drawText(mCharacter, 0, ConstantCharacter.cStartY, paintUser);
+             }
         //     cacheCanvas.drawText(mCharacter, 0, 0, paintUser);
 
         ConstantCharacter initCharacters = new ConstantCharacter();
@@ -299,6 +305,11 @@ public class DrawView extends View {
                 }
                 detectPoints.add(point);
             }
+        }
+        //Draw the starting point
+        if(PrintCharacterActivity.stage==Stage.STARTING_POINT){
+            Point point=strokes.get(0).points.get(0);
+            cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
         }
 
 
@@ -337,7 +348,9 @@ public class DrawView extends View {
         //2.CacheCanvas will draw into bitmap
         cacheCanvas = new Canvas();
         cacheCanvas.setBitmap(cacheBitmap);
-        cacheCanvas.drawColor(Color.BLUE);
+        //CacheCanvas will draw the box
+        if(PrintCharacterActivity.stage==Stage.BOX)
+        cacheCanvas.drawColor(Color.GRAY);
 
         //3.Set up the brush
         paintUser = new Paint(Paint.DITHER_FLAG);	 //Create a brush

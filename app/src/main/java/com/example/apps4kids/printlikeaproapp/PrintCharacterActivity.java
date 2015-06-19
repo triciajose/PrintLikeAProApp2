@@ -27,7 +27,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
     private TextView nameTextView;
     Button button;
     static State state = State.fail;
-    static Stage stage = Stage.DOTS;
+    static Stage stage = Stage.BUBBLE;
     static Stage nextStage;
     Button nextCharButton;
 
@@ -53,15 +53,19 @@ public class PrintCharacterActivity extends ActionBarActivity {
                 switch (stage) {
                     case BUBBLE:
                         nextStage = Stage.DOTS;
+                        Log.i("Entering the stage Dots", "");
                         break;
                     case DOTS:
                         nextStage = Stage.BOX;
+                        Log.i("Entering the stage Box", "");
                         break;
                     case BOX:
                         nextStage = Stage.STARTING_POINT;
+                        Log.i("Entering  S_point", "");
                         break;
                     case STARTING_POINT:
                         nextStage = Stage.EMPTY;
+                        Log.i("Entering empty", "");
                         break;
                     case EMPTY:
                         nextStage = Stage.BUBBLE;
@@ -71,6 +75,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
                 }
                 if (state == State.success) {
                     stage = nextStage;
+                    state=State.fail;
                 }
                 drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 drawView.init();
@@ -121,6 +126,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         if(cIndex<name.length()) {
             mChracter = name.charAt(cIndex)+"";
             drawView.mCharacter = this.mChracter;
+            stage=Stage.BUBBLE;
             drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             drawView.init();
 
