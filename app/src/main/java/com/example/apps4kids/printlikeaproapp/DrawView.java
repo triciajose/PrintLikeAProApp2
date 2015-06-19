@@ -266,6 +266,7 @@ public class DrawView extends View {
             }
             Log.i("indexStroke", "" + indexStroke);
         }
+        if(PrintCharacterActivity.stage==Stage.BUBBLE)
         animateStroke();
     }
 
@@ -302,7 +303,9 @@ public class DrawView extends View {
             Point start = strokePoints.get(0);
             pathAnimation.reset();
             pathAnimation.moveTo((float) start.x, (float) start.y);
+            invalidate();
             soundManager.announceDirection(strokeDirection);
+
         }
 //        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
 //            //By default, the Textsize is in pixel for canvas.

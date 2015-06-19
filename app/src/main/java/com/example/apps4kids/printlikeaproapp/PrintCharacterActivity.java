@@ -26,6 +26,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
     int cIndex = 0;
     private TextView nameTextView;
     Button button;
+    Button showMe;
     static State state = State.fail;
     static Stage stage = Stage.BUBBLE;
     static Stage nextStage;
@@ -38,7 +39,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         setContentView(R.layout.activity_print_character);
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
-        mChracter = name.charAt(cIndex)+"";
+        mChracter = name.charAt(cIndex) + "";
 //        drawView = (DrawView) findViewById(R.id.drawView);
         drawView = new DrawView(this, null);
         nameTextView = (TextView) findViewById(R.id.textView);
@@ -91,11 +92,11 @@ public class PrintCharacterActivity extends ActionBarActivity {
         params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        params.topMargin = (height - ConstantCharacter.cSizeY - 50)/2+50; // the constant is the height of the title.
+        params.topMargin = (height - ConstantCharacter.cSizeY - 50) / 2 + 50; // the constant is the height of the title.
 //        params.bottomMargin = (height - ConstantCharacter.cSizeY - 40) / 2; // the constant is the height of the title.
         //       params.topMargin = 0;
-        Log.i("leftMargin", ""+params.leftMargin);
-        Log.i("topMargin", ""+params.topMargin);
+        Log.i("leftMargin", "" + params.leftMargin);
+        Log.i("topMargin", "" + params.topMargin);
         rl.addView(drawView, params);
         rl.invalidate();
     }
@@ -122,17 +123,22 @@ public class PrintCharacterActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void nextChar(View v){
+    public void nextChar(View v) {
         cIndex++;
-        while(cIndex<name.length() && name.charAt(cIndex)==' ') {
+        while (cIndex < name.length() && name.charAt(cIndex) == ' ') {
             cIndex++;
         }
-        if(cIndex<name.length()) {
-            mChracter = name.charAt(cIndex)+"";
+        if (cIndex < name.length()) {
+            mChracter = name.charAt(cIndex) + "";
             drawView.mCharacter = this.mChracter;
-            stage=Stage.BUBBLE;
+            stage = Stage.BUBBLE;
             drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             drawView.init();
         }
     }
+
+    public void Modelling(View v) {
+        drawView.animateStroke();
+    }
 }
+

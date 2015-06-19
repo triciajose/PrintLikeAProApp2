@@ -27,12 +27,11 @@
         android:text="NextChar"
         android:id="@+id/nextcharbutton"
         android:onClick="nextChar"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="94dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -40,11 +39,21 @@
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/button"
-        android:layout_marginRight="42dp"
+        android:layout_marginRight="54dp"
+        android:layout_marginEnd="54dp"
         android:layout_alignTop="@+id/nextcharbutton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="42dp" />
+        android:layout_alignRight="@+id/relativeLayout"
+        android:layout_alignEnd="@+id/relativeLayout" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ShowMe"
+        android:onClick="Modelling"
+        android:id="@+id/button2"
+        android:layout_alignBottom="@+id/button"
+        android:layout_centerHorizontal="true" />
 
     <!--<com.example.apps4kids.printlikeaproapp.DrawView-->
     <!--android:layout_height="wrap_content"-->
