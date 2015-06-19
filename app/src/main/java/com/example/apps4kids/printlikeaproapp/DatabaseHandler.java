@@ -98,7 +98,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Getting All Contacts
     public List<String> getAllUserNamesAsString() {
-        List<String> userListAsString = new ArrayList<>();
+        List<String> userListAsString = new ArrayList<String>();
 
 
         SQLiteDatabase db = this.getWritableDatabase();

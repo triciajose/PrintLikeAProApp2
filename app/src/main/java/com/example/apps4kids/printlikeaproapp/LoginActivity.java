@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -25,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Intent;
 import android.app.AlertDialog;
@@ -39,10 +41,10 @@ import java.util.List;
 public class LoginActivity extends Activity {
 
     public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
-
+    private Button testButton;
     // UI references.
     private EditText mNameView;
-
+    DatabaseHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class LoginActivity extends Activity {
 
         // Set up the login form.
         mNameView = (EditText) findViewById(R.id.name);
-
+        testButton = (Button) findViewById(R.id.btnPrint);
+        testButton.setVisibility(View.GONE);
         Button mStart = (Button) findViewById(R.id.sign_in_button);
         mStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -59,6 +62,19 @@ public class LoginActivity extends Activity {
                 attemptLogin(view);
             }
         });
+
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        Context context = getApplicationContext();
+        dbHandler = new DatabaseHandler(context);
+       // dbHandler.addUser("Alice", "Alice");
+       // dbHandler.addUser("Bob", "Bob");
+       // dbHandler.addUser("Kathy", "Kathy");
+        ArrayList<String> nameList = new ArrayList<>();
+        nameList.addAll(dbHandler.getAllUserNamesAsString());
+        String[] items = {};
+        items = nameList.toArray(items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        dropdown.setAdapter(adapter);
 
     }
 
@@ -74,8 +90,8 @@ public class LoginActivity extends Activity {
             createPopUp("Please click ok and type in your name.");
         }
         else {
+            dbHandler.addUser(a, a);
             startActivity(intent);
-
         }
 
     }
@@ -87,14 +103,11 @@ public class LoginActivity extends Activity {
 
 
     private void createPopUp(String msg){
-
         AlertDialog.Builder buildr = new AlertDialog.Builder(this);
         buildr.setMessage(msg);
         buildr.setNeutralButton("ok",null);
-
         buildr.create();
         buildr.show();
-
     }
 }
 

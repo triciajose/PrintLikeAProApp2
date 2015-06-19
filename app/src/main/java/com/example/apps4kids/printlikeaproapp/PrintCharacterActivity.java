@@ -1,21 +1,28 @@
 package com.example.apps4kids.printlikeaproapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class PrintCharacterActivity extends ActionBarActivity {
     DrawView drawView = null;
-    String mChracter = "E";
+    String mChracter = "I";
     GameMode gameMode = GameMode.ALLPOINTS;
-
+    String name = "";
+    private TextView nameTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print_character);
+        Intent intent = getIntent();
+        name = intent.getStringExtra(LoginActivity.NAME);
         drawView = (DrawView) findViewById(R.id.drawView);
+        nameTextView = (TextView) findViewById(R.id.textView);
+        nameTextView.setText(name);
     }
 
     @Override
