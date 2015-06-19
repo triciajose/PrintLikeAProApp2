@@ -22,15 +22,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Intent;
 import android.app.AlertDialog;
-
+import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class LoginActivity extends Activity {
     public final static String NAME = "com.example.apps4kids.printlikeaproapp.NAME";
     private Button testButton;
     // UI references.
-    private EditText mNameView;
+    public EditText mNameView;
     DatabaseHandler dbHandler;
 
     @Override
@@ -51,50 +53,26 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Set up the login form.
-        mNameView = (EditText) findViewById(R.id.name);
-        testButton = (Button) findViewById(R.id.btnPrint);
-        testButton.setVisibility(View.GONE);
-        Button mStart = (Button) findViewById(R.id.sign_in_button);
-        mStart.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin(view);
-            }
-        });
-
-        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
-        Context context = getApplicationContext();
-        dbHandler = new DatabaseHandler(context);
-       // dbHandler.addUser("Alice", "Alice");
-       // dbHandler.addUser("Bob", "Bob");
-       // dbHandler.addUser("Kathy", "Kathy");
-        ArrayList<String> nameList = new ArrayList<>();
-        nameList.addAll(dbHandler.getAllUserNamesAsString());
-        String[] items = {};
-        items = nameList.toArray(items);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-        dropdown.setAdapter(adapter);
-
     }
 
-    /**
-     * Go to main welcome page and animate the name
-     * */
-    public void attemptLogin(View view) {
-        String a = mNameView.getText().toString();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(NAME, mNameView.getText().toString()); //Optional parameters
-
-        if (mNameView.getText().toString().equals("")){
-            createPopUp("Please click ok and type in your name.");
-        }
-        else {
-            dbHandler.addUser(a, a);
-            startActivity(intent);
-        }
-
-    }
+//    /**
+//     * Go to main welcome page and animate the name
+//     * */
+//    public void attemptLogin(View view) {
+//        String name = mNameView.getText().toString();
+//
+//        if (mNameView.getText().toString().equals("")){
+//            createPopUp("Please click ok and type in your name.");
+//        }
+//        else {
+//            dbHandler.addUser(name, name);
+//            Intent intent = new Intent(this, MainActivity.class);
+//            //TO DO: need to check if name already exists
+//            intent.putExtra(NAME, name); //Optional parameters
+//            startActivity(intent);
+//        }
+//
+//    }
 
     public void startPrint(View v){
         Intent intent = new Intent(this, PrintCharacterActivity.class);
@@ -108,6 +86,16 @@ public class LoginActivity extends Activity {
         buildr.setNeutralButton("ok",null);
         buildr.create();
         buildr.show();
+    }
+
+    public void selectUser(View view) {
+            Intent intent = new Intent(this, SelectUserActivity.class);
+            startActivity(intent);
+    }
+
+    public void newUser(View view) {
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
     }
 }
 

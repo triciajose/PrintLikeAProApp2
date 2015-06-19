@@ -6,49 +6,50 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@mipmap/mainpage">
 
     <!-- Login progress -->
-    <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" android:visibility="gone" />
 
-    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="138dp"
-        android:fillViewport="false"
-        android:layout_weight="0.26">
+    <!--<ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"-->
+        <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp" android:visibility="gone" />-->
 
-        <LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
+    <!--<ScrollView android:id="@+id/login_form" android:layout_width="match_parent"-->
+        <!--android:layout_height="138dp"-->
+        <!--android:fillViewport="false"-->
+        <!--android:layout_weight="0.26">-->
 
-        </LinearLayout>
-    </ScrollView>
+        <!--<LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" android:orientation="vertical">-->
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="560dp"
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
-
-    <EditText android:id="@+id/name" android:layout_width="560dp"
-        android:layout_height="63dp" android:hint="@string/prompt_email"
-        android:inputType="textPersonName" android:maxLines="1"
-        android:singleLine="true" />
-
-    <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-        android:onClick="attemptLogin"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "test print page shortcut"
-        android:id = "@+id/btnPrint"
-        android:onClick="startPrint"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+       >
+        <Button
+            android:id="@+id/olduser" android:background="#5489e3"
+            android:textColor="@color/white"
+            android:layout_marginRight="@dimen/abc_alert_dialog_button_bar_height"
+            android:layout_width="250dp" android:textSize="40dp"
+            android:layout_height="224dp" android:onClick="selectUser"
+            android:layout_weight="0.64" android:text="Select User">
+        </Button>
+        <Button
+            android:id="@+id/newuser"
+            android:background="#EF9C16" android:textColor="@color/white"
+            android:layout_width="250dp"
+            android:layout_height="224dp" android:onClick="newUser"
+            android:layout_weight="0.64" android:textSize="40dp"
+            android:text="Add New">
+        </Button>
+    </LinearLayout>
 
 </LinearLayout>
-

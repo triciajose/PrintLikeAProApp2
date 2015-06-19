@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.apps4kids.printlikeaproapp.LoginActivity"
+    android:weightSum="1"
+    android:background="@mipmap/mainpage">
+
+    <!-- Login progress -->
+
+    <!--<ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp" android:visibility="gone" />-->
+
+    <!--<ScrollView android:id="@+id/login_form" android:layout_width="match_parent"-->
+    <!--android:layout_height="138dp"-->
+    <!--android:fillViewport="false"-->
+    <!--android:layout_weight="0.26">-->
+
+    <!--<LinearLayout android:id="@+id/name_login_form" android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" android:orientation="vertical">-->
+
+    <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/help_text" android:layout_width="442dp"
+        android:layout_height="wrap_content" android:text="@string/title_activity_login"
+        android:gravity="center" android:textSize="30dp"
+        android:layout_gravity="center_horizontal">
+
+    </TextView>
+
+    <EditText android:id="@+id/name_new" android:layout_width="442dp"
+        android:layout_height="wrap_content" android:hint="@string/prompt_email"
+        android:inputType="textPersonName" android:maxLines="1"
+        android:singleLine="true"
+        android:background="@color/white"
+        android:textSize="30dp" />
+    <LinearLayout
+        android:id="@+id/LinearLayout03"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/abc_dialog_padding_material"
+        >
+        <Button
+            android:layout_width="170dp" android:layout_marginRight="@dimen/abc_alert_dialog_button_bar_height"
+            android:layout_height="wrap_content" android:textColor="@color/white"
+            android:text="Cancel" android:background="#5489e3"
+            android:onClick="cancel" android:textSize="40dp"
+            android:id="@+id/cancel_new" />
+
+        <Button android:id="@+id/sign_in_button_new" style="?android:textAppearanceSmall"
+            android:layout_width="170dp" android:layout_height="wrap_content"
+            android:text="@string/action_sign_in"
+            android:onClick="attemptLogin"
+            android:textStyle="bold" android:textColor="@color/white"
+            android:layout_gravity="center_horizontal" android:background="#EF9C16" android:textSize="40dp"
+            />
+
+
+</LinearLayout>
+    <!--android:layout_width = "wrap_content"-->
+    <!--android:layout_height = "wrap_content"-->
+    <!--android:text = "test print page shortcut"-->
+    <!--android:id = "@+id/btnPrint"-->
+    <!--android:onClick="startPrint"-->
+    <!--android:layout_gravity="center_horizontal" />-->
+
+</LinearLayout>
+

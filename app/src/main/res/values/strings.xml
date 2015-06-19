@@ -9,11 +9,15 @@
     <string name="width1">Brush 1</string>
     <string name="width2">Brush 2</string>
     <string name="width5">Brush 3</string>
-
     <string name="blur">Blurring</string>
     <string name="emboss">embossing</string>
     <string name="title_activity_print_character">PrintCharacterActivity</string>
+    <string name="action_settings">Settings</string>
+    <color name="white">#FFFFFF</color>
+    <string name="title_activity_select_user">SelectUserActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_new_user">NewUserActivity</string>
+    <string name="title_activity_test">TestActivity</string>
+
 </resources>

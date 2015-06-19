@@ -14,13 +14,13 @@ import java.util.List;
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "db";
     private static final String PROGRESS_TABLE = "progressTable";
 
     private static final String PROGRESS_COLUMN_ID = "id";
     private static final String PROGRESS_COLUMN_NAME = "name";
-    private static final String PROGRESS_COLUMN_LETTER = "letter";
+    private static final String PROGRESS_COLUMN_LETTER_INDEX = "letterIndex";
     private static final String PROGRESS_COLUMN_LEVEL = "level";
     private static final String PROGRESS_COLUMN_WRITTEN_NAME = "writtenName";
     private static final String PROGRESS_COLUMN_SCORE = "score";
@@ -32,8 +32,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate (SQLiteDatabase db) {
         String createTableQuery = "CREATE TABLE " + PROGRESS_TABLE + "(" +
                 PROGRESS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-                PROGRESS_COLUMN_NAME + " TEXT, " + 
-                PROGRESS_COLUMN_LETTER + " TEXT, " +
+                PROGRESS_COLUMN_NAME + " TEXT, " +
+                PROGRESS_COLUMN_LETTER_INDEX + " INTEGER, " +
                 PROGRESS_COLUMN_LEVEL + " INTEGER, " +
                 PROGRESS_COLUMN_WRITTEN_NAME + " TEXT, " +
                 PROGRESS_COLUMN_SCORE + " INTEGER " +
@@ -55,7 +55,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(PROGRESS_COLUMN_NAME, username);
         values.put(PROGRESS_COLUMN_WRITTEN_NAME, writtenName);
-        values.put(PROGRESS_COLUMN_LETTER, String.valueOf(writtenName.charAt(0)));
+        values.put(PROGRESS_COLUMN_LETTER_INDEX, 0);
         values.put(PROGRESS_COLUMN_LEVEL, 1);
         values.put(PROGRESS_COLUMN_SCORE, 0);
 
@@ -71,7 +71,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(PROGRESS_TABLE, new String[]{
                         PROGRESS_COLUMN_ID,
-                        PROGRESS_COLUMN_LETTER,
+                        PROGRESS_COLUMN_LETTER_INDEX,
                         PROGRESS_COLUMN_LEVEL,
                         PROGRESS_COLUMN_WRITTEN_NAME,
                         PROGRESS_COLUMN_SCORE
@@ -82,12 +82,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
 
             int id = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_ID));
-            char letter = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_LETTER)).charAt(0);
+            int letterIndex = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_LETTER_INDEX));
             int level = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_LEVEL));
             String writtenName = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_WRITTEN_NAME));
             int score = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_SCORE));
 
-            user = new User(id, username, letter, level, writtenName, score);
+            user = new User(id, username, letterIndex, level, writtenName, score);
         }
 
         cursor.close();
@@ -132,7 +132,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Getting All Contacts
-    public List<User> getAllUserNames() {
+    public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
 
 
@@ -140,7 +140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(PROGRESS_TABLE, new String[]{
                         PROGRESS_COLUMN_ID,
                         PROGRESS_COLUMN_NAME,
-                        PROGRESS_COLUMN_LETTER,
+                        PROGRESS_COLUMN_LETTER_INDEX,
                         PROGRESS_COLUMN_LEVEL,
                         PROGRESS_COLUMN_WRITTEN_NAME,
                         PROGRESS_COLUMN_SCORE
@@ -153,13 +153,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 try {
                     int id = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_ID));
                     String username = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_NAME));
-                    char letter = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_LETTER)).charAt(0);
+                    int letterIndex = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_LETTER_INDEX));
                     int level = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_LEVEL));
                     String writtenName = cursor.getString(cursor.getColumnIndex(PROGRESS_COLUMN_WRITTEN_NAME));
                     int score = cursor.getInt(cursor.getColumnIndex(PROGRESS_COLUMN_SCORE));
 
 
-                    User user = new User(id, username, letter, level, writtenName, score);
+                    User user = new User(id, username, letterIndex, level, writtenName, score);
                     // Adding contact to list
                     userList.add(user);
                 } catch (Exception e)
@@ -190,12 +190,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
     // Updating single contact
-    public void updateUserProgress(int id, char letter, int level, int score) {
+    public void updateUserProgress(int id, int letterIndex, int level, int score) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(PROGRESS_COLUMN_LETTER, String.valueOf(letter));
+        values.put(PROGRESS_COLUMN_LETTER_INDEX, letterIndex);
         values.put(PROGRESS_COLUMN_LEVEL, level);
         values.put(PROGRESS_COLUMN_SCORE, score);
 
@@ -221,10 +221,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Deleting single contact
-    public void deleteUser(String username) {
+    public void deleteUser(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(PROGRESS_TABLE, PROGRESS_COLUMN_NAME + " = ?",
-                new String[] {username });
+        db.delete(PROGRESS_TABLE, PROGRESS_COLUMN_ID + " = ?",
+                new String[] {String.valueOf(id) });
         db.close();
     }
 
