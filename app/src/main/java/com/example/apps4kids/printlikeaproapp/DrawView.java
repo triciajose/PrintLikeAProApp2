@@ -246,7 +246,7 @@ public class DrawView extends View {
 //        animationSet.addAnimation(jiggle);
 //        animationSet.setDuration(3000);
 //
-//        imageView.startAnimation(animationSet);
+//        imageView.sitartAnimation(animationSet);
     }
 
     public void failStroke(){

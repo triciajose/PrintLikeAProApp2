@@ -1,7 +1,7 @@
 <resources>
     <string name="select_text">Pick a name:</string>
     <string name="title_activity_login">Enter your name:</string>
-    <string name="title_activity_splashscreen">My Name: PLaP</string>
+    <string name="title_activity_splashscreen">Printing Your Name Like A Pro!</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Name</string>

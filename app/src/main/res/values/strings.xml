@@ -14,5 +14,9 @@
     <string name="title_activity_print_character">PrintCharacterActivity</string>
     <string name="action_settings">Settings</string>
     <color name="white">#FFFFFF</color>
+    <string name="title_activity_select_user">SelectUserActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_new_user">NewUserActivity</string>
 
 </resources>

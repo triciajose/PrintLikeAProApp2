@@ -26,55 +26,30 @@
         <!--</LinearLayout>-->
     <!--</ScrollView>-->
 
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:id="@+id/LinearLayout02"
         android:layout_height="wrap_content"
-        android:weightSum="1">
-        <TextView android:id="@+id/select_text" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/title"
-            android:gravity="center" android:textSize="30dp"
-            android:layout_gravity="center_horizontal">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="442dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+       >
+        <Button
+            android:id="@+id/olduser" android:background="#5489e3"
+            android:textColor="@color/white"
+            android:layout_marginRight="@dimen/abc_alert_dialog_button_bar_height"
+            android:layout_width="250dp" android:textSize="40dp"
+            android:layout_height="224dp" android:onClick="selectUser"
+            android:layout_weight="0.64" android:text="Select User">
+        </Button>
+        <Button
+            android:id="@+id/newuser"
+            android:background="#EF9C16" android:textColor="@color/white"
+            android:layout_width="250dp"
+            android:layout_height="224dp" android:onClick="newUser"
+            android:layout_weight="0.64" android:textSize="40dp"
+            android:text="Add New">
+        </Button>
     </LinearLayout>
 
-    <TextView android:id="@+id/help_text" android:layout_width="442dp"
-        android:layout_height="wrap_content" android:text="@string/title_activity_login"
-        android:gravity="center" android:textSize="30dp"
-        android:layout_gravity="center_horizontal">
-
-    </TextView>
-
-    <EditText android:id="@+id/name" android:layout_width="442dp"
-        android:layout_height="wrap_content" android:hint="@string/prompt_email"
-        android:inputType="textPersonName" android:maxLines="1"
-        android:singleLine="true"
-        android:background="@color/white"
-        android:textSize="30dp" />
-
-    <Button android:id="@+id/sign_in_button" style="?android:textAppearanceSmall"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-        android:onClick="attemptLogin"
-        android:textStyle="bold" android:textColor="@color/white"
-        android:layout_gravity="center_horizontal" android:background="#EF9C16" android:textSize="40dp" />
-    <!--<Button-->
-
-
-
-        <!--android:layout_width = "wrap_content"-->
-        <!--android:layout_height = "wrap_content"-->
-        <!--android:text = "test print page shortcut"-->
-        <!--android:id = "@+id/btnPrint"-->
-        <!--android:onClick="startPrint"-->
-        <!--android:layout_gravity="center_horizontal" />-->
-
 </LinearLayout>
-
