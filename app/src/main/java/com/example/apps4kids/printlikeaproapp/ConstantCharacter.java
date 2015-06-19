@@ -957,18 +957,241 @@ public class ConstantCharacter {
             {164, 293},
             {166, 292}
     };
-
-
-
-
-
-
     StrokeDirection[] zDirections = new StrokeDirection[]{
             StrokeDirection.LEFT
     };
 
     ArrayList<int[][]> zPoints = new ArrayList<int[][]>(){{
         add(z1);
+    }};
+
+
+    /*
+   Data of char U;
+    */
+    int[][] U1 = new int[][]{
+            {62, 8},
+            {53, 42},
+            {50, 123},
+            {54, 177},
+            {59, 214},
+            {70, 242},
+            {104, 267},
+            {146, 272},
+            {184, 260},
+            {204, 229},
+            {209, 184},
+            {211, 138},
+            {210, 93},
+            {208, 47},
+            {208, 18},
+            {208, 16}
+    };
+
+
+
+    StrokeDirection[] UDirections = new StrokeDirection[]{
+            StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> UPoints = new ArrayList<int[][]>(){{
+        add(U1);
+    }};
+
+    /*
+   Data of char V;
+    */
+    int[][] V1 = new int[][]{
+            {30, 11},
+            {32, 13},
+            {45, 43},
+            {57, 74},
+            {64, 90},
+            {75, 112},
+            {93, 140},
+            {99, 159},
+            {111, 186},
+            {121, 210},
+            {128, 227},
+            {134, 249},
+            {138, 265},
+            {148, 265},
+            {165, 222},
+            {177, 189},
+            {193, 140},
+            {210, 98},
+            {231, 60},
+            {245, 36},
+            {255, 18},
+            {258, 15}
+    };
+
+
+
+    StrokeDirection[] VDirections = new StrokeDirection[]{
+            StrokeDirection.SLIDE_FORWARD
+    };
+
+    ArrayList<int[][]> VPoints = new ArrayList<int[][]>(){{
+        add(V1);
+    }};
+
+
+    /*
+   Data of char W;
+    */
+    int[][] W1 = new int[][]{
+            {43, 13},
+            {46, 26},
+            {47, 48},
+            {52, 72},
+            {53, 91},
+            {59, 121},
+            {68, 142},
+            {78, 178},
+            {88, 214},
+            {94, 240},
+            {97, 262},
+            {100, 274},
+            {107, 258},
+            {122, 196},
+            {130, 178},
+            {146, 149},
+            {165, 102},
+            {184, 55},
+            {196, 25},
+            {198, 11},
+            {202, 42},
+            {205, 79},
+            {210, 110},
+            {221, 154},
+            {236, 197},
+            {253, 238},
+            {272, 271},
+            {285, 285},
+            {299, 219},
+            {310, 159},
+            {325, 89},
+            {346, 27},
+            {356, 11}
+    };
+
+    StrokeDirection[] WDirections = new StrokeDirection[]{
+            StrokeDirection.SLIDE_FORWARD
+    };
+
+    ArrayList<int[][]> WPoints = new ArrayList<int[][]>(){{
+        add(W1);
+    }};
+
+
+    /*
+    Data of char X;
+   */
+    int[][] X1 = new int[][]{
+            {47, 17},
+            {68, 61},
+            {111, 132},
+            {162, 215},
+            {202, 269},
+            {214, 287},
+            {218, 295}
+    };
+
+    int[][] X2 = new int[][]{
+            {207, 31},
+            {195, 53},
+            {142, 140},
+            {96, 210},
+            {57, 265},
+            {37, 287},
+            {36, 288}
+    };
+
+
+
+    StrokeDirection[] XDirections = new StrokeDirection[]{
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_BACK
+    };
+
+    ArrayList<int[][]> XPoints = new ArrayList<int[][]>(){{
+        add(X1);
+        add(X2);
+    }};
+    /*
+   Data of char y;
+    */
+    int[][] Y1 = new int[][]{
+            {29, 30},
+            {39, 38},
+            {83, 92},
+            {113, 136},
+            {123, 152},
+            {124, 153}
+    };
+
+    int[][] Y2 = new int[][]{
+            {217, 25},
+            {217, 27},
+            {171, 86},
+            {131, 135},
+            {124, 142}
+    };
+
+    int[][] Y3 = new int[][]{
+            {116, 154},
+            {115, 156},
+            {116, 211},
+            {117, 262},
+            {118, 276}
+    };
+
+
+    StrokeDirection[] YDirections = new StrokeDirection[]{
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_BACK, StrokeDirection.DOWN
+    };
+
+    ArrayList<int[][]> YPoints = new ArrayList<int[][]>(){{
+        add(Y1);
+        add(Y2);
+        add(Y3);
+    }};
+
+    /*
+   Data of char Z;
+    */
+    int[][] Z1 = new int[][]{
+        {35, 18},
+        {36, 18},
+        {84, 17},
+        {149, 12},
+        {180, 11},
+        {186, 10}
+    };
+    int[][] Z2 = new int[][]{
+            {159, 46},
+            {158, 45},
+            {103, 148},
+            {62, 239},
+            {47, 274},
+            {38, 284}
+    };
+    int[][] Z3 = new int[][]{
+            {33, 282},
+            {32, 282},
+            {70, 279},
+            {136, 276},
+            {158, 280},
+            {162, 280}
+    };
+    StrokeDirection[] ZDirections = new StrokeDirection[]{
+            StrokeDirection.RIGHT, StrokeDirection.SLIDE_BACK, StrokeDirection.RIGHT
+    };
+
+    ArrayList<int[][]> ZPoints = new ArrayList<int[][]>(){{
+        add(Z1);
+        add(Z2);
+        add(Z3);
     }};
 
     public static ArrayList<StrokePath> PATH_A = new ArrayList<>();

@@ -52,9 +52,9 @@
         </activity>
         <activity
             android:name=".NewUserActivity"
-            android:label="@string/title_activity_new_user"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_new_user"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

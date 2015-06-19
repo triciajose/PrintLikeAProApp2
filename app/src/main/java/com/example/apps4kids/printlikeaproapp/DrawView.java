@@ -294,11 +294,13 @@ public class DrawView extends View {
 
 
     public void animateStroke(){
-        inAnimation = true;
-        animationIndex = 0;
-        Point start = strokePoints.get(0);
-        pathAnimation.reset();
-        pathAnimation.moveTo((float) start.x, (float) start.y);
+        if(strokePoints.size()>0) {
+            inAnimation = true;
+            animationIndex = 0;
+            Point start = strokePoints.get(0);
+            pathAnimation.reset();
+            pathAnimation.moveTo((float) start.x, (float) start.y);
+        }
 //        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
 //            //By default, the Textsize is in pixel for canvas.
 //            Point start = strokePoints.get(0);
