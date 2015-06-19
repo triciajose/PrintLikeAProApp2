@@ -3,6 +3,7 @@ package com.example.apps4kids.printlikeaproapp;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.SystemClock;
 
 /**
  * Created by Laurel Chan on 2015-06-18.
@@ -18,6 +19,7 @@ public class SoundManager {
     private float leftVolume = 1.0f;
     private float rightVolume = 1.0f;
     private float balance = 0.5f;
+    boolean loaded = false;
 
     int across, acrossthebottom, acrossthetop, around, aroundthemiddle, bottom, close, curve, curveback,
             curveforward, dig, dot, down, forward, goodjob, lift, middle, shortslidedown, slide, slideback, slidedown, straight,
@@ -30,24 +32,33 @@ public class SoundManager {
     {
         sndPool = new SoundPool(16, AudioManager.STREAM_MUSIC, 0);
         pContext = appContext;
+
+        /// Constructor has to first 'load' the sound file. Then do the check below.
     }
-
-
     // load sound
     public int load(int sound_id)
     {
-        return sndPool.load(pContext, sound_id, 1);
-
+     int loadID =  sndPool.load(pContext, sound_id, 1);
+     return loadID;
     }
-
     // play sound
     // may debug this, I need to make the delay longer somehow... 
-    public void play(int sound_id)
-    {int streamID = -1;
+    public void play(int sound_id) {
+        int waitLimit = 10000;
+        int waitCounter = 0;
+        int throttle = 10;
+        while(sndPool.play(sound_id, leftVolume, rightVolume, 1, 0, rate) == 0 && waitCounter < waitLimit){
+            waitCounter++;
+            SystemClock.sleep(throttle);
+        }
+    }
+
+    /*{int streamID = -1;
         do {
             streamID = sndPool.play(sound_id, leftVolume, rightVolume, 1, 0, rate); // credit this do/while from stackoverflow: http://stackoverflow.com/questions/5202510/soundpool-sample-not-ready
-        } while(streamID==0);
+        } while(streamID==1);
     }
+    */
 
     public void announceLetter(char letter) {
         if (Character.toUpperCase(letter) == 'A') {
@@ -56,9 +67,6 @@ public class SoundManager {
         }
         else if (Character.toUpperCase(letter) == 'B') {
             letterB = load(R.raw.b);
-            try{wait(3000);}
-            catch(InterruptedException b) {b.getMessage();}
-            notify();
             play(letterB);
         } else if (Character.toUpperCase(letter) == 'C') {
             letterC = load(R.raw.c);

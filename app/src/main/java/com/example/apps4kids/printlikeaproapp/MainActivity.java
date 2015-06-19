@@ -20,7 +20,10 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.media.SoundPool;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends Activity {
@@ -106,8 +109,11 @@ public class MainActivity extends Activity {
         Handler handler = new Handler();
         SoundManager sM = new SoundManager(this);
 
-
         for (int j= 0; j < name.length(); j++) {
+            long start = new Date().getTime();
+            while (new Date().getTime() - start < 1000L){
+                // do nothing
+            }
             sM.announceLetter(name.charAt(j));
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
