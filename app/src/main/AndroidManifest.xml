@@ -9,33 +9,52 @@
 
     <application
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+        android:screenOrientation="landscape"
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".LoginActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateVisible"
-            android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
             android:name=".PrintCharacterActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_print_character"
-            android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Splashscreen"
-            android:label="@string/title_activity_splashscreen" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_splashscreen"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SelectUserActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".NewUserActivity"
+            android:label="@string/title_activity_new_user"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

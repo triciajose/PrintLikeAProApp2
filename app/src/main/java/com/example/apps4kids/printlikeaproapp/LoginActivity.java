@@ -53,65 +53,26 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Set up the login form.
-        mNameView = (EditText) findViewById(R.id.name);
-//        testButton = (Button) findViewById(R.id.btnPrint);
-//        testButton.setVisibility(View.GONE);
-        Button mStart = (Button) findViewById(R.id.sign_in_button);
-        mStart.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin(view);
-            }
-        });
+    }
 
-        final Spinner dropdown = (Spinner)findViewById(R.id.spinner);
-        int spinnerDefault = 0;
-        Context context = getApplicationContext();
-        dbHandler = new DatabaseHandler(context);
-       // dbHandler.addUser("Alice", "Alice");
-       // dbHandler.addUser("Bob", "Bob");
-       // dbHandler.addUser("Kathy", "Kathy");
-
-        ArrayList<User> nameList = new ArrayList<>();
-        nameList.addAll(dbHandler.getAllUserNames());
-        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, android.R.layout.simple_spinner_item, nameList);
-        dropdown.setAdapter(adapter);
-        dropdown.setPrompt("Select a name");
-        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
+//    /**
+//     * Go to main welcome page and animate the name
+//     * */
+//    public void attemptLogin(View view) {
+//        String name = mNameView.getText().toString();
 //
-            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
-                int itemPosition = position;
-                String username =  ((User) dropdown.getSelectedItem()).getName();
-                mNameView = (EditText) findViewById(R.id.name);
-                mNameView.setText(username,  TextView.BufferType.EDITABLE);
-
-            }
-
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-    }
-
-    /**
-     * Go to main welcome page and animate the name
-     * */
-    public void attemptLogin(View view) {
-        String name = mNameView.getText().toString();
-
-        if (mNameView.getText().toString().equals("")){
-            createPopUp("Please click ok and type in your name.");
-        }
-        else {
-            dbHandler.addUser(name, name);
-            Intent intent = new Intent(this, MainActivity.class);
-            //TO DO: need to check if name already exists
-            intent.putExtra(NAME, name); //Optional parameters
-            startActivity(intent);
-        }
-
-    }
+//        if (mNameView.getText().toString().equals("")){
+//            createPopUp("Please click ok and type in your name.");
+//        }
+//        else {
+//            dbHandler.addUser(name, name);
+//            Intent intent = new Intent(this, MainActivity.class);
+//            //TO DO: need to check if name already exists
+//            intent.putExtra(NAME, name); //Optional parameters
+//            startActivity(intent);
+//        }
+//
+//    }
 
     public void startPrint(View v){
         Intent intent = new Intent(this, PrintCharacterActivity.class);
@@ -125,6 +86,16 @@ public class LoginActivity extends Activity {
         buildr.setNeutralButton("ok",null);
         buildr.create();
         buildr.show();
+    }
+
+    public void selectUser(View view) {
+            Intent intent = new Intent(this, SelectUserActivity.class);
+            startActivity(intent);
+    }
+
+    public void newUser(View view) {
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
     }
 }
 
