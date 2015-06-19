@@ -8,17 +8,17 @@ public class User {
 
     private int id;
     private String name;
-    private char letter;
+    private int letterIndex;
     private int level;
     private String writtenName;
     private int score;
 
 
 
-    public User(int id, String name, char letter, int level, String writtenName, int score) {
+    public User(int id, String name, int letterIndex, int level, String writtenName, int score) {
         this.id = id;
         this.name = name;
-        this.letter = letter;
+        this.letterIndex = letterIndex;
         this.level = level;
         this.writtenName = writtenName;
         this.score = score;
@@ -42,12 +42,12 @@ public class User {
         this.name = name;
     }
 
-    public char getLetter() {
-        return letter;
+    public int getLetterIndex() {
+        return letterIndex;
     }
 
-    public void setLetter(char letter) {
-        this.letter = letter;
+    public void setLetterIndex(int letterIndex) {
+        this.letterIndex = letterIndex;
     }
 
     public int getLevel() {
