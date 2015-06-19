@@ -1049,7 +1049,6 @@ public class ConstantCharacter {
             {51, 229},
             {21, 272}
 
-
     };
 
     int [][] A2 = new int[][] {
@@ -1423,7 +1422,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] KDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN, StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.DOWN, StrokeDirection.SLIDE_BACK, StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> KPoints = new ArrayList<int[][]>(){{
@@ -1876,6 +1875,10 @@ public class ConstantCharacter {
             {121, 210},
             {128, 227},
             {134, 249},
+            {138, 265}
+    };
+
+     int[][] V2 = new int[][]{
             {138, 265},
             {148, 265},
             {165, 222},
@@ -1891,7 +1894,7 @@ public class ConstantCharacter {
 
 
     StrokeDirection[] VDirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP
     };
 
     ArrayList<int[][]> VPoints = new ArrayList<int[][]>(){{
@@ -1914,6 +1917,10 @@ public class ConstantCharacter {
             {88, 214},
             {94, 240},
             {97, 262},
+            {100, 274}
+    };
+    int[][] W2 = new int[][]{
+
             {100, 274},
             {107, 258},
             {122, 196},
@@ -1922,6 +1929,11 @@ public class ConstantCharacter {
             {165, 102},
             {184, 55},
             {196, 25},
+            {198, 11}
+    };
+
+    int[][] W3 = new int[][]{
+
             {198, 11},
             {202, 42},
             {205, 79},
@@ -1930,6 +1942,11 @@ public class ConstantCharacter {
             {236, 197},
             {253, 238},
             {272, 271},
+            {285, 285}
+    };
+
+    int[][] W4 = new int[][]{
+
             {285, 285},
             {299, 219},
             {310, 159},
@@ -1939,7 +1956,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] WDirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_FORWARD
+            StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP, StrokeDirection.SLIDE_FORWARD, StrokeDirection.SLIDE_UP
     };
 
     ArrayList<int[][]> WPoints = new ArrayList<int[][]>(){{
