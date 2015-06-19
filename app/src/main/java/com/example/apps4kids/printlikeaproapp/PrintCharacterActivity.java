@@ -207,7 +207,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
     }
 
     public void showWooHoo(){
-        if(cIndex >= name.length()-1) {
+        if(cIndex >= name.length()-1 && stage == Stage.EMPTY) {
             Intent intent = new Intent(this, CelebrateActivity.class);
             startActivity(intent);
         }

@@ -11,9 +11,11 @@ public class CelebrateActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_celebrate);
+        SoundManager soundManager = new SoundManager(this);
+        soundManager.annouceWoohoo(true);
     }
 
     @Override

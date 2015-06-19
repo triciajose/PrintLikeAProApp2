@@ -21,7 +21,7 @@ public class SoundManager {
     private float balance = 0.5f;
     boolean loaded = false;
 
-    int across, acrossthebottom, acrossthetop, around, aroundthemiddle, bottom, close, curve, curveback,
+    int woohoo, across, acrossthebottom, acrossthetop, around, aroundthemiddle, bottom, close, curve, curveback,
             curveforward, dig, dot, down, forward, goodjob, lift, middle, shortslidedown, slide, slideback, slidedown, straight,
             straightback, straightup, tryagain, zero, one, two, three, four, five, six, seven, eight, nine, letterA, letterB, letterC,
             letterD, letterE, letterF, letterG, letterH, letterI, letterJ, letterK, letterL, letterM, letterN, letterO, letterP, letterQ,
@@ -153,6 +153,17 @@ public class SoundManager {
         else{
             tryagain = load(R.raw.tryagain);
             play(tryagain);
+        }
+
+    }
+
+    public void annouceWoohoo(boolean result){
+        if(result){
+            woohoo = load(R.raw.yayyoudidit);
+            play(woohoo);
+        }
+        else{
+
         }
 
     }
