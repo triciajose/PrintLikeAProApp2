@@ -35,6 +35,7 @@ public class DrawView extends View {
     float preY;
     private Path pathUser;
     private Path pathAnimation;
+    private Paint paintNumber=null;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
     boolean inAnimation = false;
@@ -237,27 +238,35 @@ public class DrawView extends View {
             this.strokeDirection = strokes.get(indexStroke).direction;
             switch (strokes.get(indexStroke).direction) {
                 case LEFT:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+40,y-10,paintNumber);
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 50, y - 10);
                     break;
                 case DOWN:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+40,y,paintNumber);
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 30, y + 70);
                     break;
                 case RIGHT:
                     new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 110, y + 10);
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1), x + 20, y - 10, paintNumber);
                     break;
                 case SLIDE_BACK:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+30,y-10,paintNumber);
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 30, y + 50);
                     break;
                 case SLIDE_FORWARD:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+40,y-10,paintNumber);
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y + 50);
                     break;
                 case SLIDE_UP:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+30,y-10,paintNumber);
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y - 70);
                     break;
                 case CURVE_BACK:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x-40,y-100,paintNumber);
                     new Arrow(cacheCanvas).drawArcAL(x - 120, y-110, 270 , 90, x-120+50, y-110, -1,0);
                     break;
                 case CURVE_FORWARD:
+                    cacheCanvas.drawText(Integer.toString(indexStroke+1),x+15,y-100,paintNumber);
                     new Arrow(cacheCanvas).drawArcAL(x + 20, y - 110, 180, 90, x+20+50,y-110,1,0);
                     break;
                 default:
@@ -444,6 +453,12 @@ public class DrawView extends View {
         paintUser.setTypeface(bold);
         paintUser.setColor(Color.GRAY);
         paintUser.setTextSize(400);
+
+        //Set up the bruth for painting numbers;
+        paintNumber=new Paint();
+        paintNumber.setColor(Color.RED);
+        paintNumber.setTextSize(30);
+
 
         //4.Draw the initial Character;
         initDrawView();
