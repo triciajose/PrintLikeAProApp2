@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
+        Typeface tekton = Typeface.createFromAsset(getApplicationContext().getAssets(), "tekton2.ttf");
 
 
         // Create a LinearLayout element
@@ -56,7 +57,10 @@ public class MainActivity extends Activity {
             textView.setTextSize(100);
             String character = Character.toString(name.charAt(i));
             textView.setText(character);
-            textView.setTypeface(centuryGothic);
+            if (character.equals("q") || character.equals("u"))
+                textView.setTypeface(tekton);
+            else
+                textView.setTypeface(centuryGothic);
             textView.setId(i);
 //            textView.setTextColor(0xEF9C16);
             textView.setAlpha(255);
