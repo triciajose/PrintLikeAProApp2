@@ -70,6 +70,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
                         break;
                     case EMPTY:
                         nextStage = Stage.BUBBLE;
+                        nextChar(null);
                         break;
                     default:
                         break;
