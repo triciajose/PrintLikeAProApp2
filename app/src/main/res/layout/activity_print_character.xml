@@ -21,7 +21,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="320dp"
+        android:layout_width="410dp"
         android:layout_height="40dp"
         android:id="@+id/controlpanel"
         android:orientation="horizontal"
@@ -32,21 +32,23 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:text="Next"
-            android:id="@+id/button"
-            android:layout_alignParentLeft="true"
+            android:text="Back"
+            android:onClick="goPrevious"
             android:layout_marginRight="2dp"
+            android:id="@+id/button3"
             android:textSize = "20dp"
+            android:layout_alignParentLeft="true"
             android:background="@drawable/button_background_selector"
-            android:textColor="@drawable/button_text_selector"
-            />
+            android:textColor="@drawable/button_text_selector"/>
+
+
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginRight="2dp"
-            android:layout_toRightOf="@id/button"
+            android:layout_toRightOf="@id/button3"
             android:text="ShowMe"
             android:onClick="Modelling"
             android:id="@+id/button2"
@@ -63,31 +65,21 @@
         android:id="@+id/nextcharbutton"
         android:onClick="nextChar"
         android:textSize = "20dp"
+        android:layout_marginRight="2dp"
         android:background="@drawable/button_background_selector"
         android:textColor="@drawable/button_text_selector"/>
 
-
-
-
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Next"
+            android:id="@+id/button"
+            android:textSize = "20dp"
+            android:layout_toRightOf="@id/nextcharbutton"
+            android:background="@drawable/button_background_selector"
+            android:textColor="@drawable/button_text_selector"
+            />
 
     </RelativeLayout>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:onClick="goPrevious"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/controlpanel"
-        android:layout_toStartOf="@+id/controlpanel"
-        android:layout_toLeftOf="@+id/controlpanel" />
-
-    <!--<com.example.apps4kids.printlikeaproapp.DrawView-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:id="@+id/drawView"-->
-    <!--/>-->
-
-
 </RelativeLayout>

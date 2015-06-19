@@ -106,8 +106,15 @@ public class PrintCharacterActivity extends ActionBarActivity {
 
     public void updateTitleText(){
         String htmlString = "";
-        htmlString+="<font color=\"#64DD17\">"+name.substring(0, cIndex)+"</font>";
-        htmlString += "<font color=\"#E91E63\">" + name.substring(cIndex, cIndex+1) + "</font>";
+        if(cIndex<=name.length()) {
+            htmlString += "<font color=\"#64DD17\">" + name.substring(0, cIndex) + "</font>";
+        }
+        else{
+            return;
+        }
+        if(cIndex<name.length()) {
+            htmlString += "<font color=\"#E91E63\">" + name.substring(cIndex, cIndex + 1) + "</font>";
+        }
         if(cIndex+1<name.length()) {
             htmlString += "" + name.substring(cIndex + 1) + "";
         }
