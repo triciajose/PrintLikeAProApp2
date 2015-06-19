@@ -32,25 +32,25 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:onClick="goPrevious"
-            android:layout_marginRight="2dp"
-            android:id="@+id/buttonBackState"
-            android:textSize = "20dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/back"
-            android:textColor="@drawable/button_text_selector"/>
-
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
             android:onClick="backChar"
             android:layout_marginRight="2dp"
             android:id="@+id/buttonBackChar"
             android:textSize = "20dp"
-            android:layout_toRightOf="@id/buttonBackState"
+            android:layout_alignParentLeft="true"
             android:background="@drawable/backchar"
+            android:textColor="@drawable/button_text_selector"/>
+
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:onClick="goPrevious"
+            android:layout_marginRight="2dp"
+            android:id="@+id/buttonBackState"
+            android:textSize = "20dp"
+            android:layout_toRightOf="@id/buttonBackChar"
+            android:background="@drawable/back"
             android:textColor="@drawable/button_text_selector"/>
 
         <Button
@@ -58,7 +58,7 @@
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginRight="2dp"
-            android:layout_toRightOf="@id/buttonBackChar"
+            android:layout_toRightOf="@id/buttonBackState"
             android:onClick="Modelling"
             android:id="@+id/showUs"
             android:textSize = "20dp"
@@ -73,7 +73,7 @@
             android:textSize = "20dp"
             android:layout_toRightOf="@id/showUs"
             android:layout_marginRight="2dp"
-            android:background="@drawable/nextchar"
+            android:background="@drawable/forward"
             android:textColor="@drawable/button_text_selector"
             />
 
@@ -85,7 +85,7 @@
         android:id="@+id/nextcharbutton"
         android:onClick="nextChar"
         android:textSize = "20dp"
-        android:background="@drawable/forward"
+        android:background="@drawable/nextchar"
         android:textColor="@drawable/button_text_selector"/>
 
 
