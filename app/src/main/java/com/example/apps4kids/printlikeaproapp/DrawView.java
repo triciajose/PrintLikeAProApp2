@@ -236,36 +236,37 @@ public class DrawView extends View {
             int x = (int) (point.x);
             int y = (int) (point.y);
             this.strokeDirection = strokes.get(indexStroke).direction;
-            switch (strokeDirection) {
+            switch (strokes.get(indexStroke).direction) {
                 case LEFT:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 120, y - 10);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 50, y - 10);
                     break;
                 case DOWN:
-                    new Arrow(cacheCanvas).drawAL(x - 30, y - 10, x - 30, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 30, y + 70);
                     break;
                 case RIGHT:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 150, y + 10);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 110, y + 10);
                     break;
                 case SLIDE_BACK:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 90, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 30, y + 50);
                     break;
                 case SLIDE_FORWARD:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y + 50);
                     break;
                 case SLIDE_UP:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y - 130);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y - 70);
                     break;
                 case CURVE_BACK:
-                    new Arrow(cacheCanvas).drawArcAL(x - 30, y - 30, x - 150,y - 150, 270 , 90);
+                    new Arrow(cacheCanvas).drawArcAL(x - 120, y-110, 270 , 90, x-120+50, y-110, -1,0);
                     break;
                 case CURVE_FORWARD:
-                    new Arrow(cacheCanvas).drawArcAL(x + 30, y - 30, x + 150, y - 150, 180, 90);
+                    new Arrow(cacheCanvas).drawArcAL(x + 20, y - 110, 180, 90, x+20+50,y-110,1,0);
                     break;
                 default:
                     break;
             }
             Log.i("indexStroke", "" + indexStroke);
         }
+        if(PrintCharacterActivity.stage==Stage.BUBBLE)
         animateStroke();
     }
 
@@ -302,7 +303,9 @@ public class DrawView extends View {
             Point start = strokePoints.get(0);
             pathAnimation.reset();
             pathAnimation.moveTo((float) start.x, (float) start.y);
+            invalidate();
             soundManager.announceDirection(strokeDirection);
+
         }
 //        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
 //            //By default, the Textsize is in pixel for canvas.
@@ -356,11 +359,19 @@ public class DrawView extends View {
             }
         }
         //Draw the starting point
-        if(PrintCharacterActivity.stage==Stage.STARTING_POINT){
+        if(PrintCharacterActivity.stage!=Stage.EMPTY){
             Point point=strokes.get(0).points.get(0);
+            paintUser.setColor(Color.YELLOW);
             cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
+            paintUser.setColor(Color.GREEN);
         }
-
+        //Draw the ending point
+        if(PrintCharacterActivity.stage==Stage.BUBBLE || PrintCharacterActivity.stage==Stage.DOTS || PrintCharacterActivity.stage==Stage.BOX){
+            Point point=strokes.get(strokes.size()-1).points.get(strokes.get(strokes.size()-1).points.size()-1);
+            paintUser.setColor(Color.RED);
+            cacheCanvas.drawPoint(point.x + ConstantCharacter.POINT_OFFSET_X, point.y + ConstantCharacter.POINT_OFFSET_Y, paintUser);
+            paintUser.setColor(Color.GREEN);
+        }
 
     }
     public void initPaint(){
