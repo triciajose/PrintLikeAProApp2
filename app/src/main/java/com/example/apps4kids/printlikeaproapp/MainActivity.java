@@ -3,6 +3,7 @@ package com.example.apps4kids.printlikeaproapp;
 
 import android.app.Activity;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,8 +31,6 @@ public class MainActivity extends Activity {
     Animation grow;
     Animation jiggle;
     int m;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +104,11 @@ public class MainActivity extends Activity {
             }
         });
         Handler handler = new Handler();
+        SoundManager sM = new SoundManager(this);
+
+
         for (int j= 0; j < name.length(); j++) {
+            sM.announceLetter(name.charAt(j));
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
@@ -122,6 +125,9 @@ public class MainActivity extends Activity {
 
                     final TextView chartextView = (TextView) findViewById(k);
                     chartextView.setText(Character.toString(name.charAt(k)));
+                    // We want to speak these letters.
+                    // void helper (char k)  which is read as name.charAt(k)
+                    //
                     chartextView.startAnimation(jiggle);
                 }
             }

@@ -24,6 +24,8 @@ public class NewUserActivity extends ActionBarActivity {
     // UI references.
     public EditText mNameView;
     DatabaseHandler dbHandler;
+    SoundManager sManager;
+    SoundActivity sActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +50,20 @@ public class NewUserActivity extends ActionBarActivity {
         // dbHandler.addUser("Bob", "Bob");
         // dbHandler.addUser("Kathy", "Kathy");
     }
-
     /**
      * Go to main welcome page and animate the name
      * */
     public void attemptLogin(View view) {
+        SoundManager sManager = new SoundManager(this);
+        int ourLoad =  sManager.load(R.raw.goodjob); //
         String name = mNameView.getText().toString();
-
         if (mNameView.getText().toString().equals("")){
+
+
+
             createPopUp("Please click ok and type in your name.");
+            sManager.play(ourLoad);
+
         }
         else {
             dbHandler.addUser(name, name);
