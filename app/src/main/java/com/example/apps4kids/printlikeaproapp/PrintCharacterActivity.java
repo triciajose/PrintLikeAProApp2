@@ -87,7 +87,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         //params.topMargin = (height - ConstantCharacter.cSizeY - 100) / 2 + 100;
 
- //       params.topMargin = 0;
+        //       params.topMargin = 0;
         Log.i("leftMargin", ""+params.leftMargin);
         Log.i("topMargin", ""+params.topMargin);
         rl.addView(drawView, params);

@@ -1,6 +1,8 @@
 package com.example.apps4kids.printlikeaproapp;
 
+
 import android.app.Activity;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +17,9 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.media.SoundPool;
+
+import java.util.HashMap;
 
 
 public class MainActivity extends Activity {
@@ -26,6 +31,8 @@ public class MainActivity extends Activity {
     Animation jiggle;
     int m;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +40,7 @@ public class MainActivity extends Activity {
         Intent intent = getIntent();
         name = intent.getStringExtra(LoginActivity.NAME);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
+
 
         // Create a LinearLayout element
         View linearLayout = findViewById(R.id.name);

@@ -58,7 +58,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] aDirections = new StrokeDirection[]{
-        StrokeDirection.LEFT, StrokeDirection.DOWN
+            StrokeDirection.LEFT, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> aPoints = new ArrayList<int[][]>(){{
@@ -1130,8 +1130,3 @@ public class ConstantCharacter {
         map.put("Z", PATH_Z);
     }
 }
-
-
-
-
-
