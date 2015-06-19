@@ -1032,14 +1032,16 @@ public class ConstantCharacter {
     */
 
     int [][] A1 = new int[][] {
-            {21, 272},
-            {51, 229},
-            {87, 151},
-            {123, 88},
-            {140, 51},
-            {147, 24},
+            {164, -1},
             {153, 7},
-            {164, -1}
+            {147, 24},
+            {140, 51},
+            {123, 88},
+            {87, 151},
+            {51, 229},
+            {21, 272}
+
+
     };
 
     int [][] A2 = new int[][] {
@@ -1063,7 +1065,7 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] ADirections = new StrokeDirection[]{
-            StrokeDirection.SLIDE_UP, StrokeDirection.DOWN, StrokeDirection.RIGHT
+            StrokeDirection.SLIDE_BACK, StrokeDirection.SLIDE_FORWARD, StrokeDirection.RIGHT
     };
 
     ArrayList<int[][]> APoints = new ArrayList<int[][]>(){{
@@ -1418,6 +1420,8 @@ public class ConstantCharacter {
 
     ArrayList<int[][]> KPoints = new ArrayList<int[][]>(){{
         add(K1);
+        add(K2);
+        add(K3);
     }};
 
     /*
