@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -45,7 +46,8 @@ public class PrintCharacterActivity extends ActionBarActivity {
         nameTextView = (TextView) findViewById(R.id.textView);
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
         nameTextView.setTypeface(centuryGothic);
-        nameTextView.setText(name);
+ //       nameTextView.setText(name);
+        updateTitleText();
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +104,16 @@ public class PrintCharacterActivity extends ActionBarActivity {
         rl.invalidate();
     }
 
+    public void updateTitleText(){
+        String htmlString = "";
+        htmlString+="<font color=\"#64DD17\">"+name.substring(0, cIndex)+"</font>";
+        htmlString += "<font color=\"#E91E63\">" + name.substring(cIndex, cIndex+1) + "</font>";
+        if(cIndex+1<name.length()) {
+            htmlString += "" + name.substring(cIndex + 1) + "";
+        }
+        nameTextView.setText(Html.fromHtml(htmlString));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -136,6 +148,9 @@ public class PrintCharacterActivity extends ActionBarActivity {
             drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             drawView.init();
         }
+        updateTitleText();
+
+
     }
 
     public void Modelling(View v) {

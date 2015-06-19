@@ -20,7 +20,10 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.media.SoundPool;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends Activity {
@@ -31,6 +34,9 @@ public class MainActivity extends Activity {
     Animation grow;
     Animation jiggle;
     int m;
+    int j;
+    int soundIndex =0;
+    SoundManager sM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,17 +110,26 @@ public class MainActivity extends Activity {
             }
         });
         Handler handler = new Handler();
-        SoundManager sM = new SoundManager(this);
+        sM = new SoundManager(this);
 
-
-        for (int j= 0; j < name.length(); j++) {
-            sM.announceLetter(name.charAt(j));
+        for (j= 0; j < name.length(); j++) {
+            long start = new Date().getTime();
+//            while (new Date().getTime() - start < 1000L){
+//                // do nothing
+//            }
             final TextView chartextView = (TextView) findViewById(j);
             chartextView.setText(Character.toString(name.charAt(j)));
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     chartextView.startAnimation(grow);
+                    if(soundIndex<name.length()) {
+                        sM.announceLetter(name.charAt(soundIndex));
+                    }
+                    else{
+                        soundIndex = 0;
+                    }
+                    soundIndex++;
                 }
             }, 1600 * (j + 1));
         }
