@@ -236,30 +236,30 @@ public class DrawView extends View {
             int x = (int) (point.x);
             int y = (int) (point.y);
             this.strokeDirection = strokes.get(indexStroke).direction;
-            switch (strokeDirection) {
+            switch (strokes.get(indexStroke).direction) {
                 case LEFT:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 120, y - 10);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 50, y - 10);
                     break;
                 case DOWN:
-                    new Arrow(cacheCanvas).drawAL(x - 30, y - 10, x - 30, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 30, y + 70);
                     break;
                 case RIGHT:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 150, y + 10);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y + 10, x + 110, y + 10);
                     break;
                 case SLIDE_BACK:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 90, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 30, y + 50);
                     break;
                 case SLIDE_FORWARD:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y + 110);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y + 50);
                     break;
                 case SLIDE_UP:
-                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 150, y - 130);
+                    new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x + 90, y - 70);
                     break;
                 case CURVE_BACK:
-                    new Arrow(cacheCanvas).drawArcAL(x - 30, y - 30, x - 150,y - 150, 270 , 90);
+                    new Arrow(cacheCanvas).drawArcAL(x - 130, y, 270 , 90, x-130+50, y, -1,0);
                     break;
                 case CURVE_FORWARD:
-                    new Arrow(cacheCanvas).drawArcAL(x + 30, y - 30, x + 150, y - 150, 180, 90);
+                    new Arrow(cacheCanvas).drawArcAL(x + 30, y - 30, 180, 90, x+30+50,y-30,1,0);
                     break;
                 default:
                     break;
