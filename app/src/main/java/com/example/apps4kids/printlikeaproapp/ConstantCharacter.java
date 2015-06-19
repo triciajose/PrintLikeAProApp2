@@ -212,6 +212,9 @@ public class ConstantCharacter {
             {195, 193},
             {214, 191},
             {232, 189},
+    };
+    int[][] e2 = new int[][]{
+            {232, 189},
             {234, 177},
             {226, 156},
             {212, 138},
@@ -238,11 +241,12 @@ public class ConstantCharacter {
     };
 
     StrokeDirection[] eDirections = new StrokeDirection[]{
-            StrokeDirection.RIGHT,
+            StrokeDirection.RIGHT, StrokeDirection.CURVE_BACK
     };
 
     ArrayList<int[][]> ePoints = new ArrayList<int[][]>(){{
         add(e1);
+        add(e2);
     }};
 
 
