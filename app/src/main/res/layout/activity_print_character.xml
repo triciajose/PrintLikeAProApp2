@@ -72,6 +72,17 @@
 
     </RelativeLayout>
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:onClick="goPrevious"
+        android:id="@+id/button3"
+        android:layout_alignTop="@+id/controlpanel"
+        android:layout_toStartOf="@+id/controlpanel"
+        android:layout_toLeftOf="@+id/controlpanel" />
+
     <!--<com.example.apps4kids.printlikeaproapp.DrawView-->
     <!--android:layout_height="wrap_content"-->
     <!--android:layout_width="wrap_content"-->
