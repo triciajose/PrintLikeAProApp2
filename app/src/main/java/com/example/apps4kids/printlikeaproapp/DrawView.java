@@ -30,12 +30,14 @@ import java.util.ArrayList;
 public class DrawView extends View {
     int showPoints=0;
     int animationIndex = 0;
+    int interpolateIndex = 1;
     float preX;
     float preY;
     private Path pathUser;
     private Path pathAnimation;
     private Paint paintUser =null;
     private Paint paintAnimation = null;
+    boolean inAnimation = false;
     int strokeCount =1;
     String pointString ="";
     public static String newline = System.getProperty("line.separator");
@@ -147,7 +149,28 @@ public class DrawView extends View {
         canvas.drawBitmap(cacheBitmap, 0, 0, bmpPaint);
         //b.Draw along the pathUser
         canvas.drawPath(pathUser, paintUser);
-        canvas.drawPath(pathAnimation, paintAnimation);
+        if(inAnimation) {
+            if(animationIndex<strokePoints.size()-1) {
+                Point fromPoint = strokePoints.get(animationIndex);
+                Point toPoint = strokePoints.get(animationIndex + 1);
+                Point subPoint = new Point((int)((1-interpolateIndex/5.0)*fromPoint.x+(interpolateIndex/5.0)*toPoint.x), (int)((1-interpolateIndex/5.0)*fromPoint.y+(interpolateIndex/5.0)*toPoint.y));
+                pathAnimation.quadTo(fromPoint.x, fromPoint.y, subPoint.x, subPoint.y);
+                canvas.drawPath(pathAnimation, paintAnimation);
+                interpolateIndex++;
+                if(interpolateIndex>5){
+                    interpolateIndex = 0;
+                    animationIndex++;
+                }
+                postInvalidateDelayed(20);
+            }
+            else{
+                inAnimation = false;
+                postInvalidateDelayed(500);
+
+            }
+
+
+        }
     }
 
     boolean checkMove(int x, int y){
@@ -188,7 +211,7 @@ public class DrawView extends View {
                 indexStroke++;
                 if(indexStroke < numStroke) {
                     initCharacterStroke();
-                    animateStroke();
+
                 }
                 else{
                     PrintCharacterActivity.state=State.success;
@@ -243,6 +266,7 @@ public class DrawView extends View {
             }
             Log.i("indexStroke", "" + indexStroke);
         }
+        animateStroke();
     }
 
     public void characterSucess() {
@@ -270,25 +294,30 @@ public class DrawView extends View {
 
 
     public void animateStroke(){
-        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
-            //By default, the Textsize is in pixel for canvas.
-            Point start = strokePoints.get(0);
-            pathAnimation.moveTo((float) start.x, (float) start.y);
-            Point prePoint = start;
-            for (int i = 0; i < animationIndex; i++) {
-                Point curPoint = strokePoints.get(i);
-                pathAnimation.quadTo(prePoint.x, prePoint.y, curPoint.x, curPoint.y);
-                prePoint = curPoint;
-            }
-            invalidate();
-        }
-        try {
-            Thread.sleep(500);
-            pathAnimation.reset();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        inAnimation = true;
+        animationIndex = 0;
+        Point start = strokePoints.get(0);
+        pathAnimation.reset();
+        pathAnimation.moveTo((float) start.x, (float) start.y);
+//        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
+//            //By default, the Textsize is in pixel for canvas.
+//            Point start = strokePoints.get(0);
+//            pathAnimation.moveTo((float) start.x, (float) start.y);
+//            Point prePoint = start;
+//            for (int i = 0; i < animationIndex; i++) {
+//                Point curPoint = strokePoints.get(i);
+//                pathAnimation.quadTo(prePoint.x, prePoint.y, curPoint.x, curPoint.y);
+//                prePoint = curPoint;
+//            }
+//            postInvalidate();
+//        }
+//        try {
+//            Thread.sleep(500);
+//            pathAnimation.reset();
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
     }
     public void initDrawView(){
         //draw character
