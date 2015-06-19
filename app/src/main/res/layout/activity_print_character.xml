@@ -21,7 +21,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="410dp"
+        android:layout_width="490dp"
         android:layout_height="40dp"
         android:id="@+id/controlpanel"
         android:orientation="horizontal"
@@ -30,7 +30,7 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:text="Back"
             android:onClick="goPrevious"
@@ -45,7 +45,7 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginRight="2dp"
             android:layout_toRightOf="@id/button3"
@@ -58,7 +58,7 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="40dp"
         android:text="NextChar"
         android:layout_toRightOf="@id/button2"
@@ -71,7 +71,7 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:text="Next"
             android:id="@+id/button"

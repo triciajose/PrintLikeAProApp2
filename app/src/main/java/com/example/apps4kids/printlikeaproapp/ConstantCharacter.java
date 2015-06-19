@@ -22,7 +22,7 @@ public class ConstantCharacter {
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
     public static final double THRESHOLD = 3000;
-    public static final int STROKE_POINT_THRESHOLD = 1;
+    public static final double STROKE_POINT_THRESHOLD = 0.3;
 
 
     /*
@@ -655,42 +655,46 @@ public class ConstantCharacter {
    Data of char q;
     */
     int[][] q1 = new int[][]{
-            {236, 157},
-            {235, 156},
-            {212, 128},
-            {184, 111},
-            {141, 103},
-            {91, 104},
-            {58, 123},
-            {35, 155},
-            {27, 185},
-            {30, 229},
-            {51, 266},
-            {75, 288},
-            {126, 293},
-            {172, 270},
-            {205, 245},
-            {215, 238}
+            {158, 147},
+            {156, 148},
+            {116, 140},
+            {73, 151},
+            {44, 177},
+            {24, 221},
+            {20, 265},
+            {41, 292},
+            {82, 287},
+            {135, 232},
+            {179, 158},
+            {182, 155}
     };
 
     int[][] q2 = new int[][]{
-            {237, 95},
-            {235, 96},
-            {229, 145},
-            {226, 217},
-            {226, 300},
-            {232, 343},
-            {234, 363},
-            {234, 363}
+            {160, 141},
+            {159, 142},
+            {160, 199},
+            {160, 278},
+            {159, 342},
+            {159, 382},
+            {157, 388}
+    };
+
+    int[][] q3 = new int[][]{
+            {155, 403},
+            {170, 393},
+            {191, 380},
+            {218, 356},
+            {222, 354}
     };
 
     StrokeDirection[] qDirections = new StrokeDirection[]{
-            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN
+            StrokeDirection.CURVE_BACK, StrokeDirection.DOWN, StrokeDirection.SLIDE_FORWARD
     };
 
     ArrayList<int[][]> qPoints = new ArrayList<int[][]>(){{
         add(q1);
         add(q2);
+        add(q3);
     }};
 
 
@@ -791,36 +795,40 @@ public class ConstantCharacter {
    Data of char u;
     */
     int[][] u1 = new int[][]{
-            {54, 87},
-            {53, 87},
-            {53, 118},
-            {52, 152},
-            {52, 180},
-            {52, 212},
-            {52, 238},
-            {56, 256},
-            {63, 270},
-            {80, 282},
-            {101, 285},
-            {123, 286},
-            {153, 281},
-            {176, 269},
-            {191, 241},
-            {195, 210},
-            {198, 171},
-            {198, 136},
-            {198, 103},
-            {195, 87}
+            {46, 114},
+            {45, 114},
+            {45, 144},
+            {42, 183},
+            {44, 219},
+            {46, 248},
+            {50, 276},
+            {61, 292},
+            {86, 299},
+            {111, 296},
+            {132, 285},
+            {145, 270},
+            {151, 257},
+            {152, 256}
+    };
+    int[][] u2 = new int[][]{
+            {165, 125},
+            {160, 144},
+            {159, 187},
+            {158, 233},
+            {157, 274},
+            {158, 294},
+            {159, 302}
     };
 
 
 
     StrokeDirection[] uDirections = new StrokeDirection[]{
-            StrokeDirection.DOWN
+            StrokeDirection.DOWN, StrokeDirection.DOWN
     };
 
     ArrayList<int[][]> uPoints = new ArrayList<int[][]>(){{
         add(u1);
+        add(u2);
     }};
 
     /*

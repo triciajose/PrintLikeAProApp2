@@ -186,7 +186,7 @@ public class DrawView extends View {
             i++;
         }
         if(!tmp){
-            failStroke();
+  //          failStroke();
         }
         return tmp;
     }
@@ -204,7 +204,8 @@ public class DrawView extends View {
                     count++;
                 }
             }
-            if(count < ConstantCharacter.STROKE_POINT_THRESHOLD){
+            double percentage = ((double) (count))/((double) (strokePointMatch.size()));
+            if(percentage < ConstantCharacter.STROKE_POINT_THRESHOLD){
                 indexStroke++;
                 if(indexStroke < numStroke) {
                     initCharacterStroke();
@@ -330,6 +331,17 @@ public class DrawView extends View {
              if(PrintCharacterActivity.stage==Stage.BUBBLE) {
                  Log.i("cStartX", "" + ConstantCharacter.cStartX);
                  Log.i("cStartY", "" + ConstantCharacter.cStartY);
+
+                 AssetManager assetManager = this.context.getAssets();
+                 Typeface plain;
+                 if(mCharacter.equals("u") || mCharacter.equals("q")) {
+                     plain = Typeface.createFromAsset(assetManager, "tekton2.ttf");
+                 }
+                 else{
+                     plain = Typeface.createFromAsset(assetManager, "ufonts.com_century-gothic.ttf");
+                 }
+                 Typeface bold = Typeface.create(plain, Typeface.BOLD);
+                 paintUser.setTypeface(bold);
                  cacheCanvas.drawText(mCharacter, 0, ConstantCharacter.cStartY, paintUser);
              }
         //     cacheCanvas.drawText(mCharacter, 0, 0, paintUser);
