@@ -57,10 +57,7 @@ public class MainActivity extends Activity {
             textView.setTextSize(100);
             String character = Character.toString(name.charAt(i));
             textView.setText(character);
-            if (character.equals("q") || character.equals("u"))
-                textView.setTypeface(tekton);
-            else
-                textView.setTypeface(centuryGothic);
+            textView.setTypeface(centuryGothic);
             textView.setId(i);
 //            textView.setTextColor(0xEF9C16);
             textView.setAlpha(255);
