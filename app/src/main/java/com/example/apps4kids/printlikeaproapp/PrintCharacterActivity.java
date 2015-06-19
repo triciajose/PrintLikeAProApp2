@@ -205,5 +205,12 @@ public class PrintCharacterActivity extends ActionBarActivity {
         drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         drawView.init();
     }
+
+    public void showWooHoo(){
+        if(cIndex >= name.length()-1) {
+            Intent intent = new Intent(this, CelebrateActivity.class);
+            startActivity(intent);
+        }
+    }
 }
 
