@@ -135,6 +135,61 @@ public class SoundManager {
         }
     }
 
+    public void annouceResult(boolean result){
+        if(result){
+            goodjob = load(R.raw.goodjob);
+            play(goodjob);
+        }
+        else{
+            tryagain = load(R.raw.tryagain);
+            play(tryagain);
+        }
+
+    }
+
+    public void announceDirection(StrokeDirection direction) {
+        switch(direction){
+            case LEFT:
+                straightback=load(R.raw.straightback);
+                play(straightback);
+                break;
+            case RIGHT:
+                straight=load(R.raw.straight);
+                play(straight);
+                break;
+            case UP:
+                straightup=load(R.raw.straightup);
+                play(straightup);
+                break;
+            case DOWN:
+                down=load(R.raw.down);
+                play(down);
+                break;
+            case SLIDE_BACK:
+                slideback=load(R.raw.slideback);
+                play(slideback);
+                break;
+            case SLIDE_FORWARD:
+                slidedown=load(R.raw.slidedown);
+                play(slidedown);
+                break;
+            case SLIDE_UP:
+                straightup=load(R.raw.straightup);
+                play(straightup);
+                break;
+            case CURVE_BACK:
+                curveback=load(R.raw.curveback);
+                play(curveback);
+                break;
+            case CURVE_FORWARD:
+                curveforward=load(R.raw.curveforward);
+                play(curveforward);
+                break;
+            default:
+                break;
+        }
+    }
+
     // Set volume values
     public void setVolume(float vol)
     {

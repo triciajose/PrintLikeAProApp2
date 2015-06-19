@@ -64,16 +64,21 @@ public class DrawView extends View {
     String mCharacter = "";
     GameMode gameMode = GameMode.ALLPOINTS;
     Animation jiggle;
+    PrintCharacterActivity activity;
+
+    public static StrokeDirection strokeDirection;
+
+    SoundManager soundManager;
 
     /*----------------------Constructor---------------------------*/
     public DrawView(Context context, AttributeSet set)
     {
         super(context, set);
         this.context = context;
-        PrintCharacterActivity activity = (PrintCharacterActivity) context;
+        this.activity = (PrintCharacterActivity) context;
         this.mCharacter = activity.mChracter;
         this.gameMode = activity.gameMode;
-
+        this.soundManager = new SoundManager(this.context);
         init();
 
     }
@@ -89,45 +94,39 @@ public class DrawView extends View {
                 pathUser.moveTo(x, y);
                 preX = x;
                 preY = y;
-                pointString ="";
-                pointString+=newline;
-                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
+//                pointString ="";
+//                pointString+=newline;
+//                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
                 moveResult = true;
                 break;
             case MotionEvent.ACTION_MOVE:
                 pathUser.quadTo(preX, preY, x, y);
                 preX = x;
                 preY = y;
-                pointString+=newline;
-                if(countPoint==12) {
-                    countPoint = 0;
-                    pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
-                }
-                else{
-                    countPoint++;
-                }
+//                pointString+=newline;
+//                if(countPoint==12) {
+//                    countPoint = 0;
+//                    pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "},";
+//                }
+//                else{
+//                    countPoint++;
+//                }
                 moveResult = checkMove((int) x, (int) y);
-                cacheCanvas.drawPath(pathUser, paintUser);
-
-                //              if(!moveResult){
-                if(false){
+                if(!moveResult){
                     pathUser.reset();
-                }
-                else{
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                pointString+=newline;
-                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "}";
-                Log.i("pointString", pointString);
+//                pointString+=newline;
+//                pointString+="{"+String.format("%.0f", x-ConstantCharacter.POINT_OFFSET_X) + ", " + String.format("%.0f", y-ConstantCharacter.POINT_OFFSET_Y) + "}";
+//                Log.i("pointString", pointString);
                 boolean strokeResult = checkStroke();
-                //           if(!strokeResult){
-                if(false){
+                if(!strokeResult){
                     pathUser.reset();
                 }
-                else {
+                else{
                     cacheCanvas.drawPath(pathUser, paintUser);
-                }//
+                }
                 pathUser.reset();
                 break;
         }
@@ -236,7 +235,8 @@ public class DrawView extends View {
             Point point = strokePoints.get(0);
             int x = (int) (point.x);
             int y = (int) (point.y);
-            switch (strokes.get(indexStroke).direction) {
+            this.strokeDirection = strokes.get(indexStroke).direction;
+            switch (strokeDirection) {
                 case LEFT:
                     new Arrow(cacheCanvas).drawAL(x + 30, y - 10, x - 120, y - 10);
                     break;
@@ -272,6 +272,7 @@ public class DrawView extends View {
     public void characterSucess() {
 
         Log.i("characterSucess", "Sucessfully draw a character");
+        soundManager.annouceResult(true);
 //        ImageView imageView = (ImageView) findViewById(R.id.goodjob_iv);
 //        imageView.clearAnimation();
 //
@@ -290,6 +291,7 @@ public class DrawView extends View {
 
     public void failStroke(){
         Log.i("doing wrong", "");
+        soundManager.annouceResult(false);
     }
 
 
@@ -300,6 +302,7 @@ public class DrawView extends View {
             Point start = strokePoints.get(0);
             pathAnimation.reset();
             pathAnimation.moveTo((float) start.x, (float) start.y);
+            soundManager.announceDirection(strokeDirection);
         }
 //        for(int animationIndex = 1; animationIndex<=strokePoints.size(); animationIndex++) {
 //            //By default, the Textsize is in pixel for canvas.

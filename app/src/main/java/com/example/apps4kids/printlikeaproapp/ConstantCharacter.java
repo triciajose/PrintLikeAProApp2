@@ -21,8 +21,8 @@ public class ConstantCharacter {
 
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
-    public static final double THRESHOLD = 10000;
-    public static final int STROKE_POINT_THRESHOLD = 1;
+    public static final double THRESHOLD = 2000;
+    public static final int STROKE_POINT_THRESHOLD = 2;
 
 
     /*
@@ -373,11 +373,6 @@ public class ConstantCharacter {
     Data of char i;
      */
     int[][] i1 = new int[][]{
-            {48, 29},
-            {45, 30}
-    };
-
-    int[][] i2=new int[][]{
             {44, 108},
             {45, 124},
             {42, 160},
@@ -387,8 +382,14 @@ public class ConstantCharacter {
             {34, 282}
     };
 
+    int[][] i2=new int[][]{
+            {48, 29},
+            {45, 30}
+
+    };
+
     StrokeDirection[] iDirections = new StrokeDirection[]{
-            StrokeDirection.NOWHERE, StrokeDirection.DOWN
+             StrokeDirection.DOWN, StrokeDirection.NOWHERE
     };
 
     ArrayList<int[][]> iPoints = new ArrayList<int[][]>(){{
@@ -401,11 +402,6 @@ public class ConstantCharacter {
     Data of char j;
      */
     int[][] j1 = new int[][]{
-            {46, 37},
-            {45, 36}
-    };
-
-    int[][] j2=new int[][]{
             {31, 105},
             {34, 129},
             {34, 165},
@@ -421,8 +417,13 @@ public class ConstantCharacter {
             {0, 352}
     };
 
+    int[][] j2=new int[][]{
+            {46, 37},
+            {45, 36}
+    };
+
     StrokeDirection[] jDirections = new StrokeDirection[]{
-            StrokeDirection.NOWHERE, StrokeDirection.DOWN
+             StrokeDirection.DOWN, StrokeDirection.NOWHERE
     };
 
     ArrayList<int[][]> jPoints = new ArrayList<int[][]>(){{
@@ -2091,7 +2092,20 @@ public class ConstantCharacter {
         PATH_y=addPath(yDirections, yPoints);
         PATH_z=addPath(zDirections, zPoints);
 
-
+        PATH_A=addPath(ADirections, APoints);
+        PATH_B=addPath(BDirections, BPoints);
+        PATH_C=addPath(CDirections, CPoints);
+        PATH_D=addPath(DDirections, DPoints);
+        PATH_E=addPath(EDirections, EPoints);
+        PATH_F=addPath(FDirections, FPoints);
+        PATH_G=addPath(GDirections, GPoints);
+        PATH_H=addPath(HDirections, HPoints);
+        PATH_I=addPath(IDirections, IPoints);
+        PATH_J=addPath(JDirections, JPoints);
+        PATH_K=addPath(KDirections, KPoints);
+        PATH_L=addPath(LDirections, LPoints);
+        PATH_M=addPath(MDirections, MPoints);
+        PATH_N=addPath(NDirections, NPoints);
 
         PATH_O=addPath(ODirections, OPoints);
         PATH_P=addPath(PDirections, PPoints);

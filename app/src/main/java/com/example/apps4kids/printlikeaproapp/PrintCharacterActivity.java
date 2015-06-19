@@ -31,7 +31,6 @@ public class PrintCharacterActivity extends ActionBarActivity {
     static Stage nextStage;
     Button nextCharButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -46,6 +45,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
         Typeface centuryGothic = Typeface.createFromAsset(getApplicationContext().getAssets(), "ufonts.com_century-gothic.ttf");
         nameTextView.setTypeface(centuryGothic);
         nameTextView.setText(name);
+
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -75,7 +75,7 @@ public class PrintCharacterActivity extends ActionBarActivity {
                 }
                 if (state == State.success) {
                     stage = nextStage;
-                    state=State.fail;
+                    state = State.fail;
                 }
                 drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 drawView.init();
@@ -85,13 +85,14 @@ public class PrintCharacterActivity extends ActionBarActivity {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
-        RelativeLayout rl = (RelativeLayout) findViewById(R.id.drawViewGroupLayout);
+        int height = size.y;
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.rootRL);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.leftMargin = (width - ConstantCharacter.cSizeX) / 2;
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
 //        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        //params.topMargin = (height - ConstantCharacter.cSizeY - 100) / 2 + 100;
-
+        params.topMargin = (height - ConstantCharacter.cSizeY - 50)/2+50; // the constant is the height of the title.
+//        params.bottomMargin = (height - ConstantCharacter.cSizeY - 40) / 2; // the constant is the height of the title.
         //       params.topMargin = 0;
         Log.i("leftMargin", ""+params.leftMargin);
         Log.i("topMargin", ""+params.topMargin);
@@ -123,13 +124,15 @@ public class PrintCharacterActivity extends ActionBarActivity {
 
     public void nextChar(View v){
         cIndex++;
+        while(cIndex<name.length() && name.charAt(cIndex)==' ') {
+            cIndex++;
+        }
         if(cIndex<name.length()) {
             mChracter = name.charAt(cIndex)+"";
             drawView.mCharacter = this.mChracter;
             stage=Stage.BUBBLE;
             drawView.cacheCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             drawView.init();
-
         }
     }
 }
