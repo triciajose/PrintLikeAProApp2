@@ -13,12 +13,56 @@
         android:id="@+id/relativeLayout">
         <TextView android:text="Hello World" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35dp"
+            android:textSize="30dp"
             android:id="@+id/textView"
+            android:gravity="top"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"/>
+
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/lines">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="10px"
+            android:id="@+id/upline"
+            android:layout_alignParentTop="true"
+            android:src = "@mipmap/solidline"
+            android:scaleType="centerCrop">
+            </ImageView>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="10px"
+            android:id="@+id/middleline"
+            android:layout_below="@id/upline"
+            android:layout_marginTop="140px"
+            android:src = "@mipmap/dotline"
+            android:scaleType="centerCrop">
+        </ImageView>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="10px"
+            android:id="@+id/bottomline"
+            android:layout_below="@id/middleline"
+            android:layout_marginTop="140px"
+            android:src = "@mipmap/solidline"
+            android:scaleType="centerCrop">
+        </ImageView>
+        </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="600dp"
@@ -87,8 +131,5 @@
         android:textSize = "20dp"
         android:background="@drawable/nextchar"
         android:textColor="@drawable/button_text_selector"/>
-
-
-
     </RelativeLayout>
 </RelativeLayout>

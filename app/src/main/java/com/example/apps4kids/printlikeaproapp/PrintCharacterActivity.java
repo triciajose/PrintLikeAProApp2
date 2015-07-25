@@ -1,9 +1,12 @@
 package com.example.apps4kids.printlikeaproapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,9 +16,14 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -50,6 +58,37 @@ public class PrintCharacterActivity extends ActionBarActivity {
         nameTextView.setTypeface(centuryGothic);
  //       nameTextView.setText(name);
         updateTitleText();
+
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        String[] items = new String[]{"simple", "normal", "difficulty"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        dropdown.setVisibility(View.GONE);
+//        dropdown.setAdapter(adapter);
+//        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view,
+//                                       int position, long id) {
+//                Log.i("drop down selected at:", (String) parent.getItemAtPosition(position));
+//                switch(position){
+//                    case 2:
+//                        ConstantCharacter.THRESHOLD = 3000;
+//                        ConstantCharacter.STROKE_POINT_THRESHOLD = 0.3;
+//                        break;
+//                    case 1:
+//                        ConstantCharacter.THRESHOLD = 4000;
+//                        ConstantCharacter.STROKE_POINT_THRESHOLD = 0.4;
+//                    case 0:
+//                        ConstantCharacter.THRESHOLD = 5000;
+//                        ConstantCharacter.STROKE_POINT_THRESHOLD = 0.5;
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                // TODO Auto-generated method stub
+//            }
+//        });
 
         button = (Button) findViewById(R.id.neststatebutton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +141,12 @@ public class PrintCharacterActivity extends ActionBarActivity {
         //       params.topMargin = 0;
         Log.i("leftMargin", "" + params.leftMargin);
         Log.i("topMargin", "" + params.topMargin);
+
+
+        RelativeLayout lines = (RelativeLayout) findViewById(R.id.lines);
+        RelativeLayout.LayoutParams linesParams = (RelativeLayout.LayoutParams) lines.getLayoutParams();
+        linesParams.topMargin = params.topMargin-50;
+
         rl.addView(drawView, params);
         rl.invalidate();
     }

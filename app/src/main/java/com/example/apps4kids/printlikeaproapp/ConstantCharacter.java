@@ -21,8 +21,8 @@ public class ConstantCharacter {
 
     public static final float POINT_OFFSET_X = 0;
     public static final float POINT_OFFSET_Y = 0;
-    public static final double THRESHOLD = 3000;
-    public static final double STROKE_POINT_THRESHOLD = 0.3;
+    public static double THRESHOLD = 6000;
+    public static double STROKE_POINT_THRESHOLD = 0.5;
 
 
     /*
